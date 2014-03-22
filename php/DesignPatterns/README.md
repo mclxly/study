@@ -1,0 +1,1 @@
+代码基于[DesignPatternsPHP](https://github.com/domnikl/DesignPatternsPHP)，重写加深理解。
