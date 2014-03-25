@@ -1,14 +1,7 @@
 <?php
 namespace DesignPatterns\AbstractFactory;
 
-//define('BASE_PATH', realpath(dirname(__FILE__)));
-define('BASE_PATH',  '/var/www/html/colin');
-function my_autoloader($class)
-{
-    $filename = BASE_PATH . '/' . str_replace('\\', '/', $class) . '.php';
-    include($filename);
-}
-spl_autoload_register('DesignPatterns\AbstractFactory\my_autoloader');
+require_once(realpath(dirname(__FILE__)) . '/../autoload.php');
 
 use DesignPatterns\AbstractFactory;
 use DesignPatterns\AbstractFactory\HtmlFactory;
