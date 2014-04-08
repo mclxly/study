@@ -2,7 +2,7 @@
 namespace DesignPatterns;
 
 //define('BASE_PATH', realpath(dirname(__FILE__)));
-define('BASE_PATH',  '/var/www/html/colin/github/study/php/');
+define('BASE_PATH',  '/data/samba/github/study/php/');
 function my_autoloader($class)
 {
     $filename = BASE_PATH . str_replace('\\', '/', $class) . '.php';
