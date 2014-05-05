@@ -1,0 +1,90 @@
+http://www.queryadmin.com/854/secure-wordpress-nginx/
+https://www.digitalocean.com/community/articles/how-to-configure-single-and-multiple-wordpress-site-settings-with-nginx
+
+--------------
+Mysql
+grant all on blog.* to cmsuser@localhost identified by 'password';
+
+flush privileges;
+
+———————
+OSX
+@hide .DS_Store files
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
+@hosts
+sudo vim /etc/hosts
+
+===========================
+use the npm mirror
+npm set registry http://registry.cnpmjs.org
+
+you can reset this later with npm set registry
+npm set registry https://registry.npmjs.org/
+
+then use it normally:
+npm install express
+
+===========================CENTOS
+pam_tally2 --user=tecmint --reset
+
+vim -O nginx.conf /etc/nginx.bak/nginx.conf
+not edit mode: Ctrl+w(twice) 切换
+:e filename      - edit another file
+
+查找包含字符串的文件
+
+建立/删除软连接
+ln -s ../sites-available/yourdomainname.com .
+
+copy file to remote server
+scp mylocalfile.txt root@192.168.1.10:/recipient/directory/
+
+list users
+cat /etc/passwd | cut -d ":" -f1
+
+Delete all root mail / inbox from a shell prompt
+> /var/spool/mail/root
+
+export LD_LIBRARY_PATH=/opt/glibc-2.19/lib:$LD_LIBRARY_PATH
+
+=========================================Nginx
+检查nginx工作进程
+netstat -nap | grep nginx
+ps auxw | grep nginx
+
+关闭nginx工作进程
+pkill -g 10680(master process ID)
+
+测试配置文件
+nginx -t
+
+版本信息
+nginx -V
+
+=========================================GIT
+# List git-ignored files
+$ git ls-files . --ignored --exclude-standard --others
+
+# List untracked files
+$ git ls-files . --exclude-standard --others
+
+git rm -r --cached blog/node_modules
+
+git commit -am "Remove ignored files"
+
+git reset --hard 285f
+git push -f
+
+
+=========================================NPM
+更新npm
+npm update npm -g
+
+packages列表
+npm ls -g
+npm ls
+
+=========================================RVM
+rvm list
+rvm use 2.1.1
