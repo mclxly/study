@@ -48,6 +48,12 @@ Delete all root mail / inbox from a shell prompt
 
 export LD_LIBRARY_PATH=/opt/glibc-2.19/lib:$LD_LIBRARY_PATH
 
+# compress directory
+zip -r www.zip www
+
+# scp entire directory
+scp -rp ./ root@192.168.21.90:/root/nginx.example
+
 =========================================Nginx
 检查nginx工作进程
 netstat -nap | grep nginx
@@ -76,6 +82,8 @@ git commit -am "Remove ignored files"
 git reset --hard 285f
 git push -f
 
+# Amend your last commit
+git commit --amend
 
 =========================================NPM
 更新npm

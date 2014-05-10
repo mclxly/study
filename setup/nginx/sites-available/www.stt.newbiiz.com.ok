@@ -1,0 +1,62 @@
+# www to non-www redirect -- duplicate content is BAD:
+# https://github.com/h5bp/html5-boilerplate/blob/5370479476dceae7cc3ea105946536d6bc0ee468/.htaccess#L362
+# Choose between www and non-www, listen on the *wrong* one and redirect to
+# the right one -- http://wiki.nginx.org/Pitfalls#Server_Name
+server {
+  listen 80;
+  server_name stt.newbiiz.com;
+  # non-www -> www
+  return 301 $scheme://www.stt.newbiiz.com$request_uri;
+}
+
+server {
+  set $host_path "/data/www/stt2013yii/frontend/www";
+
+  listen 80;
+
+  # The host name to respond to
+  server_name www.stt.newbiiz.com;
+
+  root /data/www/stt2013yii/frontend/www;
+  index index.php;
+  access_log /var/log/nginx/www.stt.access main;
+  error_log /var/log/nginx/www.stt.error error; 
+
+
+  #Specify a charset
+  charset utf-8;
+
+  # Custom 404 page
+  error_page 404 /site/404;
+
+  # Include the basic h5bp config set
+  include h5bp/basic.conf;
+
+  location / {
+	 index  index.html index.php;
+            #try_files $uri $uri/ /$yii_bootstrap?$args;
+            rewrite ^/(.*)$ /index.php?r=$1;
+  }
+location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
+                    try_files $uri =404;
+        }
+	
+  location ~ \.php {
+		fastcgi_pass   127.0.0.1:9000;
+                include         fastcgi_params;
+                root            $host_path;
+                fastcgi_index   index.php;
+                fastcgi_param   SCRIPT_FILENAME $host_path/$fastcgi_script_name;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                #fastcgi_param  SCRIPT_FILENAME  $document_root$fsn;
+                #fastcgi_param  PATH_INFO        $fastcgi_path_info;
+                #fastcgi_param  PATH_TRANSLATED  $document_root$fsn;
+        }
+
+   location ~ /\. {
+                deny all;
+                access_log off;
+                log_not_found off;
+        }
+
+}
