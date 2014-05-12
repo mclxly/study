@@ -14,3 +14,14 @@ end
 
 hello = HelloWorld.new("World")
 hello.sayHi
+
+def returnArray( a, b, c)
+  a = "Hello, " + a
+  b = "Hi, " + b
+  c = "Bye, " + c
+  return a, b, c
+end
+
+x, y, z = returnArray( 'colin' ,'ccc', 'ddd')
+
+puts "#{z} #{y} #{z}"
