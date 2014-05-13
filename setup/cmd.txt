@@ -54,6 +54,9 @@ zip -r www.zip www
 # scp entire directory
 scp -rp ./ root@192.168.21.90:/root/nginx.example
 
+# rename folder
+mv /oldhome /newname
+
 =========================================Nginx
 检查nginx工作进程
 netstat -nap | grep nginx
@@ -67,6 +70,13 @@ nginx -t
 
 版本信息
 nginx -V
+
+=========================================Deploy h5bp/server-configs-nginx
+/bin/cp mime.types /etc/nginx
+/bin/cp nginx.conf /etc/nginx
+/bin/cp -r h5bp/ /etc/nginx
+/bin/cp -r sites-available /etc/nginx
+/bin/cp -r sites-enabled /etc/nginx
 
 =========================================GIT
 # List git-ignored files
