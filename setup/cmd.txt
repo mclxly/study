@@ -15,6 +15,9 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 @hosts
 sudo vim /etc/hosts
 
+@smb error
+umount /Volumes/vc-samba
+
 ===========================
 use the npm mirror
 npm set registry http://registry.cnpmjs.org
