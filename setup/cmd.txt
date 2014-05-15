@@ -1,4 +1,4 @@
-http://www.queryadmin.com/854/secure-wordpress-nginx/
+﻿http://www.queryadmin.com/854/secure-wordpress-nginx/
 https://www.digitalocean.com/community/articles/how-to-configure-single-and-multiple-wordpress-site-settings-with-nginx
 
 --------------
@@ -107,5 +107,28 @@ npm ls -g
 npm ls
 
 =========================================RVM
+列出已知的ruby版本
+rvm list known
+
+安装一个ruby版本
+rvm install 1.9.3
+
+使用一个ruby版本
+rvm use 1.9.3
+
+如果想设置为默认版本，可以这样
+rvm use 1.9.3 --default 
+
+查询已经安装的ruby
 rvm list
-rvm use 2.1.1
+
+卸载一个已安装版本
+rvm remove 1.9.2
+
+==================================Configuration
+nginx -> server_tokens on
+httpd -> ServerSignature On
+php -> expose_php = On
+
+==================================Ruby on Rails
+nginx+unicorn+rack-cache
