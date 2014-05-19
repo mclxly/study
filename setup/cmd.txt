@@ -1,4 +1,4 @@
-﻿http://www.queryadmin.com/854/secure-wordpress-nginx/
+http://www.queryadmin.com/854/secure-wordpress-nginx/
 https://www.digitalocean.com/community/articles/how-to-configure-single-and-multiple-wordpress-site-settings-with-nginx
 
 --------------
@@ -132,3 +132,29 @@ php -> expose_php = On
 
 ==================================Ruby on Rails
 nginx+unicorn+rack-cache
+
+===========================Ubuntu
+sudo apt-get update
+sudo apt-get upgrade
+
+# configure network
+sudo nano /etc/network/interfaces
+sudo nano /etc/resolv.conf
+sudo nohup sh -c "ifdown eth0 && ifup eth0"
+http://guylabs.ch/2013/07/25/configure-a-static-ip-in-ubuntu-13-04/
+
+sudo shutdown -h now
+
+===========================Ubuntu+GitLab
+sudo apt-get install openssh-server
+sudo apt-get install postfix # sendmail or exim is also OK
+sudo dpkg -i gitlab_x.y.z-omnibus-x.ubuntu.12.04_amd64.deb # this is the .deb you downloaded
+sudo gitlab-ctl reconfigure
+
+sudo dpkg -i gitlab_6.8.2-omnibus-1_amd64.deb
+sudo gitlab-ctl reconfigure
+
+# default user
+admin@local.host
+5iveL!fe
+
