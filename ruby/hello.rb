@@ -2,6 +2,16 @@
 #
 # Hello world ruby program
 
+num = 112_222_000_000
+puts num
+
+t1 = Array({:a => 'a', :b => 'b'})
+puts t1.inspect
+
+exit 0
+
+__END__
+
 class HelloWorld
   def initialize(name)
     @name = name.capitalize

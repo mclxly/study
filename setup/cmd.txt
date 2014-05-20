@@ -1,3 +1,6 @@
+2014-05-20 14:53
+===========================
+
 http://www.queryadmin.com/854/secure-wordpress-nginx/
 https://www.digitalocean.com/community/articles/how-to-configure-single-and-multiple-wordpress-site-settings-with-nginx
 
@@ -158,3 +161,23 @@ sudo gitlab-ctl reconfigure
 admin@local.host
 5iveL!fe
 
+===========================Sublime Text 3
+# see the current encoding of a file
+view.encoding()
+
+===========================Reading
+Never use then for multi-line if/unless.
+ https://github.com/bbatsov/ruby-style-guide
+
+===========================R Programming
+# read csv
+sz <- read.csv('C:/Users/colin.lin/Desktop/sz.csv', , encoding="UTF-8", stringsAsFactors=FALSE)
+
+# info
+sessionInfo()
+
+# chinese encoding problem
+Sys.setlocale("LC_CTYPE","chinese") 
+
+# work directory
+getwd()
