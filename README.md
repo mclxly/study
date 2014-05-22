@@ -11,7 +11,7 @@ Folder  | Description
 ./myroots | 自己Blog的Theme
 ./php | PHP程序实践
 ./ruby | RUBY程序实践
-./setup | 开发环境配置
+./setup | 常用软件/工具配置
 
 ## Language
 HTML/CSS/JS/PHP/Ruby/R
