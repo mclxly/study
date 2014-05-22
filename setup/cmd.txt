@@ -135,6 +135,7 @@ php -> expose_php = On
 
 ==================================Ruby on Rails
 nginx+unicorn+rack-cache
+https://www.digitalocean.com/community/articles/how-to-deploy-rails-apps-using-unicorn-and-nginx-on-centos-6-5
 
 ===========================Ubuntu
 sudo apt-get update
@@ -164,6 +165,11 @@ admin@local.host
 ===========================Sublime Text 3
 # see the current encoding of a file
 view.encoding()
+
+===========================Yeoman
+npm install --global yo
+npm install --global generator-backbone
+yo backbone library
 
 ===========================Reading
 Never use then for multi-line if/unless.
