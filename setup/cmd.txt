@@ -63,6 +63,10 @@ scp -rp ./ root@192.168.21.90:/root/nginx.example
 # rename folder
 mv /oldhome /newname
 
+# Install oh-my-zsh now
+yum install zsh
+curl -L http://install.ohmyz.sh | sh
+
 =========================================Nginx
 检查nginx工作进程
 netstat -nap | grep nginx
