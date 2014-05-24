@@ -1,0 +1,26 @@
+Pragmatic.Programming.Ruby.1.9.and.2.0.4th.Edition.Jun.2013.pdf
+E:\eMule0.50a\eMule0.50a\income
+
+// -----------------------------------
+Language Core
+http://ruby-doc.org/core-2.1.0/
+Class: Array
+
+// -----------------------------------
+Standard Library
+http://www.ruby-doc.org/stdlib-2.1.2/
+Abbrev,Base64
+
+// -----------------------------------
+ruby-style-guide
+https://github.com/bbatsov/ruby-style-guide
+Don't use the return value of = (an assignment) in conditional expressions unless the assignment is wrapped in parentheses. This is a fairly popular idiom among Rubyists that's sometimes referred to as safe assignment in condition.
+
+// -----------------------------------
+Understanding ECMAScript 6
+https://github.com/nzakas/understandinges6
+https://github.com/nzakas/understandinges6/blob/master/manuscript/01-The-Basics.md
+
+// -----------------------------------
+HTTP API design guide extracted from work on the Heroku Platform API
+https://github.com/interagent/http-api-design

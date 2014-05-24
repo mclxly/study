@@ -4,14 +4,12 @@
 http://www.queryadmin.com/854/secure-wordpress-nginx/
 https://www.digitalocean.com/community/articles/how-to-configure-single-and-multiple-wordpress-site-settings-with-nginx
 
---------------
-Mysql
+===========================Mysql
 grant all on blog.* to cmsuser@localhost identified by 'password';
 
 flush privileges;
 
-———————
-OSX
+===========================OSX
 @hide .DS_Store files
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
@@ -20,6 +18,9 @@ sudo vim /etc/hosts
 
 @smb error
 umount /Volumes/vc-samba
+
+@iTerm Profile
+Command: /bin/zsh --login
 
 ===========================
 use the npm mirror
@@ -66,6 +67,8 @@ mv /oldhome /newname
 # Install oh-my-zsh now
 yum install zsh
 curl -L http://install.ohmyz.sh | sh
+vim ~/.zshrc
+zsh
 
 =========================================Nginx
 检查nginx工作进程

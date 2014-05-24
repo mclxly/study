@@ -1,0 +1,14 @@
+{
+  "color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+  "font_size": 11,
+  "ignored_packages":
+  [
+    "sublime-jsdocs",
+    "Vintage"
+  ],
+  "soda_classic_tabs": true,
+  "soda_folder_icons": true,
+  "tab_size": 2,
+  "theme": "Soda Light 3.sublime-theme",
+  "translate_tabs_to_spaces": true
+}
