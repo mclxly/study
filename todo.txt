@@ -1,29 +1,46 @@
 Pragmatic.Programming.Ruby.1.9.and.2.0.4th.Edition.Jun.2013.pdf
 E:\eMule0.50a\eMule0.50a\income
 
-// -----------------------------------
+// -----------------------------------Ruby
 Language Core
 http://ruby-doc.org/core-2.1.0/
-Class: Array
+Class: Array, Bignum, BasicObject, Object, 
+new Module
 
-// -----------------------------------
 Standard Library
 http://www.ruby-doc.org/stdlib-2.1.2/
-Abbrev,Base64
+Abbrev,Base64,bencharmark,cmath,
+new csv
+
+http://en.wikibooks.org/wiki/Ruby_Programming
 
 // -----------------------------------
 ruby-style-guide
 https://github.com/bbatsov/ruby-style-guide
 Don't use the return value of = (an assignment) in conditional expressions unless the assignment is wrapped in parentheses. This is a fairly popular idiom among Rubyists that's sometimes referred to as safe assignment in condition.
 
-// -----------------------------------
+// -----------------------------------Javascript
 Understanding ECMAScript 6
 https://github.com/nzakas/understandinges6
 https://github.com/nzakas/understandinges6/blob/master/manuscript/01-The-Basics.md
 
-// -----------------------------------
+Airbnb JavaScript Style Guide
+https://github.com/airbnb/javascript
+
+JavaScript Patterns 
+https://github.com/shichuan/javascript-patterns
+
+// -----------------------------------Design
 HTTP API design guide extracted from work on the Heroku Platform API
 https://github.com/interagent/http-api-design
 
-// -----------------------------------
-http://en.wikibooks.org/wiki/Ruby_Programming
+// -----------------------------------PHP
+PHP Function Reference
+http://www.php.net/manual/en/funcref.php
+
+PHP Manual
+http://www.php.net/manual/en/
+
+Standard PHP Library (SPL)
+http://www.php.net/manual/en/book.spl.php
+SplDoublyLinkedList, SplStack
