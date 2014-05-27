@@ -24,3 +24,6 @@ https://github.com/nzakas/understandinges6/blob/master/manuscript/01-The-Basics.
 // -----------------------------------
 HTTP API design guide extracted from work on the Heroku Platform API
 https://github.com/interagent/http-api-design
+
+// -----------------------------------
+http://en.wikibooks.org/wiki/Ruby_Programming

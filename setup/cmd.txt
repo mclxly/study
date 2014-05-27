@@ -68,6 +68,8 @@ mv /oldhome /newname
 yum install zsh
 curl -L http://install.ohmyz.sh | sh
 vim ~/.zshrc
+  ZSH_THEME="gallois"
+  plugins=(git rails ruby osx bundler brew github gem node npm rvm )
 zsh
 
 =========================================Nginx
