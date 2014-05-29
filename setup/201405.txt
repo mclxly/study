@@ -1,0 +1,87 @@
+http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis
+Big DB Choice
+
+http://db-engines.com/en/
+
+==================================webscalesql
+http://blog.wl0.org/2014/04/webscalesql-rpms-for-centos-6/
+
+==================================Frontend
+http://scotch.io/bar-talk/bootstrap-3-tips-and-tricks-you-might-not-know
+
+https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes
+
+http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+http://css-tricks.com/improving-ui-animation-workflow-velocity-js/
+
+http://codecondo.com/3-free-books-for-learning-angularjs/
+
+Chrome 36才有的特性
+http://www.html5rocks.com/en/tutorials/es7/observe/
+
+==================================Backend
+http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+
+==================================Sublime Text 3
+CodeIntel
+
+shortcut
+https://gist.github.com/eteanga/1736542
+
+==================================Configuration
+nginx -> server_tokens on
+httpd -> ServerSignature On
+php -> expose_php = On
+
+==================================Regex Expression
+http://regex101.com/#pcre
+http://www.regexr.com/
+
+==================================Ruby on Rails
+https://www.digitalocean.com/community/articles/how-to-deploy-rails-apps-using-passenger-with-nginx-on-centos-6-5
+https://www.digitalocean.com/community/articles/how-to-deploy-rails-apps-using-unicorn-and-nginx-on-centos-6-5
+
+==================================Database
+http://slides.com/tobyhede/an-ode-to-17-database-in-33-minutes-railsconf-2014
+
+==================================Github
+editor
+https://github.com/quilljs/quill
+
+mail server
+https://github.com/JoshData/mailinabox
+
+介绍产品用的
+http://usablica.github.io/intro.js/
+
+The fastest Node.js module for resizing JPEG, PNG, WebP and TIFF images. Uses the libvips library.
+https://github.com/lovell/sharp
+
+Really Simple Responsive HTML Email Template
+https://github.com/leemunroe/html-email-template
+
+Declare job classes that can be run by a variety of queueing backends
+https://github.com/rails/activejob
+
+A JavaScript library providing multiple simultaneous, stable, fault-tolerant and resumable/restartable file uploads via the HTML5 File API.
+https://github.com/flowjs/flow.js
+
+格式化日期时间
+http://momentjs.com/
+
+Ruby常用数据结构及算法
+https://github.com/kanwei/algorithms
+
+如果是数据量达到千万或上亿的级别，我建议最好的方案还是ejabberd+MQ+HBase，比如：rabbitmq + hbase。优点是都是成熟的项目，扩展和负载都没有问题；缺点是对项目的运维要求较高，需要熟悉erlang和hbase，尤其是hbase；
+
+==================================Reading
+http://www.golang-book.com/
+https://github.com/bbatsov/ruby-style-guide
+
+==================================Blog有点意思->设计
+http://ndever.net/articles/linux/installing-sass-and-compass-ubuntu-1210-1304
+http://pinkyjie.com/2013/11/23/first-look-at-yeoman/
+http://pinkyjie.com/resume/
+
+web行业技术交流，包括但不限于以下技术：HTML/CSS/JS/PHP/Ruby/Python/Go，Apache/Nginx/PostgreSQL/MySQL/Redis/Memcached/MongoDB，Yeoman/SASS/LESS/Compass/Angular/Backbone/Bootstrap/Foundation/Grunt/Gulp, CentOS/Ubuntu/OSX。
