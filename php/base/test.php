@@ -4,6 +4,14 @@ PHP基础及标准库实践。
 Last updated: 2014-05-28 15:33
  */
 
+$string = '中文字典好啊字典好';
+$pattern = '/(\w+) (\d+), (\d+)/i';
+// (?<foo>{字典})
+$pattern = '({字典})';
+$replacement = 'aaa';
+echo preg_replace($pattern, $replacement, $string);
+exit;
+
 $array_a = new ArrayIterator(array('a' => 'aardwolf', 'b' => 'bear', 'c' => 'capybara'));
 $array_b = new ArrayIterator(array('apple', 'orange', 'lemon'));
 

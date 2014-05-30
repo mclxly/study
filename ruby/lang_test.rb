@@ -4,11 +4,31 @@
 # 2014-05-28 15:31
 # 2014-05-29 16:09
 
+a = "hello there"
+p a[/[aeiou](.)\1/]      #=> "ell"
+p a[/[aeiou](.)\1/, 0]   #=> "ell"
+p a[/[aeiou](.)\1/, 1]   #=> "l"
+p a[/[aeiou](.)\1/, 2]   #=> nil
 
+p a[/(?<vowel>[aeiou])(?<non_vowel>[^aeiou])/, "non_vowel"] #=> "l"
+p a[/(?<vowel>[aeiou])(?<non_vowel>[^aeiou])/, "vowel"]     #=> "e"
 
+p "hello".center(4)         #=> "hello"
+p "hello".center(20)        #=> "       hello        "
+p "hello".center(20, '*') #=> "1231231hello12312312"
 
+p "x".chop       #=> ""
+p "hello".count "aeiou", "^e" 
 
-p 1.step.take(4)
+p "hello".gsub(/(?<foo>[aeiou])/, '{\k<foo>}')  #=> "h{e}ll{o}"
+p "中文字典好啊字典好".gsub(/(?<foo>{字典})/, '{\k<foo>}')  #=> "h{e}ll{o}"
+exit 0
+
+#####################
+
+p "%05d" % 123                              #=> "00123"
+p "%-5s: %08x" % [ "ID", self.object_id ]   #=> "ID   : 200e14d6"
+p "foo = %{foo}" % { :foo => 'bar' }        #=> "foo = bar"
 exit 0
 
 #####################
