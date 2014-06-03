@@ -1,0 +1,10 @@
+Description: 记录遇到的问题及解决方法。
+Init: 2014-06-03 22:12
+
+===========================Nginx
+
+===========================phpMyAdmin
+Issue: FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined function __() in /usr/share/phpMyAdmin/libraries/core.lib.php on line 229" while reading response header from upstream,
+
+Fix: session.save_path /var/lib/php/session  /var/lib/php/session
+chown -R nginx:nginx /var/lib/php/session

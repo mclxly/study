@@ -1,3 +1,4 @@
+
 types {
     text/html                             html htm shtml;
     text/css                              css;
@@ -51,8 +52,6 @@ types {
     application/x-xpinstall               xpi;
     application/xhtml+xml                 xhtml;
     application/zip                       zip;
-    application/x-nokia-widget            wgz;
-    application/vnd.android.package-archive apk;
 
     application/octet-stream              bin exe dll;
     application/octet-stream              deb;

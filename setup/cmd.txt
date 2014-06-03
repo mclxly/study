@@ -40,6 +40,7 @@ not edit mode: Ctrl+w(twice) 切换
 :e filename      - edit another file
 
 查找包含字符串的文件
+grep -r 'pid' ./
 
 建立/删除软连接
 ln -s ../sites-available/yourdomainname.com .
