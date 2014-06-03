@@ -4,12 +4,13 @@ E:\eMule0.50a\eMule0.50a\income
 // -----------------------------------Ruby
 Language Core
 http://ruby-doc.org/core-2.1.0/
-Class: Array, Bignum, BasicObject, Object, Module, Class, NilClass
-new String
+Class: Array, Bignum, BasicObject, Object, Module, Class, NilClass, String, Float, Fiber
+new Continuation
 
 Standard Library
 http://www.ruby-doc.org/stdlib-2.1.2/
-Abbrev,Base64,bencharmark,cmath, csv, date, datetime, time
+Abbrev,Base64,bencharmark,cmath, csv, date, datetime, time, debug, Delegator, SimpleDelegator
+[skipped]DBM
 new DBM
 
 http://en.wikibooks.org/wiki/Ruby_Programming

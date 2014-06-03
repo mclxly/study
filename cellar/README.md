@@ -12,3 +12,10 @@ New Solution
 
 ## Server
 * Ruby, [sinatra]:https://github.com/sinatra/sinatra/
+* Nginx, [nginx-boilerplate]:https://github.com/Umkus/nginx-boilerplate.git
+
+## RoR on Nginx
+http://wiki.nginx.org/SimpleRubyFCGI
+http://www.modrails.com/documentation/Users%20guide%20Nginx.html
+https://gist.github.com/vjt/804654
+

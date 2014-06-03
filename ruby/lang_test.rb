@@ -4,6 +4,35 @@
 # 2014-05-28 15:31
 # 2014-05-29 16:09
 
+def say(word)
+  require 'debug'
+  puts word
+end
+say('abc')
+exit 0
+
+#####################
+fiber = Fiber.new do
+  Fiber.yield 1
+  2
+end
+
+puts fiber.resume
+puts fiber.resume
+puts fiber.resume
+
+exit 0
+
+#####################
+"abcd".succ        #=> "abce"
+"THX1138".succ     #=> "THX1139"
+"<<koala>>".succ   #=> "<<koalb>>"
+p "a1999zzz".succ     #=> "2000aaa"
+p "aZZZ9999".succ     #=> "AAAA0000"
+p "***".succ         #=> "**+"
+exit 0
+
+#####################
 a = "hello there"
 p a[/[aeiou](.)\1/]      #=> "ell"
 p a[/[aeiou](.)\1/, 0]   #=> "ell"
