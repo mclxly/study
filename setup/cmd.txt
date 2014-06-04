@@ -147,6 +147,14 @@ php -> expose_php = On
 nginx+unicorn+rack-cache
 https://www.digitalocean.com/community/articles/how-to-deploy-rails-apps-using-unicorn-and-nginx-on-centos-6-5
 
+#stop unicorn
+ps auxw | grep unicorn
+kill -9 master_pid
+# or
+ps aux | grep 'unicorn' | awk '{print $2}' | xargs kill -9
+# or
+ps aux | grep 'unicorn' | awk '{print $2}' | xargs sudo kill -9
+
 ===========================Ubuntu
 sudo apt-get update
 sudo apt-get upgrade
@@ -187,7 +195,7 @@ Never use then for multi-line if/unless.
 
 ===========================R Programming
 # read csv
-sz <- read.csv('C:/Users/colin.lin/Desktop/sz.csv', , encoding="UTF-8", stringsAsFactors=FALSE)
+sz < - read.csv('C:/Users/colin.lin/Desktop/sz.csv', , encoding="UTF-8", stringsAsFactors=FALSE)
 
 # info
 sessionInfo()
@@ -197,3 +205,34 @@ Sys.setlocale("LC_CTYPE","chinese")
 
 # work directory
 getwd()
+
+==================================Github
+editor
+https://github.com/quilljs/quill
+
+mail server
+https://github.com/JoshData/mailinabox
+
+介绍产品用的
+http://usablica.github.io/intro.js/
+
+The fastest Node.js module for resizing JPEG, PNG, WebP and TIFF images. Uses the libvips library.
+https://github.com/lovell/sharp
+
+Really Simple Responsive HTML Email Template
+https://github.com/leemunroe/html-email-template
+
+Declare job classes that can be run by a variety of queueing backends
+https://github.com/rails/activejob
+
+A JavaScript library providing multiple simultaneous, stable, fault-tolerant and resumable/restartable file uploads via the HTML5 File API.
+https://github.com/flowjs/flow.js
+
+格式化日期时间
+http://momentjs.com/
+
+Ruby常用数据结构及算法
+https://github.com/kanwei/algorithms
+
+A platform for community discussion. Free, open, simple.
+https://github.com/discourse/discourse
