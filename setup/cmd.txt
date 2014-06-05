@@ -236,3 +236,6 @@ https://github.com/kanwei/algorithms
 
 A platform for community discussion. Free, open, simple.
 https://github.com/discourse/discourse
+
+Offline storage, improved. Wraps IndexedDB, WebSQL, or localStorage using a simple but powerful API.
+https://github.com/mozilla/localForage

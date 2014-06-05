@@ -1,1 +1,6 @@
-Package List: EditorConfig
+Package List: 
+
+1. EditorConfig
+
+2. EJS
+An EJS syntax definition specifically for sublime text
