@@ -12,6 +12,7 @@ Folder  | Description
 ./php | PHP程序实践
 ./ruby | RUBY程序实践
 ./setup | 常用软件/工具配置
+./yeoman | 使用yeoman生成的web项目
 
 ## Language
 HTML/CSS/JS/PHP/Ruby/R

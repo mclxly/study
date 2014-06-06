@@ -20,6 +20,7 @@ Test2.Views = Test2.Views || {};
       initialize: function (options) {
         this.input = this.$("#new-todo");
         this.allCheckbox = this.$("#toggle-all")[0];
+        this.Todos = options.Todos;
 
         console.log(options.Todos);
         this.listenTo(options.Todos, 'add', this.addOne);
@@ -35,10 +36,10 @@ Test2.Views = Test2.Views || {};
       },
 
       render: function () {
-        var done = Todos.done().length;
-        var remaining = Todos.remaining().length;
+        var done = this.Todos.done().length;
+        var remaining = this.Todos.remaining().length;
 
-        if (Todos.length) {
+        if (this.Todos.length) {
           this.main.show();
           this.footer.show();
           this.footer.html(this.template({done: done, remaining: remaining}));
@@ -52,30 +53,30 @@ Test2.Views = Test2.Views || {};
       },
 
       addOne: function(todo) {
-        var view = new window.Test2.Todo({model: todo});
+        var view = new Test2.Views.Todo({model: todo});
         this.$("#todo-list").append(view.render().el);
       },
 
       addAll: function() {
-        Todos.each(this.addOne, this);
+        this.Todos.each(this.addOne, this);
       },
 
       createOnEnter: function(e) {
         if (e.keyCode != 13) return;
         if (!this.input.val()) return;
 
-        Todos.create({title: this.input.val(), order: Todos.nextOrder()});
+        this.Todos.create({title: this.input.val(), order: this.Todos.nextOrder()});
         this.input.val('');
       },
 
       clearCompleted: function() {
-        _.invoke(Todos.done(), 'destroy');
+        _.invoke(this.Todos.done(), 'destroy');
         return false;
       },
 
       toggleAllComplete: function () {
         var done = this.allCheckbox.checked;
-        Todos.each(function (todo) { todo.save({'done': done}); });
+        this.Todos.each(function (todo) { todo.save({'done': done}); });
       }
 
     });
