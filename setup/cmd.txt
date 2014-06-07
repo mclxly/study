@@ -184,6 +184,10 @@ admin@local.host
 # see the current encoding of a file
 view.encoding()
 
+# Multiple Selection with the Keyboard
+To add the line above or below to the selection, use Ctl+Alt+Up and Ctrl+Alt+down (OS X: Ctrl+Shift+Up and Ctrl+Shift+Down).
+If you go too far, use Undo Selection (Ctrl+U, or Command+U on OS X) to step backwards.
+
 ===========================Yeoman
 npm install --global yo
 npm install --global generator-backbone

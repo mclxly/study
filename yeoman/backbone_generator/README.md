@@ -18,3 +18,4 @@ yo backbone:view <view>
 ## Refer
 * http://backbonejs.org/docs/backbone.html
 * http://backbonejs.org/examples/todos/index.html
+* https://github.com/jeromegn/Backbone.localStorage
