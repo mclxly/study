@@ -144,8 +144,13 @@ httpd -> ServerSignature On
 php -> expose_php = On
 
 ==================================Ruby on Rails
+ruby command line
+IRB
+
 nginx+unicorn+rack-cache
 https://www.digitalocean.com/community/articles/how-to-deploy-rails-apps-using-unicorn-and-nginx-on-centos-6-5
+
+#start unicorn
 
 #stop unicorn
 ps auxw | grep unicorn
@@ -243,3 +248,7 @@ https://github.com/discourse/discourse
 
 Offline storage, improved. Wraps IndexedDB, WebSQL, or localStorage using a simple but powerful API.
 https://github.com/mozilla/localForage
+
+==================================Tips
+print "hire" in chrome
+console.log('%chire', 'font-size: 48px; font-weight: bold; color: #c20')
