@@ -4,6 +4,26 @@
 # 2014-05-28 15:31
 # 2014-05-29 16:09
 
+#####################
+# Blocks:＆ and yield
+def meth_captures(arg, &block)
+  block.call(arg, 0) + block.call(arg.reverse, 1)  
+end
+
+meth_captures('pony') do |word, num|
+  puts "in callback! word = #{word.inspect}, num = #{num.inspect}"
+  word + num.to_s
+end
+
+class Array
+  def to_proc
+    proc { |receiver| receiver.send *self }
+  end
+end
+p ['Hello', 'Goodbye'].map &[ :+, ' world!' ]
+exit 0
+
+#####################
 def say(word)
   require 'debug'
   puts word
