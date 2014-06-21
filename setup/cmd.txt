@@ -73,6 +73,9 @@ vim ~/.zshrc
   plugins=(git rails ruby osx bundler brew github gem node npm rvm )
 zsh
 
+# Run a script or command on Linux CentOS Startup
+/etc/rc.local
+
 =========================================Nginx
 检查nginx工作进程
 netstat -nap | grep nginx
