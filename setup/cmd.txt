@@ -33,6 +33,12 @@ then use it normally:
 npm install express
 
 ===========================CENTOS
+# Update repo
+yum update
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+vim /etc/yum.repos.d/remi.repo
+
 pam_tally2 --user=tecmint --reset
 
 vim -O nginx.conf /etc/nginx.bak/nginx.conf
@@ -75,6 +81,17 @@ zsh
 
 # Run a script or command on Linux CentOS Startup
 /etc/rc.local
+
+# Memory Usage
+ps -eo size,pid,user,command | awk '{ hr=$1/1024 ; printf("%13.6f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' | sort
+
+# Search packages
+ yum --enablerepo=remi,remi-php55 list php55w*
+
+# Memcached
+ yum --enablerepo=remi,remi-php55 install php55w-pecl-memcache
+ yum --enablerepo=remi,remi-php55 install php-pecl-memcached
+
 
 =========================================Nginx
 检查nginx工作进程
