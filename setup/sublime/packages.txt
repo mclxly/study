@@ -4,3 +4,6 @@ Package List:
 
 2. EJS
 An EJS syntax definition specifically for sublime text
+
+============================Python
+Python3, Jedi - Python autocompletion by srusskih, Python PEP8 Autoformat by StephaneBunel
