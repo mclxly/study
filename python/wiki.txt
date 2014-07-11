@@ -1,0 +1,5 @@
+Python相关知识
+
+=========================================Lang
+1. exit
+raise SystemExit

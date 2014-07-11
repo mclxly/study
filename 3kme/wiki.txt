@@ -1,0 +1,5 @@
+==========================================================
+1.GeoDjango Tutorial
+https://docs.djangoproject.com/en/dev/ref/contrib/gis/tutorial/#introduction
+
+pip install pygeoip
