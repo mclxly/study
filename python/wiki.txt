@@ -1,5 +1,20 @@
 Python相关知识
 
 =========================================Lang
+Document: 
+https://docs.python.org/3.3/
+
 1. exit
 raise SystemExit
+
+2. PEP 8 -- Style Guide for Python Code
+http://legacy.python.org/dev/peps/pep-0008/
+http://docs.python-guide.org/en/latest/
+
+=========================================Framework
+=====================Django
+http://toomuchdata.com/2014/02/16/how-to-install-python-on-centos/
+pip/pip3 install django
+
+=====================Redis commands list
+http://redis.io/commands
