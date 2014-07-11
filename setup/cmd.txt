@@ -278,3 +278,7 @@ https://github.com/mozilla/localForage
 ==================================Tips
 print "hire" in chrome
 console.log('%chire', 'font-size: 48px; font-weight: bold; color: #c20')
+
+==================================Redis
+CENTOS: yum install redis
+http://briansnelson.com/How_to_install_Redis_on_a_Centos_6.4_Server
