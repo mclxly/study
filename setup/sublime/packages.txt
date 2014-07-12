@@ -6,4 +6,7 @@ Package List:
 An EJS syntax definition specifically for sublime text
 
 ============================Python
-Python3, Jedi - Python autocompletion by srusskih, Python PEP8 Autoformat by StephaneBunel,SublimePythonIDE
+Python3, Jedi - Python autocompletion by srusskih, Python PEP8 Autoformat by StephaneBunel,
+
+SublimePythonIDE
+{"command": "sublime_jedi_params_autocomplete", "keys": ["alt+shift+("],
