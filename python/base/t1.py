@@ -1,25 +1,54 @@
+# Python Doc:
 import sys
 from random import randint
 
 print(sys.version)
 
 #################################################
-def readFloats(numberOfInputs):
-  print("Enter", numberOfInputs, "numbers:")
-  inputs = []
-  for i in range(numberOfInputs):
-    value = float(input(''))
-    inputs.append(value)
+from sys import argv
 
-  return inputs
+DEFAULT_KEY = 3
 
 def main():
-  numbers = readFloats(5)
-  print(numbers)
+  key = DEFAULT_KEY
+  inFile = ""
+  outFile = ""
+  files = 0
 
-main()
+  for i in xrange(1, len(argv)):
+    arg = argv[i]
 
-raise SystemExit
+
+#################################################
+#
+# inputFile = open("../wiki.txt", "r",-1,"UTF-8")
+# for line in inputFile:
+#   # line = line.rsplit()
+#   # print(line)
+#   wordList = line.split()
+#   for word in wordList:
+#     word = word.rsplit(".,?!")
+#     print(word)
+
+# inputFile.close()
+
+#################################################
+# def readFloats(numberOfInputs):
+#   print("Enter", numberOfInputs, "numbers:")
+#   inputs = []
+#   for i in range(numberOfInputs):
+#     value = float(input(''))
+#     inputs.append(value)
+
+#   return inputs
+
+# def main():
+#   numbers = readFloats(5)
+#   print(numbers)
+
+# main()
+
+# raise SystemExit
 
 
 # def main():
