@@ -4,20 +4,98 @@ from random import randint
 
 print(sys.version)
 
+import datetime
+import mysql.connector
+
+cnx = mysql.connector.connect(user='root', password='123456',
+                                host='192.168.21.90',
+                                database='myblog')
+cursor = cnx.cursor()
+
+query = "SELECT user_login FROM wp_users "
+
+cursor.execute(query)
+
+for (user) in cursor:
+  print("user: {}".format(
+    user[0]))
+
+cursor.close()
+cnx.close()
+
 #################################################
-from sys import argv
+# a = []
+# a.append({'href': 'haha', 'text': 'cccc'});
+# a.append({'href': 'haha2', 'text': 'cccc2'});
+# a.append({'href': 'haha3', 'text': 'cccc3'});
+# print(a)
 
-DEFAULT_KEY = 3
+#################################################
+# from sys import argv
 
-def main():
-  key = DEFAULT_KEY
-  inFile = ""
-  outFile = ""
-  files = 0
+# DEFAULT_KEY = 3
 
-  for i in xrange(1, len(argv)):
-    arg = argv[i]
+# def main() :
+#   key = DEFAULT_KEY
+#   inFile = ""
+#   outFile = ""
+#   files = 0
 
+#   for i in xrange(1, len(argv)):
+#     arg = argv[i]
+#     if arg[0] == "-":
+#       # It's a command line option
+#       option = arg[1]
+#       if option == 'd':
+#         key = -key
+#       else:
+#         usage()
+#         return
+#     else:
+#       files += 1
+#       if files == 1:
+#         inFile = arg
+#       elif files ==2:
+#         outFile = arg
+
+#   if files != 2:
+#     usage()
+#     return
+
+#   inputFile = open(inFile, 'r')
+#   outFile = open(outFile, 'w') 
+
+#   for line in inputFile :
+#     for char in line :
+#       newChar = encrypt(char, key)
+#       outFile.write(newChar)
+
+#   inputFile.close()
+#   outFile.close()
+
+# # function
+# def encrypt(ch, key) :
+#   LETTERS = 26
+
+#   if ch >= 'A' and ch <= 'Z':
+#     base = ord("A")
+#   elif ch >= 'a' and ch <= 'z':
+#     base = ord('a')
+#   else:
+#     return ch
+
+#   offset = ord(ch) - base + key
+#   if offset > LETTERS:
+#     offset -= LETTERS
+#   elif offset < 0:  
+#     offset += LETTERS
+
+#   return chr(base + offset)
+
+# def usage() :
+#   print("usage: python cipher.py [-d] infile outfile")
+
+# main()
 
 #################################################
 #
