@@ -1,27 +1,125 @@
 # Python Doc:
+# yum install MySQL-python # Python ver 2.*
+# 
 import sys
 from random import randint
 
 print(sys.version)
 
-import datetime
-import mysql.connector
+#################################################
+# Import smtplib for the actual sending function
+import smtplib
 
-cnx = mysql.connector.connect(user='root', password='123456',
-                                host='192.168.21.90',
-                                database='myblog')
-cursor = cnx.cursor()
+def sendemail_1(from_addr, to_addr_list, cc_addr_list,
+              subject, message,
+              login, password,
+              smtpserver='smtp.gmail.com:587'):
+    header  = 'From: %s\n' % from_addr
+    header += 'To: %s\n' % ','.join(to_addr_list)
+    header += 'Cc: %s\n' % ','.join(cc_addr_list)
+    header += 'Subject: %s\n\n' % subject
+    message = header + message
+ 
+    server = smtplib.SMTP(smtpserver)
+    server.starttls()
+    server.login(login,password)
+    problems = server.sendmail(from_addr, to_addr_list, message)
+    server.quit()
 
-query = "SELECT user_login FROM wp_users "
+def sendemail_2(from_addr, to_addr_list, cc_addr_list,
+              subject, message,              
+              smtpserver='localhost'):
+    header  = 'From: %s\n' % from_addr
+    header += 'To: %s\n' % ','.join(to_addr_list)
+    header += 'Cc: %s\n' % ','.join(cc_addr_list)
+    header += 'Subject: %s\n\n' % subject
+    message = header + message
+ 
+    server = smtplib.SMTP(smtpserver)
+    # server.ehlo()
+    # server.starttls() # some server don't support TLS   
+    # server.ehlo()
+    problems = server.sendmail(from_addr, to_addr_list, message)
+    server.quit()
 
-cursor.execute(query)
+# sending-mail-via-sendmail-from-python
+def sendemail_3() :
+  from email.mime.text import MIMEText
+  from subprocess import Popen, PIPE
 
-for (user) in cursor:
-  print("user: {}".format(
-    user[0]))
+  msg = MIMEText("Here is the body of my message")
+  msg["From"] = "wsw@newbiiz.com"
+  msg["To"] = "legoo8@qq.com"
+  msg["Subject"] = "This is the subject. MIMEText"
+  p = Popen(["/usr/sbin/sendmail", "-t"], stdin=PIPE)
+  p.communicate(msg.as_string())    
 
-cursor.close()
-cnx.close()
+# send unicode text
+def sendemail_4():
+  import smtplib
+  from email.mime.text import MIMEText
+  from email.mime.multipart import MIMEMultipart
+  from email.header import Header
+
+  frm = "wsw@newbiiz.com"
+  msg = MIMEMultipart('alternative')
+  msg.set_charset('utf8')
+  msg['FROM'] = frm
+
+  bodyStr = '<h1><a href="http://linxiang.info">中文</a></h1>'
+  to = "legoo8@qq.com"
+  #This solved the problem with the encode on the subject.
+  msg['Subject'] = Header(
+      'hello unicode'.encode('utf-8'),
+      'UTF-8'
+  ).encode()
+
+  msg['To'] = to
+
+  # And this on the body
+  _attach = MIMEText(bodyStr.encode('utf-8'), 'html', 'UTF-8')        
+
+  msg.attach(_attach)
+
+  server = smtplib.SMTP('10.1.3.86')
+  server.sendmail(frm, to, msg.as_string())
+
+  server.quit()
+
+# sendemail_1("wsw@newbiiz.com", "legoo8@qq.com", "", "test hhah from google", "message test from google")
+# sendemail_2("wsw@newbiiz.com", "legoo8@qq.com", "", "test hhah", "message test", '10.1.3.86')
+# sendemail_3()
+sendemail_4()
+
+# #################################################
+# # Python 2.*
+# import MySQLdb
+# db = MySQLdb.connect("localhost","root","123456","myblog")
+# cursor = db.cursor()
+# cursor.execute("SELECT VERSION()")
+# data = cursor.fetchone()    
+# print("Database version : %s " % data)
+# db.close()
+
+#################################################
+# import datetime
+# import mysql.connector
+
+# cnx = mysql.connector.connect(user='root', password='123456',
+#                                 host='192.168.21.90',
+#                                 database='myblog')
+# cursor = cnx.cursor()
+
+# query = "SELECT user_login FROM wp_users "
+
+# cursor.execute(query)
+
+# for (user) in cursor:
+#   print("user: {}".format(
+#     user[0]))
+
+# cursor.close()
+# cnx.close()
 
 #################################################
 # a = []
