@@ -10,3 +10,7 @@ Python3, Jedi - Python autocompletion by srusskih, Python PEP8 Autoformat by Ste
 
 SublimePythonIDE
 {"command": "sublime_jedi_params_autocomplete", "keys": ["alt+shift+("],
+
+============================Go
+https://github.com/DisposaBoy/GoSublime
+DisposaBoy/GoSublime

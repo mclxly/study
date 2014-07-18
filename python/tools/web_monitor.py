@@ -7,6 +7,7 @@
 #   `id` INT(11) NOT NULL AUTO_INCREMENT,
 #   `url` VARCHAR(32) NULL DEFAULT '' COLLATE 'utf8_bin',
 #   `title` VARCHAR(64) NULL DEFAULT '' COLLATE 'utf8_bin',
+#   `date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 #   PRIMARY KEY (`id`)
 # )
 # COLLATE='utf8_bin'
@@ -35,14 +36,16 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
       'UTF-8'
   ).encode()
 
-  msg['To'] = to_addr_list
+  msg['To'] = ','.join(to_addr_list)
+  # msg['CC'] = cc_addr_list
 
   # And this on the body
   _attach = MIMEText(message.encode('utf-8'), 'html', 'UTF-8')        
 
   msg.attach(_attach)
 
-  server = smtplib.SMTP('10.1.3.86')
+  # toaddrs = [toaddr] + cc + bcc
+  server = smtplib.SMTP('10.1.3.86')  
   server.sendmail(from_addr, to_addr_list, msg.as_string())
 
   server.quit()
@@ -71,7 +74,9 @@ def get_v2ex():
     items = soup.find_all('span', 'item_title')    
 
     for itm in items:
-      if "F码" in itm.text or "f码" in itm.text or "F 码" in itm.text or "f 码" in itm.text :
+      keywords = ["F码","f码","F 码","f 码","388"]
+      # if "F码" in itm.text or "f码" in itm.text or "F 码" in itm.text or "f 码" in itm.text :
+      if True in (word in itm.text for word in keywords) :
         link = itm.find('a')
         # print(vars(link.attrs))
         # print(link.attrs['href'])
@@ -188,7 +193,8 @@ for itm in new_results:
 message += '</ul>'
 
 if message != '<ul></ul>':
-  sendemail("wsw@newbiiz.com", "legoo8@qq.com", "", "哈哈，有好消息", message, '10.1.3.86')
+  sendemail("colin.lin@newbiiz.com", ["legoo8@qq.com","colin.lin@newbiiz.com"], "", "哈哈，有好消息", message, '10.1.3.86')
+  # sendemail("wsw@newbiiz.com", "legoo8@qq.com", "", "哈哈，有好消息", message, '10.1.3.86')
 
 print('done')
 raise SystemExit

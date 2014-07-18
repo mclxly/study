@@ -6,90 +6,152 @@ from random import randint
 
 print(sys.version)
 
+#################################################Generator
+# Build and return a list
+# Using the generator pattern (an iterable)
+class firstn(object):
+    def __init__(self, n):
+        self.n = n
+        self.num, self.nums = 0, []
+
+    def __iter__(self):
+        return self
+
+    # Python 3 compatibility
+    def __next__(self):
+        return self.next()
+
+    def next(self):
+        if self.num < self.n:
+            cur, self.num = self.num, self.num+1
+            return cur
+        else:
+            raise StopIteration()
+
+sum_of_first_n = sum(firstn(1000000))
+print(sum_of_first_n)
+
+#################################################Set
+# words = ["mac mini","388","mini"]
+# name = 'mac mini京东特卖 - jd.com‎'
+# for x in (word in name for word in words):
+#   print(x)
+
+# tt = True in (word in name for word in words)
+# print(tt)
+
+# try:
+#   cast = {"Luigi", "Gumbys", "Spiny"}
+#   cast.add("Arthur")
+#   cast.discard("Arthur")
+#   cast.remove("Arthur")
+# except Exception as e:
+#   print(str(e))
+# except Error as err:  
+#   print(str(err))
+# finally:
+#   print(cast)
+
+#################################################Debug tricks
+# import inspect
+# import pprint
+
+# cast1 = set(["Luigi", "Gumbys", "Spiny"])
+# cast2 = {"Luigi", "Gumbys", "Spiny"}
+
+# print(type(cast1))
+# print(type(cast2))
+
+# f = inspect.currentframe()
+# print(f.f_locals)
+
+# pprint.pprint(globals())
+# pprint.pprint(locals())
+
 #################################################
 # Import smtplib for the actual sending function
-import smtplib
+# import smtplib
 
-def sendemail_1(from_addr, to_addr_list, cc_addr_list,
-              subject, message,
-              login, password,
-              smtpserver='smtp.gmail.com:587'):
-    header  = 'From: %s\n' % from_addr
-    header += 'To: %s\n' % ','.join(to_addr_list)
-    header += 'Cc: %s\n' % ','.join(cc_addr_list)
-    header += 'Subject: %s\n\n' % subject
-    message = header + message
+# def sendemail_1(from_addr, to_addr_list, cc_addr_list,
+#               subject, message,
+#               login, password,
+#               smtpserver='smtp.gmail.com:587'):
+#     header  = 'From: %s\n' % from_addr
+#     header += 'To: %s\n' % ','.join(to_addr_list)
+#     header += 'Cc: %s\n' % ','.join(cc_addr_list)
+#     header += 'Subject: %s\n\n' % subject
+#     message = header + message
  
-    server = smtplib.SMTP(smtpserver)
-    server.starttls()
-    server.login(login,password)
-    problems = server.sendmail(from_addr, to_addr_list, message)
-    server.quit()
+#     server = smtplib.SMTP(smtpserver)
+#     server.starttls()
+#     server.login(login,password)
+#     problems = server.sendmail(from_addr, to_addr_list, message)
+#     server.quit()
 
-def sendemail_2(from_addr, to_addr_list, cc_addr_list,
-              subject, message,              
-              smtpserver='localhost'):
-    header  = 'From: %s\n' % from_addr
-    header += 'To: %s\n' % ','.join(to_addr_list)
-    header += 'Cc: %s\n' % ','.join(cc_addr_list)
-    header += 'Subject: %s\n\n' % subject
-    message = header + message
+# def sendemail_2(from_addr, to_addr_list, cc_addr_list,
+#               subject, message,              
+#               smtpserver='localhost'):
+#     header  = 'From: %s\n' % from_addr
+#     header += 'To: %s\n' % ','.join(to_addr_list)
+#     header += 'Cc: %s\n' % ','.join(cc_addr_list)
+#     header += 'Subject: %s\n\n' % subject
+#     message = header + message
  
-    server = smtplib.SMTP(smtpserver)
-    # server.ehlo()
-    # server.starttls() # some server don't support TLS   
-    # server.ehlo()
-    problems = server.sendmail(from_addr, to_addr_list, message)
-    server.quit()
+#     server = smtplib.SMTP(smtpserver)
+#     # server.ehlo()
+#     # server.starttls() # some server don't support TLS   
+#     # server.ehlo()
+#     problems = server.sendmail(from_addr, to_addr_list, message)
+#     server.quit()
 
-# sending-mail-via-sendmail-from-python
-def sendemail_3() :
-  from email.mime.text import MIMEText
-  from subprocess import Popen, PIPE
+# # sending-mail-via-sendmail-from-python
+# def sendemail_3() :
+#   from email.mime.text import MIMEText
+#   from subprocess import Popen, PIPE
 
-  msg = MIMEText("Here is the body of my message")
-  msg["From"] = "wsw@newbiiz.com"
-  msg["To"] = "legoo8@qq.com"
-  msg["Subject"] = "This is the subject. MIMEText"
-  p = Popen(["/usr/sbin/sendmail", "-t"], stdin=PIPE)
-  p.communicate(msg.as_string())    
+#   msg = MIMEText("Here is the body of my message")
+#   msg["From"] = "wsw@newbiiz.com"
+#   msg["To"] = "legoo8@qq.com"
+#   msg["Subject"] = "This is the subject. MIMEText"
+#   p = Popen(["/usr/sbin/sendmail", "-t"], stdin=PIPE)
+#   p.communicate(msg.as_string())    
 
-# send unicode text
-def sendemail_4():
-  import smtplib
-  from email.mime.text import MIMEText
-  from email.mime.multipart import MIMEMultipart
-  from email.header import Header
+# # send unicode text
+# def sendemail_4():
+#   import smtplib
+#   from email.mime.text import MIMEText
+#   from email.mime.multipart import MIMEMultipart
+#   from email.header import Header
 
-  frm = "wsw@newbiiz.com"
-  msg = MIMEMultipart('alternative')
-  msg.set_charset('utf8')
-  msg['FROM'] = frm
+#   frm = "wsw@newbiiz.com"
+#   msg = MIMEMultipart('alternative')
+#   msg.set_charset('utf8')
+#   msg['FROM'] = frm
 
-  bodyStr = '<h1><a href="http://linxiang.info">中文</a></h1>'
-  to = "legoo8@qq.com"
-  #This solved the problem with the encode on the subject.
-  msg['Subject'] = Header(
-      'hello unicode'.encode('utf-8'),
-      'UTF-8'
-  ).encode()
+#   bodyStr = '<h1><a href="http://linxiang.info">中文</a></h1>'
+#   to = "legoo8@qq.com"
+#   #This solved the problem with the encode on the subject.
+#   msg['Subject'] = Header(
+#       'hello unicode'.encode('utf-8'),
+#       'UTF-8'
+#   ).encode()
 
-  msg['To'] = to
+#   msg['To'] = to
 
-  # And this on the body
-  _attach = MIMEText(bodyStr.encode('utf-8'), 'html', 'UTF-8')        
+#   # And this on the body
+#   _attach = MIMEText(bodyStr.encode('utf-8'), 'html', 'UTF-8')        
 
-  msg.attach(_attach)
+#   msg.attach(_attach)
 
-  server = smtplib.SMTP('10.1.3.86')
-  server.sendmail(frm, to, msg.as_string())
+#   server = smtplib.SMTP('10.1.3.86')
+#   server.sendmail(frm, to, msg.as_string())
 
-  server.quit()
+#   server.quit()
 
-# sendemail_1("wsw@newbiiz.com", "legoo8@qq.com", "", "test hhah from google", "message test from google")
-# sendemail_2("wsw@newbiiz.com", "legoo8@qq.com", "", "test hhah", "message test", '10.1.3.86')
-# sendemail_3()
-sendemail_4()
+# # sendemail_1("wsw@newbiiz.com", "legoo8@qq.com", "", "test hhah from google", "message test from google")
+# # sendemail_2("wsw@newbiiz.com", "legoo8@qq.com", "", "test hhah", "message test", '10.1.3.86')
+# # sendemail_3()
+# sendemail_4()
 
 # #################################################
 # # Python 2.*
