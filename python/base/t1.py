@@ -6,30 +6,38 @@ from random import randint
 
 print(sys.version)
 
+#################################################Set
+words1 = ["mac mini","388","mini"]
+words2 = ["1111","388","mini"]
+print(words1+words2) # concat
+
+word = []
+print(len(word))
+
 #################################################Generator
-# Build and return a list
-# Using the generator pattern (an iterable)
-class firstn(object):
-    def __init__(self, n):
-        self.n = n
-        self.num, self.nums = 0, []
+# # Build and return a list
+# # Using the generator pattern (an iterable)
+# class firstn(object):
+#     def __init__(self, n):
+#         self.n = n
+#         self.num, self.nums = 0, []
 
-    def __iter__(self):
-        return self
+#     def __iter__(self):
+#         return self
 
-    # Python 3 compatibility
-    def __next__(self):
-        return self.next()
+#     # Python 3 compatibility
+#     def __next__(self):
+#         return self.next()
 
-    def next(self):
-        if self.num < self.n:
-            cur, self.num = self.num, self.num+1
-            return cur
-        else:
-            raise StopIteration()
+#     def next(self):
+#         if self.num < self.n:
+#             cur, self.num = self.num, self.num+1
+#             return cur
+#         else:
+#             raise StopIteration()
 
-sum_of_first_n = sum(firstn(1000000))
-print(sum_of_first_n)
+# sum_of_first_n = sum(firstn(1000000))
+# print(sum_of_first_n)
 
 #################################################Set
 # words = ["mac mini","388","mini"]

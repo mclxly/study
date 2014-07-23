@@ -57,9 +57,10 @@ def debug_var(var):
   print(type(var))
   # print(vars(var))  
 
-def get_v2ex():
-  url = 'http://v2ex.com/?tab=deals'
+def get_v2ex(url, keywords = []):
+  # url = 'http://v2ex.com/?tab=' + tab
   print('Reading...' + url)
+
   results = []
 
   try :
@@ -74,10 +75,15 @@ def get_v2ex():
     items = soup.find_all('span', 'item_title')    
 
     for itm in items:
-      keywords = ["F码","f码","F 码","f 码","388"]
-      # if "F码" in itm.text or "f码" in itm.text or "F 码" in itm.text or "f 码" in itm.text :
-      if True in (word in itm.text for word in keywords) :
-        link = itm.find('a')
+      # keywords = ["F码","f码","F 码","f 码","388","赠送"]
+      link = itm.find('a')
+      # print(vars(link.attrs))
+      # print(link.attrs['href'])
+
+      if len(keywords) == 0 :
+        results.append({'url': link.attrs['href'], 'title': itm.text})
+      # if "F码" in itm.text or "f码" in itm.text or "F 码" in itm.text or "f 码" in itm.text :      
+      elif True in (word in itm.text for word in keywords) :        
         # print(vars(link.attrs))
         # print(link.attrs['href'])
         print(itm.text + 'ok............')
@@ -117,6 +123,7 @@ def get_v2ex():
 #   return results
 
 # vars list
+new_results = []
 
 try :
   # r = requests.get(url)
@@ -144,15 +151,18 @@ try :
   #   #   print(type(itm.text))
   #     # print(vars(str(itm)))
   #     # raise Warning
-  results = get_v2ex()
+  results1 = get_v2ex("http://www.v2ex.com/?tab=deals", ["F码","f码","F 码","f 码","388","赠送"])
+  results2 = get_v2ex("http://www.v2ex.com/go/free")  
+  # results = list(set(results1) | set(results2))
+  results = results1 + results2
+  print('Finish parsing...')
 
   #######################################
   # remove exist url
   conn = mysql.connector.connect(user='root', password='123456',
                                 host='192.168.21.90',
                                 database='web_monitor')
-
-  new_results = []
+  
   for itm in results:
     # print(type(itm['url']))
 

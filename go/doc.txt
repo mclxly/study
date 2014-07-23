@@ -7,3 +7,4 @@ Genuine knowledge comes from practice.
 * https://github.com/avelino/awesome-go#e-books
 * http://www.golang-book.com/
 * [Network programming with Go](http://jan.newmarch.name/go/)
+* [GoDoc](https://godoc.org)
