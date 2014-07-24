@@ -92,6 +92,12 @@ ps -eo size,pid,user,command | awk '{ hr=$1/1024 ; printf("%13.6f Mb ",hr) } { f
  yum --enablerepo=remi,remi-php55 install php55w-pecl-memcache
  yum --enablerepo=remi,remi-php55 install php-pecl-memcached
 
+# Add User to Sudoers
+visudo
+http://blog.zwiegnet.com/linux-server/add-user-to-sudoers-group-centos/
+
+# 显示软连接
+ls -li
 
 =========================================Nginx
 检查nginx工作进程
@@ -282,3 +288,4 @@ console.log('%chire', 'font-size: 48px; font-weight: bold; color: #c20')
 ==================================Redis
 CENTOS: yum install redis
 http://briansnelson.com/How_to_install_Redis_on_a_Centos_6.4_Server
+

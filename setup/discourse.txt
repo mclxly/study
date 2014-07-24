@@ -1,0 +1,44 @@
+Discourse is the 100% open source discussion platform built for the next decade of the Internet.
+
+Built With
+
+* Ruby on Rails — Our back end API is a Rails app. It responds to requests RESTfully in JSON.
+* Ember.js — Our front end is an Ember.js app that communicates with the Rails API.
+* PostgreSQL — Our main data store is in Postgres.
+* Redis — We use Redis as a cache and for transient data.
+
+1. PostgreSQL需要升级到9.1+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-a-centos-vps
+vim /etc/yum.repos.d/CentOS-Base.repo
+rpm -Uvh http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
+vi /var/lib/pgsql/data/postgresql.conf
+
+# default version
+/var/lib/pgsql
+
+# version 9.3
+/var/lib/pgsql/9.3/data
+权限管理：pg_hba.conf
+host    all     all     192.168.4.0/24 trust
+vim /var/lib/pgsql/9.3/data/postgresql.conf
+
+bundle exec rails server
+
+*************************************
+Refer Link
+*************************************
+http://2buntu.com/articles/1332/installing-discourse-on-ubuntu/
+
+*************************************
+Problem list
+*************************************
+1. could not connect to server: Connection refused (0x0000274D/10061).
+权限管理：pg_hba.conf
+
+2. Unknown command activerecord-postgres-hstore
+yum install postgresql-contrib
+
+3. pg_dump: aborting because of server version mismatch
+/usr/bin/pg_dump
+/usr/pgsql-9.3/bin/pg_dump
+ ln -s /usr/pgsql-9.3/bin/pg_dump /usr/bin/pg_dump
