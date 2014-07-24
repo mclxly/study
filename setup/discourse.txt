@@ -12,6 +12,9 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgres
 vim /etc/yum.repos.d/CentOS-Base.repo
 rpm -Uvh http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
 vi /var/lib/pgsql/data/postgresql.conf
+yum install postgresql postgresql-contrib postgresql-server
+
+2. 
 
 # default version
 /var/lib/pgsql
@@ -19,10 +22,26 @@ vi /var/lib/pgsql/data/postgresql.conf
 # version 9.3
 /var/lib/pgsql/9.3/data
 权限管理：pg_hba.conf
+vim /var/lib/pgsql/9.3/data/pg_hba.conf
 host    all     all     192.168.4.0/24 trust
+
 vim /var/lib/pgsql/9.3/data/postgresql.conf
+listen_addresses = '*'
+port = 5432
+
+service postgresql-9.3 start
+
+vim /etc/sysconfig/iptables
+iptables -A INPUT -p tcp -s 0/0 --sport 1024:65535 -d 192.168.1.30  --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp -s 192.168.1.30 --sport 5432 -d 0/0 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
+
+visudo
+
+
+bundle install
 
 bundle exec rails server
+
 
 *************************************
 Refer Link

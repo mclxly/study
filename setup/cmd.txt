@@ -99,6 +99,9 @@ http://blog.zwiegnet.com/linux-server/add-user-to-sudoers-group-centos/
 # 显示软连接
 ls -li
 
+# 防火墙
+vim /etc/sysconfig/iptables
+
 =========================================Nginx
 检查nginx工作进程
 netstat -nap | grep nginx
