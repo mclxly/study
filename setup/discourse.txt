@@ -40,13 +40,20 @@ visudo
 
 bundle install
 
+gem install mailcatcher # root
+
+mailcatcher --http-ip 192.168.21.90 --smtp-ip 192.168.4.8 -f
+
 bundle exec rails server
 
+RAILS_ENV=development bundle exec rails server
 
 *************************************
 Refer Link
 *************************************
 http://2buntu.com/articles/1332/installing-discourse-on-ubuntu/
+
+delivery_method :smtp, address: "10.1.3.86", port: 25
 
 *************************************
 Problem list
@@ -61,3 +68,24 @@ yum install postgresql-contrib
 /usr/bin/pg_dump
 /usr/pgsql-9.3/bin/pg_dump
  ln -s /usr/pgsql-9.3/bin/pg_dump /usr/bin/pg_dump
+
+4. 
+The hard way
+You can also use the Rails console to set yourself as an administrator:
+
+./launcher ssh my_app
+# rails c
+> u = User.where(email: 'myemail@example.com').first
+> u.admin = true
+> u.save
+
+5. 手动激活用户
+u = User.first
+# my user with the correct email shows up
+u.admin = true
+u.approved = true
+u.save
+EmailToken.confirm(u.email_tokens.first.token)
+
+u = User.where(email: 'myemail@example.com').first
+EmailToken.confirm(u.email_tokens.first.token)

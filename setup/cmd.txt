@@ -102,6 +102,10 @@ ls -li
 # 防火墙
 vim /etc/sysconfig/iptables
 
+# 查找占用端口
+netstat -tulpn | grep :1025
+pkill mailcatcher
+
 =========================================Nginx
 检查nginx工作进程
 netstat -nap | grep nginx
