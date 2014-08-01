@@ -288,6 +288,12 @@ https://github.com/discourse/discourse
 Offline storage, improved. Wraps IndexedDB, WebSQL, or localStorage using a simple but powerful API.
 https://github.com/mozilla/localForage
 
+Immutable Data Collections for Javascript
+https://github.com/facebook/immutable-js
+
+Git常见问题
+https://github.com/k88hudson/git-flight-rules
+
 ==================================Tips
 print "hire" in chrome
 console.log('%chire', 'font-size: 48px; font-weight: bold; color: #c20')

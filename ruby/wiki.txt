@@ -3,8 +3,24 @@ RoR相关知识
 =========================================Ruby
 
 =========================================Rails
+http://guides.rubyonrails.org/command_line.html
+rails command line
+
+=====================Rails Commands
 rake about
 项目信息
 
-rake server
+rake test:models
+执行Unit Test
+
+rake db:test:prepare
+从test/fixtures中导入测试数据到数据库，为后续测试做准备
+
+rails server
 启动测试服务器
+
+rails generate controller Store index
+创建controller/action
+
+rake routes
+显示web应用的URI列表

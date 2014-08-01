@@ -6,13 +6,27 @@ from random import randint
 
 print(sys.version)
 
-#################################################Set
-words1 = ["mac mini","388","mini"]
-words2 = ["1111","388","mini"]
-print(words1+words2) # concat
+#################################################String
+url = '/t/124802#reply23'
+print(url.split('#')[0])
 
-word = []
-print(len(word))
+url = '/t/124802'
+print(url.split('#')[0])
+
+pos = url.find('#')
+if pos != -1:
+  print(url.split('#')[0])
+else:
+  print('not found')
+
+
+#################################################Set
+# words1 = ["mac mini","388","mini"]
+# words2 = ["1111","388","mini"]
+# print(words1+words2) # concat
+
+# word = []
+# print(len(word))
 
 #################################################Generator
 # # Build and return a list

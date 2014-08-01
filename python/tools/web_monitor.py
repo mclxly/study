@@ -12,7 +12,9 @@
 # )
 # COLLATE='utf8_bin'
 # ENGINE=MyISAM;
-
+# 
+# History:
+# 1. [2014-07-29 10:30]remove '#' from '/t/124802#reply23' 
 
 import requests
 from bs4 import BeautifulSoup
@@ -80,14 +82,17 @@ def get_v2ex(url, keywords = []):
       # print(vars(link.attrs))
       # print(link.attrs['href'])
 
+      # remove '#' from '/t/124802#reply23'
+      tturl = link.attrs['href'].split('#')[0]
+
       if len(keywords) == 0 :
-        results.append({'url': link.attrs['href'], 'title': itm.text})
+        results.append({'url': tturl, 'title': itm.text})
       # if "F码" in itm.text or "f码" in itm.text or "F 码" in itm.text or "f 码" in itm.text :      
       elif True in (word in itm.text for word in keywords) :        
         # print(vars(link.attrs))
         # print(link.attrs['href'])
         print(itm.text + 'ok............')
-        results.append({'url': link.attrs['href'], 'title': itm.text})
+        results.append({'url': tturl, 'title': itm.text})
   except Exception as exception :
     print("Error:", str(exception))  
 

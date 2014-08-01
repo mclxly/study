@@ -27,6 +27,20 @@ include Containers
 #     }
 # }
 
+inst_section = {
+  cello: 'string',
+  clarinet: 'woodwind',
+  drum: 'percussion',
+  oboe: 'woodwind',
+  trumpet: 'brass',
+  violin: 'string'
+}
+
+puts inst_section[:cello]
+
+exit 0
+
+#####################
 heap = MinHeap.new
 heap.push(15, "AA Gent")
 heap.push(20, 'Anderlecht')
