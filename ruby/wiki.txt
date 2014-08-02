@@ -24,3 +24,15 @@ rails generate controller Store index
 
 rake routes
 显示web应用的URI列表
+
+rake log:clear LOGS=test
+清除log/test.log
+
+rake test:controllers
+测试controllers
+
+bundle install
+安装gem包
+
+=====================Rails Problems
+couldn't find file 'jquery.ui.effect-blind'
