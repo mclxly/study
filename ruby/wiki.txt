@@ -36,3 +36,4 @@ bundle install
 
 =====================Rails Problems
 couldn't find file 'jquery.ui.effect-blind'
+In application.js, replace '//= require jquery.ui.effect-blind' with '//= require jquery-ui/effect-blind'

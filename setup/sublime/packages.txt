@@ -14,3 +14,6 @@ SublimePythonIDE
 ============================Go
 https://github.com/DisposaBoy/GoSublime
 DisposaBoy/GoSublime
+
+============================Javascript Framework
+Ember​Script
