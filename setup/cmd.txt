@@ -310,6 +310,15 @@ console.log('%chire', 'font-size: 48px; font-weight: bold; color: #c20')
 CENTOS: yum install redis
 http://briansnelson.com/How_to_install_Redis_on_a_Centos_6.4_Server
 
+==================================Ember.js
+开发调试
+Doc -> Development Helpers
+
+Logging: {{log 'Name is:' name}}
+Adding a breakpoint: {{debugger}}
+有用的变量: templateContext, typeOfTemplateContext
+> templateContent.get('name')
+
 ==================================Problems List
 yum update error package skip-broken php55w
 vim remi.repo
