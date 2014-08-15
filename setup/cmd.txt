@@ -22,16 +22,6 @@ umount /Volumes/vc-samba
 @iTerm Profile
 Command: /bin/zsh --login
 
-===========================
-use the npm mirror
-npm set registry http://registry.cnpmjs.org
-
-you can reset this later with npm set registry
-npm set registry https://registry.npmjs.org/
-
-then use it normally:
-npm install express
-
 ===========================CENTOS
 # Update repo
 yum update
@@ -159,6 +149,16 @@ npm update npm -g
 packages列表
 npm ls -g
 npm ls
+
+===========================
+use the npm mirror
+npm set registry http://registry.cnpmjs.org
+
+you can reset this later with npm set registry
+npm set registry https://registry.npmjs.org/
+
+then use it normally:
+npm install express
 
 =========================================RVM
 列出已知的ruby版本
@@ -318,6 +318,10 @@ Logging: {{log 'Name is:' name}}
 Adding a breakpoint: {{debugger}}
 有用的变量: templateContext, typeOfTemplateContext
 > templateContent.get('name')
+
+==================================Tools List
+Wifi安全工具
+http://dsploit.net/features/
 
 ==================================Problems List
 yum update error package skip-broken php55w
