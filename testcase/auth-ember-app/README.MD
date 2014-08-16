@@ -1,3 +1,9 @@
+===========================Tools
+yoeman ember generator
+ember tools
+npm install -g ember-tools
+
+===========================
 Authentication with EmberJS 
 
 http://coderberry.me/2013/07/08/authentication-with-emberjs-part-1/
