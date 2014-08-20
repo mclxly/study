@@ -1,0 +1,17 @@
+$icon-font-path: "../styles/fonts/"; // Change the path to the fonts
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
+
+/* Put your CSS here */
+html, body {
+    margin: 0 0;
+}
+
+h4 .hotttnesss .hotttnesss0 {
+font-size: 190%;
+top: -45%;
+left: -45%;
+position: absolute;
+color: #FF0000;
+direction: rtl;
+unicode-bidi: bidi-override;
+}

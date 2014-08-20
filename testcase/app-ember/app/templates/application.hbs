@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+    data-target="#navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
+    {{#link-to "index" class="navbar-brand"}}{{applicationName}}
+    {{/link-to}}
+    </div>
+    <div id="navbar-collapse-1" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav search-lockup">
+    <li class="search-group">
+      {{input action="submit" type="text" class="search-input" placeholder="Search for artists or
+      song names" valueBinding="controller.searchTerms"}}
+      <button {{action "submit"}} class="btn btn-primary"><i class="glyphicon glyphicon-play"></i></button>
+    </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+    <li>{{#link-to 'activity'}}Activity{{/link-to}}</li>
+    </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+    <!-- page content here -->
+    {{outlet}}
+    </div>
+  </div>
+</div>
+<footer class="text-center">
+  <p>
+  <i class="glyphicon glyphicon-copyright-mark"></i> 2013 Companion to
+  O'Reilly's
+  <em>Building Web Apps with Ember.js: Write Ambitious Javascript</em>
+  <a href="http://twitter.com/emberbook">@emberbook</a>
+  </p>
+  <p>
+  Authors: Jesse Cravens <a href="http://twitter.com/jdcravens">@jdcravens</a>
+  and Thomas Q. Brady <a href="http://twitter.com/thomasqbrady">@thomasqbrady</a>
+  </p>
+</footer>
