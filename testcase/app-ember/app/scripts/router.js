@@ -1,5 +1,5 @@
 AppEmber.Router.reopen({
-  location: 'history'
+  // location: 'history'
 });
 
 AppEmber.Router.map(function () {
