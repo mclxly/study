@@ -150,6 +150,8 @@ packages列表
 npm ls -g
 npm ls
 
+npm rm ember-cli-ember-data --save-dev
+
 ===========================
 use the npm mirror
 npm set registry http://registry.cnpmjs.org
@@ -301,6 +303,10 @@ https://github.com/facebook/immutable-js
 
 Git常见问题
 https://github.com/k88hudson/git-flight-rules
+
+Awesome Awesomeness
+https://github.com/bayandin/awesome-awesomeness
+http://es6.ruanyifeng.com/
 
 ==================================Tips
 print "hire" in chrome
