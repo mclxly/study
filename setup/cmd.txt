@@ -329,7 +329,42 @@ Adding a breakpoint: {{debugger}}
 Wifi安全工具
 http://dsploit.net/features/
 
+==================================Sphinx
+yum install sphinx
+yum install libsphinxclient-devel
+yum install libsphinxclient
+
+service searchd start
+
+GRANT all ON *.* TO 'readonly_user'@'%' IDENTIFIED BY '123456';
+flush privileges;
+
+==================php extension
+yum install php55w-devel
+pecl install sphinx
+You should add "extension=sphinx.so" to php.ini
+
+==================Problems List
+"Can't find PHP headers in /usr/include/php"
+yum install php55w-devel
+
+"configure: error: Cannot find libsphinxclient headers"
+yum install libsphinxclient
+yum install libsphinxclient-devel
+
+"WARNING: compat_sphinxql_magics=1 is deprecated; please update your application and config"
+[searchd]
+compat_sphinxql_magics = 0
+
+WARNING: index 'catalog': lock: failed to open /data/sphinx/catalog.spl: Permission denied; NOT SERVING
+FATAL: no valid indexes to serve
+"
+chown -R sphinx:sphinx /data/sphinx
+
 ==================================Problems List
 yum update error package skip-broken php55w
 vim remi.repo
 diable php5
+
+
+
