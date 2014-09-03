@@ -1,4 +1,5 @@
 ===========================Tools
+npm install -g generator-ember
 yoeman ember generator
 ember tools
 npm install -g ember-tools
