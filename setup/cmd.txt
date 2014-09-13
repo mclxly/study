@@ -308,6 +308,16 @@ Awesome Awesomeness
 https://github.com/bayandin/awesome-awesomeness
 http://es6.ruanyifeng.com/
 
+A cross-browser library of CSS animations. As easy to use as an easy thing. 
+http://daneden.github.io/animate.css
+
+表情解决方案
+http://emojione.com/
+https://github.com/Ranks/emojione
+
+时间线
+https://github.com/semu/timesheet.js
+
 ==================================Tips
 print "hire" in chrome
 console.log('%chire', 'font-size: 48px; font-weight: bold; color: #c20')
