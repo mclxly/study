@@ -377,4 +377,6 @@ vim remi.repo
 diable php5
 
 
+"gd.so: undefined symbol: gdImageWebpCtx"
+
 
