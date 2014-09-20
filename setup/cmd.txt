@@ -385,7 +385,9 @@ yum update error package skip-broken php55w
 vim remi.repo
 diable php5
 
+"gd.so: undefined symbol: gdImageWebpCtx"
+
+
 ==================================Tools List
 浏览器同步，方便跨浏览器及自适应的网页测试
 http://www.browsersync.io/
-
