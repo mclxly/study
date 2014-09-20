@@ -349,6 +349,9 @@ service searchd start
 GRANT all ON *.* TO 'readonly_user'@'%' IDENTIFIED BY '123456';
 flush privileges;
 
+==================usage
+
+
 ==================php extension
 yum install php55w-devel
 pecl install sphinx
@@ -371,10 +374,18 @@ FATAL: no valid indexes to serve
 "
 chown -R sphinx:sphinx /data/sphinx
 
+"sphinx找不到记录"?
+rt_field = partno
+
+"sphinx找不到中文记录"?
+
+
 ==================================Problems List
 yum update error package skip-broken php55w
 vim remi.repo
 diable php5
 
-
+==================================Tools List
+浏览器同步，方便跨浏览器及自适应的网页测试
+http://www.browsersync.io/
 
