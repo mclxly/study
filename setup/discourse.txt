@@ -7,6 +7,35 @@ Built With
 * PostgreSQL — Our main data store is in Postgres.
 * Redis — We use Redis as a cache and for transient data.
 
+========================================================================2014-09-25
+在Ubuntu14上构建Discourse用于开发
+
+==========================Refer Links
+https://meta.discourse.org/t/beginners-guide-to-install-discourse-on-ubuntu-for-development/14727
+https://www.liberiangeek.net/2014/07/ubuntu-tips-create-samba-file-server-ubuntu-14-04/
+
+==========================Command list
+
+在Ubuntu14上构建Discourse用于测试
+==========================Refer Links
+https://www.digitalocean.com/community/tutorials/how-to-install-discourse-on-ubuntu-14-04
+
+==========================Command list
+sudo apt-get update
+sudo apt-get upgrade
+free -m
+sudo apt-get install git
+sudo install -o root -g root -m 0600 /dev/null /swapfile
+sudo dd if=/dev/zero of=/swapfile bs=1k count=2048k
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo "/swapfile       swap    swap    auto      0       0" | sudo tee -a /etc/fstab
+sudo sysctl -w vm.swappiness=10
+echo vm.swappiness = 10 | sudo tee -a /etc/sysctl.conf
+free -m
+
+
+========================================================================
 1. PostgreSQL需要升级到9.1+
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-a-centos-vps
 vim /etc/yum.repos.d/CentOS-Base.repo

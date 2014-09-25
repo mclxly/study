@@ -221,6 +221,12 @@ http://guylabs.ch/2013/07/25/configure-a-static-ip-in-ubuntu-13-04/
 
 sudo shutdown -h now
 
+============FAQ
+1. VirutalBox上的Ubuntu通过局域网无法访问
+设置"Bridged Adapter"网络连接，重启即可
+
+
+
 ===========================Ubuntu+GitLab
 sudo apt-get install openssh-server
 sudo apt-get install postfix # sendmail or exim is also OK
