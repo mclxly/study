@@ -105,6 +105,9 @@ sudo chkconfig --levels 235 mysqld on
 sudo chkconfig --levels 235 nginx on
 sudo chkconfig --levels 235 php-fpm on
 
+# 列出所有安装服务/etc/rc.d/init.d/
+service --status-all
+
 =========================================Nginx
 检查nginx工作进程
 netstat -nap | grep nginx

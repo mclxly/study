@@ -7,6 +7,33 @@ Built With
 * PostgreSQL — Our main data store is in Postgres.
 * Redis — We use Redis as a cache and for transient data.
 
+https://www.digitalocean.com/community/tutorials/how-to-install-discourse-on-a-centos-6-4-x64-vps
+https://meta.discourse.org/t/installing-discourse-on-centos-with-apache-mysql-and-php-alongside/2822
+http://www.howtoinstalldiscourse.com/how-to-install-discourse-on-centos/
+========================================================================2014-09-25
+在 CentOS 7 mininal server 上构建 Discourse 用开发／生产
+
+yum install net-tools ruby vim
+
+===================redis
+官网安装redis
+看教程的时候注意路径不要写错了
+http://redis.io/download
+http://nixtree.com/blog/install-redis-daemon-and-redis-php-extention-on-centosrhelcpanel/
+
+===================postgresql
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-a-centos-vps
+rpm -Uvh http://yum.postgresql.org/9.3/redhat/rhel-7-x86_64/pgdg-centos93-9.3-1.noarch.rpm
+编辑 CentOS-Base.repo 添加 exclude=postgresql*
+yum install postgresql93 postgresql93-contrib postgresql93-server
+
+/usr/pgsql-9.3/bin/postgresql93-setup initdb
+service postgresql-9.3 start
+
+vim /var/lib/pgsql/9.3/data/postgresql.conf
+vim /var/lib/pgsql/9.3/data/pg_hba.conf
+host    all     all     192.168.4.0/24 trust
+
 ========================================================================2014-09-25
 在Ubuntu14上构建Discourse用于开发
 
