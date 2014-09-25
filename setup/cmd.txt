@@ -22,6 +22,10 @@ umount /Volumes/vc-samba
 @iTerm Profile
 Command: /bin/zsh --login
 
+截图
+1.Command＋shift＋3:全屏截图，保存截图到桌面
+2.Command＋shift＋4:鼠标选定区域截图，保存截图到桌面
+
 ===========================CENTOS
 # Update repo
 yum update
