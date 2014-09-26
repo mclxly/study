@@ -13,7 +13,30 @@ http://www.howtoinstalldiscourse.com/how-to-install-discourse-on-centos/
 ========================================================================2014-09-25
 在 CentOS 7 mininal server 上构建 Discourse 用开发／生产
 
+===================系统准备
 yum install net-tools ruby vim
+
+创建用户discourse
+useradd, passwd
+
+===================nginx
+rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+yum install nginx
+systemctl start nginx.service
+
+===================firewall
+firewall-cmd --permanent --zone=public --add-service=http
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --reload
+
+===================rvm & ruby
+sudo su - discourse
+curl -s -S -L https://get.rvm.io | bash -s stable
+rvm install 2.0.0
+rvm use 2.0.0 --default
+gem install bundler
+bundle config build.pg --with-pgsql-lib=/usr/pgsql-9.3/lib --with-pg-config=/usr/pgsql-9.3/bin/pg_config
+
 
 ===================redis
 官网安装redis
@@ -21,11 +44,14 @@ yum install net-tools ruby vim
 http://redis.io/download
 http://nixtree.com/blog/install-redis-daemon-and-redis-php-extention-on-centosrhelcpanel/
 
+监控redis
+redis-cli monitor
+
 ===================postgresql
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-a-centos-vps
 rpm -Uvh http://yum.postgresql.org/9.3/redhat/rhel-7-x86_64/pgdg-centos93-9.3-1.noarch.rpm
 编辑 CentOS-Base.repo 添加 exclude=postgresql*
-yum install postgresql93 postgresql93-contrib postgresql93-server
+yum install postgresql93 postgresql93-contrib postgresql93-server postgresql93-dev
 
 /usr/pgsql-9.3/bin/postgresql93-setup initdb
 service postgresql-9.3 start
@@ -33,6 +59,17 @@ service postgresql-9.3 start
 vim /var/lib/pgsql/9.3/data/postgresql.conf
 vim /var/lib/pgsql/9.3/data/pg_hba.conf
 host    all     all     192.168.4.0/24 trust
+
+psql -h 192.168.1.103 -U discourse
+
+===================discourse
+git clone git://github.com/discourse/discourse.git discourse
+cd discourse
+bundle install
+bundle exec rake db:migrate db:test:prepare db:seed_fu
+bundle exec rake autospec
+bundle exec rails server
+
 
 ========================================================================2014-09-25
 在Ubuntu14上构建Discourse用于开发
@@ -116,6 +153,7 @@ Problem list
 *************************************
 1. could not connect to server: Connection refused (0x0000274D/10061).
 权限管理：pg_hba.conf
+vim /var/lib/pgsql/9.3/data/pg_hba.conf
 
 2. Unknown command activerecord-postgres-hstore
 yum install postgresql-contrib
@@ -145,3 +183,6 @@ EmailToken.confirm(u.email_tokens.first.token)
 
 u = User.where(email: 'myemail@example.com').first
 EmailToken.confirm(u.email_tokens.first.token)
+
+6. postgresql启动失败
+

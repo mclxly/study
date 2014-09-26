@@ -26,6 +26,16 @@ Command: /bin/zsh --login
 1.Command＋shift＋3:全屏截图，保存截图到桌面
 2.Command＋shift＋4:鼠标选定区域截图，保存截图到桌面
 
+使用原创目录
+sshfs -o defer_permissions discourse@192.168.1.103:/data/samba/discourse /Users/colin/my-mount
+
+===========================CENTOS 7
+关闭防火墙
+systemctl stop firewalld
+firewall-cmd --zone=public --add-port=3000/tcp --permanent
+firewall-cmd --zone=public --add-service=http --permanent
+firewall-cmd --reload
+
 ===========================CENTOS
 # Update repo
 yum update
