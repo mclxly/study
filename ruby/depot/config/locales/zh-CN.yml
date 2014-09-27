@@ -1,0 +1,26 @@
+zh-CN:
+  hello: "Hello world"
+  title: "乐购吧"
+
+  layouts:
+    application:
+      title: "乐购吧"
+      home: "首页"
+      faq: "问题"
+      news: "新闻"
+      contact: "联系"
+
+  store:
+    index:
+      title_html: "书籍列表"
+      add_html: "加入购物车"
+
+  number:
+    currency:
+      format:
+        unit: "￥"
+        precision: 2
+        separator: "."
+        delimiter: " "
+        # format: "%u%n"
+        format: "%n&nbsp;%u"
