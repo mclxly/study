@@ -1,0 +1,6 @@
+=============2014-09-27
+Todo list
+1. 更新logo
+2. 汉化
+3. 邮件发送服务
+4. 搭建production服务器：nginx,redis,postgresql,ruby
