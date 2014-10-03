@@ -36,6 +36,29 @@ firewall-cmd --zone=public --add-port=3000/tcp --permanent
 firewall-cmd --zone=public --add-service=http --permanent
 firewall-cmd --reload
 
+重启nginx
+systemctl restart nginx.service
+
+同步时间
+yum install ntp
+/usr/sbin/ntpdate pool.ntp.org
+
+nginx运行什么用户
+ps aux | grep "nginx: worker process" | awk '{print $1}'
+
+Selinux默认禁止读取socket
+You could do this:
+# setenforce Permissive
+
+But I prefer to do this:
+# setsebool -P httpd_enable_homedirs 1
+# setsebool -P httpd_read_user_content 1
+# setsebool -P httpd_can_network_connect 1
+
+网络设置
+netui
+192.168.1.103/24
+
 ===========================CENTOS
 # Update repo
 yum update

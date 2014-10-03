@@ -16,14 +16,24 @@ Depot::Application.configure do
   #   password: "secret",
   #   enable_starttls_auto: true
   # }
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
+  Config.action_mailer.delivery_method = :smtp
+  Config.action_mailer.smtp_settings = {
     :authentication => :plain,
     :address => "smtp.mailgun.org",
     :port => 587,
-    :domain => "sandbox59647.mailgun.org",
-    :user_name => "postmaster@sandbox59647.mailgun.org",
-    :password => "123456789"
+    :domain => "linxiang.info",
+    :user_name => "postmaster@linxiang.info",
+    :password => "42rhq8zandv4"
   }
+
+  # ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.smtp_settings = {
+  #   :authentication => :plain,
+  #   :address => "smtp.mailgun.org",
+  #   :port => 587,
+  #   :domain => "linxiang.info",
+  #   :user_name => "postmaster@linxiang.info",
+  #   :password => "42rhq8zandv4"
+  # }
 
 end

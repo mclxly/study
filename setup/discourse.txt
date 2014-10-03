@@ -15,6 +15,7 @@ http://www.howtoinstalldiscourse.com/how-to-install-discourse-on-centos/
 
 ===================系统准备
 yum install net-tools ruby vim
+yum install ImageMagick ImageMagick-devel ImageMagick-perl
 
 创建用户discourse
 useradd, passwd
@@ -68,8 +69,71 @@ cd discourse
 bundle install
 bundle exec rake db:migrate db:test:prepare db:seed_fu
 bundle exec rake autospec
-bundle exec rails server
 
+bundle exec rails server
+bundle exec sidekiq
+
+===================汉化
+后台设置
+
+===================问题列表
+1. 邮件发送失败
+bundle exec script/test_email_settings.rb
+垃圾箱中
+
+========================================================================2014-09-29
+在CentOS 7 上构建 Discourse 用于生产环境
+
+Nginx+Unicorn
+
+1. mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+2. cp config/nginx.sample.conf /etc/nginx/nginx.conf
+
+CREATE DATABASE discourse WITH OWNER discourse ENCODING 'UTF8' TEMPLATE template0;
+CREATE EXTENSION pg_trgm;
+CREATE EXTENSION hstore;
+
+准备数据库
+RUBY_GC_MALLOC_LIMIT=90000000 RAILS_ENV=production rake db:migrate
+RUBY_GC_MALLOC_LIMIT=90000000 RAILS_ENV=production rake assets:precompile
+
+bundle exec puma -e production
+bundle exec puma -e production -d -b unix:///var/www/discourse/tmp/sockets/puma.sock
+
+优化运行
+RUBY_GC_MALLOC_LIMIT=90000000 bundle exec puma -e production
+
+Ref:
+http://ruby-journal.com/how-to-setup-rails-app-with-puma-and-nginx/
+http://sirupsen.com/setting-up-unicorn-with-nginx/
+
+===================监控
+tail -f /var/www/discourse/log/puma.err.log
+tail -f /var/www/discourse/log/puma.log
+tail -f /var/log/nginx/access.log
+tail -f /var/log/nginx/error.log
+
+ps aux | grep puma
+kill -s SIGTERM 28499
+
+===================问题列表
+1. connect() to unix:///var/www/discourse/tmp/sockets/puma.sock failed (13: Permission denied) while connecting to upstream,
+
+useradd -s /sbin/nologin -r nginx
+groupadd web
+usermod -a -G web nginx
+usermod -a -G web discourse
+chgrp -R web /var/www
+chmod -R 775 /var/www
+
+Selinux状态
+sestatus
+vim /etc/sysconfig/selinux
+
+chmod a+rw /var/www/discourse/tmp/sockets/puma.sock
+
+手动激活账号
+/users/activate-account/:token(.:format)d76cfed013d26d0fa800bc16fc14604a
 
 ========================================================================2014-09-25
 在Ubuntu14上构建Discourse用于开发
