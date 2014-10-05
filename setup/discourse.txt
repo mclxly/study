@@ -102,6 +102,7 @@ bundle exec puma -e production -d -b unix:///var/www/discourse/tmp/sockets/puma.
 
 优化运行
 RUBY_GC_MALLOC_LIMIT=90000000 bundle exec puma -e production
+bundle exec sidekiq
 
 Ref:
 http://ruby-journal.com/how-to-setup-rails-app-with-puma-and-nginx/
@@ -131,6 +132,12 @@ sestatus
 vim /etc/sysconfig/selinux
 
 chmod a+rw /var/www/discourse/tmp/sockets/puma.sock
+
+I found the issue by myself. selinux was blocking the access to the
+socket.
+/var/log/audit/audit.log
+
+yum install policycoreutils-devel
 
 手动激活账号
 /users/activate-account/:token(.:format)d76cfed013d26d0fa800bc16fc14604a
