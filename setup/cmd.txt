@@ -6,7 +6,8 @@ https://www.digitalocean.com/community/articles/how-to-configure-single-and-mult
 
 ===========================Mysql
 grant all on blog.* to cmsuser@localhost identified by 'password';
-
+grant all on rails_testapp.* to 'rails'@'%' identified by 'password';
+GRANT SELECT ON *.* TO 'readonly_user'@'%' IDENTIFIED BY '123456';
 flush privileges;
 
 ===========================OSX
@@ -35,6 +36,10 @@ systemctl stop firewalld
 firewall-cmd --zone=public --add-port=3000/tcp --permanent
 firewall-cmd --zone=public --add-service=http --permanent
 firewall-cmd --reload
+
+firewall-cmd --zone=public --remove-service=ssh --permanent
+firewall-cmd --zone=dmz --add-service=ssh --permanent
+/etc/firewalld/zones/
 
 重启nginx
 systemctl restart nginx.service
@@ -249,7 +254,25 @@ ps aux | grep 'unicorn' | awk '{print $2}' | xargs kill -9
 # or
 ps aux | grep 'unicorn' | awk '{print $2}' | xargs sudo kill -9
 
-===========================Ubuntu
+数据库操作
+db:migrate runs (single) migrations that have not run yet.
+db:create creates the database
+db:drop deletes the database
+db:schema:load creates tables and columns within the (existing) database following schema.rb
+db:setup does db:create, db:schema:load, db:seed
+db:reset does db:drop, db:setup
+
+===============Gems: ActiveAdmin
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise', github: 'plataformatec/devise'
+
+gem 'mysql2'
+
+rails g devise:views admin_user
+注意：自定义的 view 要放在 views/active_admin/devise 下，默认状况。
+
+
+==================================Ubuntu
 sudo apt-get update
 sudo apt-get upgrade
 
