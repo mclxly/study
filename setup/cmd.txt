@@ -64,6 +64,10 @@ But I prefer to do this:
 netui
 192.168.1.103/24
 
+限制ssh只能在LAN登录
+vim /etc/ssh/sshd_config
+Match Address 192.168.2.*,127.0.0.1 PermitRootLogin yes
+
 ===========================CENTOS
 # Update repo
 yum update
