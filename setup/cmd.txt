@@ -212,17 +212,20 @@ then use it normally:
 npm install express
 
 =========================================RVM
+安装稳定版本的rvm (避免麻烦)
+rvm get stable
+
 列出已知的ruby版本
 rvm list known
 
 安装一个ruby版本
-rvm install 1.9.3
+rvm install 2.1.2 
 
 使用一个ruby版本
-rvm use 1.9.3
+rvm use 2.1.2 
 
 如果想设置为默认版本，可以这样
-rvm use 1.9.3 --default 
+rvm use 2.1.2 --default 
 
 查询已经安装的ruby
 rvm list
@@ -266,15 +269,15 @@ db:schema:load creates tables and columns within the (existing) database followi
 db:setup does db:create, db:schema:load, db:seed
 db:reset does db:drop, db:setup
 
-===============Gems: ActiveAdmin
+===============Gem: ActiveAdmin
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise', github: 'plataformatec/devise'
 
-gem 'mysql2'
-
-rails g devise:views admin_user
+gem 'mysql2
 注意：自定义的 view 要放在 views/active_admin/devise 下，默认状况。
 
+===============Gem: mysql2
+yum install libmysqlclient-dev mysql-devel
 
 ==================================Ubuntu
 sudo apt-get update
