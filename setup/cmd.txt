@@ -267,10 +267,26 @@ db:setup does db:create, db:schema:load, db:seed
 db:reset does db:drop, db:setup
 
 ===============Gems: ActiveAdmin
+更新Gemfile
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise', github: 'plataformatec/devise'
-
 gem 'mysql2'
+
+安装
+bundle install
+
+rails generate active_admin:install
+
+配置数据库database.yml
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: rails_testapp
+  username: rails
+  password: password
+  host: 192.168.21.90
+  port: 3306
+  pool: 10
 
 rails g devise:views admin_user
 注意：自定义的 view 要放在 views/active_admin/devise 下，默认状况。
