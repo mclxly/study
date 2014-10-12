@@ -81,6 +81,9 @@ bundle exec sidekiq
 bundle exec script/test_email_settings.rb
 垃圾箱中
 
+localhost:5000/users/activate-account/:email_token
+
+
 ========================================================================2014-09-29
 在CentOS 7 上构建 Discourse 用于生产环境
 
