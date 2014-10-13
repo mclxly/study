@@ -31,6 +31,8 @@ Command: /bin/zsh --login
 sshfs -o defer_permissions discourse@192.168.1.103:/data/samba/discourse /Users/colin/my-mount
 
 ===========================CENTOS 7
+http://www.kevinbertoldi.com/bookmarks/115
+
 关闭防火墙
 systemctl stop firewalld
 firewall-cmd --zone=public --add-port=3000/tcp --permanent
@@ -116,7 +118,7 @@ vim ~/.zshrc
 zsh
 
 # Run a script or command on Linux CentOS Startup
-/etc/rc.local
+/etc/rc.d/rc.local
 
 # Memory Usage
 ps -eo size,pid,user,command | awk '{ hr=$1/1024 ; printf("%13.6f Mb ",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf("%s ",$x) } print "" }' | sort
@@ -496,3 +498,14 @@ diable php5
 ==================================Tools List
 浏览器同步，方便跨浏览器及自适应的网页测试
 http://www.browsersync.io/
+
+==================================Spree
+yum install postgresql93-devel
+gem install pg -- --with-pg-config=/usr/pgsql-9.3/bin/pg_config
+bundle install
+bundle exec rake sandbox
+cd sandbox
+rails s
+
+
+
