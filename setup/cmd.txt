@@ -508,4 +508,12 @@ cd sandbox
 rails s
 
 
+==================================Yii2
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
 
+composer global require "fxp/composer-asset-plugin:1.0.0-beta2"
+composer create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
+
+==================Problems List
+"Calling unknown method: yii\web\UrlManager::addRules()"
