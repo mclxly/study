@@ -276,6 +276,15 @@ db:schema:load creates tables and columns within the (existing) database followi
 db:setup does db:create, db:schema:load, db:seed
 db:reset does db:drop, db:setup
 
+编译.scss
+
+生产环境运行
+RAILS_ENV=production rake db:migrate
+rails s -e production
+
+Precompiling Assets
+RAILS_ENV=production bin/rake assets:precompile
+
 ===============Rails command
 rails console
 rails server
@@ -286,6 +295,8 @@ rails new app_name
 
 rails generate controller Article create
 
+生成secret key
+RAILS_ENV=production rake secret
 
 ===============Gems: ActiveAdmin
 更新Gemfile
@@ -429,6 +440,15 @@ https://github.com/Ranks/emojione
 
 时间线
 https://github.com/semu/timesheet.js
+
+A window.fetch JavaScript polyfill.
+https://github.com/github/fetch
+
+图标
+https://github.com/google/material-design-icons
+
+延迟加载
+https://github.com/aFarkas/lazysizes
 
 ==================================Tips
 print "hire" in chrome
