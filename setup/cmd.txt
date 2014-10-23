@@ -295,6 +295,12 @@ rails new app_name
 
 rails generate controller Article create
 
+装载structure.sql
+rake db:structure:load
+
+装载schema.rb
+rake db:schema:load
+
 生成secret key
 RAILS_ENV=production rake secret
 
