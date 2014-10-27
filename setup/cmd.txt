@@ -305,6 +305,11 @@ rake db:schema:load
 生成secret key
 RAILS_ENV=production rake secret
 
+===============Gems淘宝源
+gem sources --remove https://rubygems.org/
+gem sources -a https://ruby.taobao.org/
+gem sources -l
+
 ===============Gems: ActiveAdmin
 更新Gemfile
 gem 'activeadmin', github: 'activeadmin'
@@ -464,6 +469,8 @@ console.log('%chire', 'font-size: 48px; font-weight: bold; color: #c20')
 ==================================Redis
 CENTOS: yum install redis
 http://briansnelson.com/How_to_install_Redis_on_a_Centos_6.4_Server
+
+ruby拒绝链接可能是因为redis.conf的bind错误
 
 ==================================Ember.js
 开发调试
