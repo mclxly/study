@@ -1,0 +1,11 @@
+==================================Ubuntu
+sudo apt-get update
+sudo apt-get upgrade
+
+# configure network
+sudo nano /etc/network/interfaces
+sudo nano /etc/resolv.conf
+sudo nohup sh -c "ifdown eth0 && ifup eth0"
+http://guylabs.ch/2013/07/25/configure-a-static-ip-in-ubuntu-13-04/
+
+sudo shutdown -h now

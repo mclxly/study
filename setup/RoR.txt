@@ -1,0 +1,90 @@
+==================================Ruby on Rails
+ruby command line
+IRB
+
+nginx+unicorn+rack-cache
+https://www.digitalocean.com/community/articles/how-to-deploy-rails-apps-using-unicorn-and-nginx-on-centos-6-5
+
+#start unicorn
+
+#stop unicorn
+ps auxw | grep unicorn
+kill -9 master_pid
+# or
+ps aux | grep 'unicorn' | awk '{print $2}' | xargs kill -9
+# or
+ps aux | grep 'unicorn' | awk '{print $2}' | xargs sudo kill -9
+
+数据库操作
+db:migrate runs (single) migrations that have not run yet.
+db:create creates the database
+db:drop deletes the database
+db:schema:load creates tables and columns within the (existing) database following schema.rb
+db:setup does db:create, db:schema:load, db:seed
+db:reset does db:drop, db:setup
+db:seed
+
+编译.scss
+
+生产环境运行
+RAILS_ENV=production rake db:migrate
+rails s -e production
+
+Precompiling Assets
+RAILS_ENV=production bin/rake assets:precompile
+
+改变项目的secret token
+rake secret
+Edit the config/secrets.yml file to change the secret token.
+
+===============Rails command
+rails console
+rails server
+rake
+rails generate
+rails dbconsole
+rails new app_name
+
+rails generate controller Article create
+
+装载structure.sql
+rake db:structure:load
+
+装载schema.rb
+rake db:schema:load
+
+生成secret key
+RAILS_ENV=production rake secret
+
+===============Gems淘宝源
+gem sources --remove https://rubygems.org/
+gem sources -a https://ruby.taobao.org/
+gem sources -l
+
+===============Gems: ActiveAdmin
+更新Gemfile
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise', github: 'plataformatec/devise'
+gem 'mysql2'
+
+安装
+bundle install
+
+rails generate active_admin:install
+
+配置数据库database.yml
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: rails_testapp
+  username: rails
+  password: password
+  host: 192.168.21.90
+  port: 3306
+  pool: 10
+
+rails g devise:views admin_user
+注意：自定义的 view 要放在 views/active_admin/devise 下，默认状况。
+
+===============Gem: mysql2
+yum install libmysqlclient-dev mysql-devel
