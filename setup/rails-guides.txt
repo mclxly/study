@@ -1,0 +1,204 @@
+stt-backend
+===========
+
+A website backend build with: Rails4 + devise + pundit + rails_admin
+
+
+Gems
+===========
+* [mysql2](https://github.com/brianmario/mysql2)：连接MySQL
+* [rails_admin](https://github.com/sferik/rails_admin): 管理框架(基于bootstrap)
+* [Devise](https://github.com/plataformatec/devise)：用户管理和授权
+* [bootstrap-sass](https://github.com/twbs/bootstrap-sass)：前端框架
+* [paper_trail](https://github.com/airblade/paper_trail)：跟踪model的数据更改
+
+
+* [font-awesome-rails](https://github.com/bokmann/font-awesome-rails)：大名鼎鼎的font-awesome
+* [activeadmin](https://github.com/activeadmin/activeadmin)：管理框架
+* [carrierwave](https://github.com/carrierwaveuploader/carrierwave)：文件上传
+* [simple_form](https://github.com/plataformatec/simple_form)：简化创建表单
+* [Pundit](https://github.com/elabs/pundit)：权限系统
+
+Gemfile
+===========
+```ruby
+gem 'mysql2'
+gem 'devise'
+gem 'pundit'
+
+gem 'bootstrap-sass', '~> 3.3.0'
+gem 'autoprefixer-rails'
+
+gem 'simple_form'
+
+# Use rails_admin for out of box admin interface
+gem "rails_admin"
+```
+
+按照官网配置Devise
+===========
+1. 运行
+```sh
+rails generate devise:install
+rails generate devise User
+rake db:migrate
+```
+2. 配置 config/environments/development.rb
+```ruby
+  config.action_mailer.default_url_options = { host: 'http://192.168.21.90', port: 3000 }  
+  config.action_mailer.delivery_method = :smtp  
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = 
+  {
+   :address            => 'smtp.mailgun.org',
+   :port               => 587,
+   :domain             => '*.mailgun.org', #you can also use google.com
+   :authentication     => :plain,
+   :user_name          => 'postmaster@*.mailgun.org',
+   :password           => '*'
+  }
+```
+
+3. 更新database.yml
+```ruby
+default: &default
+  adapter: mysql2
+  pool: 10
+  encoding: utf8  
+  username: root
+  password: 123456
+  host: 192.168.21.90
+  port: 3306
+
+development:
+  <<: *default
+  database: stt-backend-ror-dev
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: stt-backend-ror-test
+
+production:
+  <<: *default
+  database: stt-backend-ror
+```
+
+按照官网配置bootstrap-sass
+===========
+1. 配置app/assets/stylesheets/application.css.scss:
+```scss
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+```scss
+
+2. 配置app/assets/javascripts/application.js:
+```js
+//= require turbolinks
+//= require bootstrap-sprockets
+//= require_tree .
+```
+
+按照官网配置paper_trail
+===========
+1. Add PaperTrail to your `Gemfile`.
+    `gem 'paper_trail', '~> 3.0.6'`
+
+2. Generate a migration which will add a `versions` table to your database.
+    `bundle exec rails generate paper_trail:install`
+
+3. Run the migration.
+    `bundle exec rake db:migrate`
+
+4. Add `has_paper_trail` to the models you want to track.
+
+
+* [bootstrap-sass](https://github.com/twbs/bootstrap-sass)：前端框架
+* [font-awesome-rails](https://github.com/bokmann/font-awesome-rails)：大名鼎鼎的font-awesome
+* [activeadmin](https://github.com/activeadmin/activeadmin)：管理框架
+* [carrierwave](https://github.com/carrierwaveuploader/carrierwave)：文件上传
+* [simple_form](https://github.com/plataformatec/simple_form)：简化创建表单
+* [mysql2](https://github.com/brianmario/mysql2)：连接MySQL
+* [Pundit](https://github.com/elabs/pundit)：权限系统
+
+Gemfile
+===========
+```ruby
+gem 'devise'
+gem 'pundit'
+# Use rails_admin for out of box admin interface
+gem "rails_admin"
+```
+
+Commands
+===========
+1. rails new stt-backend
+2. 更新 Gemfile
+```ruby
+gem 'mysql2'
+gem 'devise'
+gem 'pundit'
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
+gem 'simple_form'
+
+gem 'activeadmin', github: 'activeadmin'
+```
+3. bundle install
+4. 更新 config/environments/development.rb
+```ruby
+  config.action_mailer.default_url_options={ :host => '192.168.21.90:3000' }
+  
+  config.action_mailer.delivery_method = :smtp  
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = 
+  {
+   :address            => 'smtp.mailgun.org',
+   :port               => 587,
+   :domain             => '*.mailgun.org', #you can also use google.com
+   :authentication     => :plain,
+   :user_name          => 'postmaster@*.mailgun.org',
+   :password           => '*'
+  }
+```
+5. 更新database.yml
+```ruby
+default: &default
+  adapter: mysql2
+  pool: 10
+  encoding: utf8  
+  username: root
+  password: 123456
+  host: 192.168.21.90
+  port: 3306
+
+development:
+  <<: *default
+  database: stt-backend-ror-dev
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: stt-backend-ror-test
+
+production:
+  <<: *default
+  database: stt-backend-ror
+```
+6. rails g active_admin:install User
+7. rake db:migrate
+
+
+Problems
+===========
