@@ -3,6 +3,17 @@
 # History: 
 # 2014-05-28 15:31
 # 2014-05-29 16:09
+# 2014-11-08 14:02
+
+http://www.tutorialspoint.com/ruby/ruby_arrays.htm
+
+for i in 0..5
+   if i < 2 then
+      puts "Value of local variable is #{i}"
+      redo
+   end
+end
+exit 0
 
 #####################
 # Blocks:＆ and yield

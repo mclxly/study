@@ -11,6 +11,8 @@ Python3, Jedi - Python autocompletion by srusskih, Python PEP8 Autoformat by Ste
 SublimePythonIDE
 {"command": "sublime_jedi_params_autocomplete", "keys": ["alt+shift+("],
 
+https://realpython.com/blog/python/setting-up-sublime-text-3-for-full-stack-python-development/
+
 ============================Go
 https://github.com/DisposaBoy/GoSublime
 DisposaBoy/GoSublime
