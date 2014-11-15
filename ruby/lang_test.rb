@@ -5,7 +5,32 @@
 # 2014-05-29 16:09
 # 2014-11-08 14:02
 
-http://www.tutorialspoint.com/ruby/ruby_arrays.htm
+#####################
+# http://www.tutorialspoint.com/ruby/ruby_ranges.htm
+# 
+score = 70
+
+result = case score
+   when 0..40
+    "Fail"
+   when 41..60
+    "Pass"
+   when 61..70
+    "Pass with Merit"
+   when 71..100
+    "Pass with Distinction"
+   else
+    "Invalid Score"
+end
+
+puts result
+
+range1 = (1..10).to_a
+range2 = ('bar'..'bat').to_a
+
+puts "#{range1}"
+puts "#{range2}"
+exit 0
 
 for i in 0..5
    if i < 2 then

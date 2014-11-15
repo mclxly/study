@@ -1,0 +1,6 @@
+1. Aptana
+http://download.aptana.com/studio3/plugin/install
+
+2. Emmet
+http://emmet.io/eclipse/updates/
+

@@ -1,1 +1,62 @@
-python.txt
+2014-11-13 14:50
+===========================Python
+wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
+./configure
+make && make altinstsall
+python3.4
+
+tar -xvf Python-2.7.8.tar.xz
+./configure --prefix=/usr/local    
+make && make altinstall
+
+===========================Version Project
+# Use the built-in pyvenv program in Python 3.4 to create a sandbox called my34project
+pyvenv-3.4 my34project
+source my34project/bin/activate
+python --version
+# This will show Python 3.4.2
+deactivate
+
+===========================Pip
+curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python -
+pip3.4 search django
+
+pip3.4 install [packagename]
+pip3.4 install --upgrade [packagename]
+pip3.4 uninstall [packagename]
+
+安装pip2.7
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py (此处python应为2.7版本)
+pip2.7 install Django
+
+===========================Django===========================
+最新Django只支持Python 2.7+
+pip2 install MySQL-python
+pip2 install Django
+
+pip3.3 install PyMySQL3
+pip3.3 install Django
+
+项目初始化
+python manage.py migrate
+python manage.py runserver 0.0.0.0:3000
+
+Django项目可以包含多个APP,APP可以存在于多个项目
+django-admin.py startproject mysite
+
+查看migration的sql语句
+python manage.py sqlmigrate polls 0001
+
+Create migrations for those changes
+python manage.py makemigrations
+
+apply those changes to the database.
+python manage.py migrate
+
+命令行交互方式
+python manage.py shell
+
+===========================Refer Link
+https://docs.djangoproject.com/en/1.7/intro/install/
+http://toomuchdata.com/2014/02/16/how-to-install-python-on-centos/

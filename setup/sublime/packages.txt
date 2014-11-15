@@ -6,6 +6,8 @@ Package List:
 An EJS syntax definition specifically for sublime text
 
 ============================Python
+Anaconda - It's great, maybe 
+
 Python3, Jedi - Python autocompletion by srusskih, Python PEP8 Autoformat by StephaneBunel,
 
 SublimePythonIDE
