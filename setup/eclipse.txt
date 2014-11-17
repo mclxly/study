@@ -1,6 +1,25 @@
+OSX安装Eclipse
+1. 先安装jdk6: http://support.apple.com/kb/DL1572
+2. 再安装最新官网的jdk8,不要装jre!
+
+[~]$ export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+[~]$ java -version                                                             
+java version "1.8.0_25"
+
+lrwxr-xr-x  1 root  wheel   59 Nov 16 14:24 CurrentJDK -> /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents
+
+
 1. Aptana
+Aptana 3.6
 http://download.aptana.com/studio3/plugin/install
+
+Aptana 3.7
+http://studio-jenkins.appcelerator.org/job/studio3-feature-development/lastSuccessfulBuild/artifact/dist/
+http://studio-jenkins.appcelerator.org/job/studio3-feature-development/lastSuccessfulBuild/artifact/dist/*zip*/dist.zip
 
 2. Emmet
 http://emmet.io/eclipse/updates/
+
+3. python
+
 

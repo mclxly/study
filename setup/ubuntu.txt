@@ -9,3 +9,33 @@ sudo nohup sh -c "ifdown eth0 && ifup eth0"
 http://guylabs.ch/2013/07/25/configure-a-static-ip-in-ubuntu-13-04/
 
 sudo shutdown -h now
+
+==================================Nginx+hhvm
+http://nginx.org/en/linux_packages.html
+
+sudo vim /etc/apt/sources.list
+deb http://nginx.org/packages/ubuntu/ trusty nginx
+deb-src http://nginx.org/packages/ubuntu/ trusty nginx
+
+sudo apt-get update
+wget http://nginx.org/keys/nginx_signing.key
+sudo apt-key add nginx_signing.key
+sudo apt-get install nginx
+
+
+http://www.sysads.co.uk/2014/06/install-hhvm-nginx-ubuntu-14-04/
+
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:nginx/stable
+sudo add-apt-repository --remove ppa:nginx/stable
+
+sudo apt-get install nginx
+sudo service nginx start
+
+==================================Problems
+1."no talloc stackframe at ../source3/param/loadparm.c:4864, leaking memory?? ""
+http://askubuntu.com/questions/477002/loadparm-c4864-leaking-memory
+pam-auth-update
+
+2."rying to overwrite '/etc/logrotate.d/nginx', which is also in package"
+sudo apt-get remove nginx-common 
