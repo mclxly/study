@@ -60,6 +60,10 @@ python manage.py migrate
 命令行交互方式
 python manage.py shell
 
+===========================Deploy
+Nginx+Gunicorn
+pip install gunicorn
+
 ===========================Refer Link
 https://docs.djangoproject.com/en/1.7/intro/install/
 http://toomuchdata.com/2014/02/16/how-to-install-python-on-centos/

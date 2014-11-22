@@ -1,0 +1,4 @@
+=======================================MySQL
+1. 修复数据表
+myisamchk -r all_arinv01
+REPAIR TABLE nagios_servicechecks;
