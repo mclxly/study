@@ -30,6 +30,9 @@ wget https://bootstrap.pypa.io/get-pip.py
 python get-pip.py (此处python应为2.7版本)
 pip2.7 install Django
 
+如果安装了某个package但import仍然出错，就需要查看pip是否对应的版本
+pip -V
+
 ===========================Django===========================
 最新Django只支持Python 2.7+
 pip2 install MySQL-python
@@ -56,6 +59,10 @@ python manage.py migrate
 
 命令行交互方式
 python manage.py shell
+
+===========================Deploy
+Nginx+Gunicorn
+pip install gunicorn
 
 ===========================Refer Link
 https://docs.djangoproject.com/en/1.7/intro/install/

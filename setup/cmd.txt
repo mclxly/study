@@ -152,6 +152,9 @@ sudo chkconfig --levels 235 php-fpm on
 # 列出所有安装服务/etc/rc.d/init.d/
 service --status-all
 
+# 直接覆盖
+\cp -ufr src des
+
 ============Yum
 "Protected multilib versions: libstdc++-4.6.3-2.el6.x86_64 != libstdc++-4.4.7-3.el6.i686
 Error: Protected multilib versions: libgcc-4.6.3-2.el6.x86_64 != libgcc-4.4.7-3.el6.i686"
