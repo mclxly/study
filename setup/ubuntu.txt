@@ -10,6 +10,9 @@ http://guylabs.ch/2013/07/25/configure-a-static-ip-in-ubuntu-13-04/
 
 sudo shutdown -h now
 
+显示版本号
+lsb_release -a
+
 ==================================Nginx+hhvm
 http://nginx.org/en/linux_packages.html
 
@@ -31,6 +34,29 @@ sudo add-apt-repository --remove ppa:nginx/stable
 
 sudo apt-get install nginx
 sudo service nginx start
+
+=================
+Prebuilt packages on Ubuntu 14.04
+https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Ubuntu-14.04
+
+********************************************************************
+* HHVM is installed.
+*
+* Running PHP web scripts with HHVM is done by having your webserver talk to HHVM
+* over FastCGI. Install nginx or Apache, and then:
+* $ sudo /usr/share/hhvm/install_fastcgi.sh
+* $ sudo /etc/init.d/hhvm restart
+* (if using nginx)  $ sudo /etc/init.d/nginx restart
+* (if using apache) $ sudo /etc/init.d/apache restart
+*
+* Detailed FastCGI directions are online at:
+* https://github.com/facebook/hhvm/wiki/FastCGI
+*
+* If you're using HHVM to run web scripts, you probably want it to start at boot:
+* $ sudo update-rc.d hhvm defaults
+*
+* Running command-line scripts with HHVM requires no special setup:
+* $ hhvm whatever.php
 
 ==================================Problems
 1."no talloc stackframe at ../source3/param/loadparm.c:4864, leaking memory?? ""
