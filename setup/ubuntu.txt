@@ -10,6 +10,15 @@ http://guylabs.ch/2013/07/25/configure-a-static-ip-in-ubuntu-13-04/
 
 sudo shutdown -h now
 
+==================================安全
+# Logwatch
+sudo apt-get install logwatch
+
+To install Logwatch (which is basically just a collection of Perl filters for digesting various log formats) on Ubuntu, use apt-get install logwatch and then edit /etc/cron.daily/00logwatch, replacing --output mail with --mailto you@yourdomain.com. You'll get one a day. You can add more flags to tune which logs Logwatch actually reads.
+
+https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1204-lts-server-part-1-basics
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
+
 ==================================Nginx+hhvm
 http://nginx.org/en/linux_packages.html
 

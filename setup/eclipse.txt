@@ -22,4 +22,7 @@ http://emmet.io/eclipse/updates/
 
 3. python
 
+4. 中文乱码问题
+-Dfile.encoding=UTF-8
+
 
