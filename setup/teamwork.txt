@@ -1,0 +1,6 @@
+==================================Gitlab
+https://help.github.com/articles/generating-ssh-keys/
+生产key，然后将id_rsa.pub的内容加入到Gitlab中
+
+# 可以将本机的公共密钥添加到远程机器
+ssh-copy-id tim@just.some.other.server

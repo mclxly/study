@@ -3,3 +3,8 @@ osx.txt
 ===========================
 1. 查找占用端口
 sudo lsof -i -n -P|grep 8080
+
+2. 取得finder当前文件夹的路径
+
+3. 映射远程路径到本地
+sshfs -o defer_permissions linxiang@192.168.1.51:/data /Users/colin/my-mount    

@@ -23,6 +23,8 @@ https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1204-lts-server-part-1-bas
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
 
 ==================================Nginx+hhvm
+sudo apt-get install php5 php5-cli php5-common php5-cgi php5-mysql php5-gd
+
 http://nginx.org/en/linux_packages.html
 
 sudo vim /etc/apt/sources.list
@@ -43,6 +45,9 @@ sudo add-apt-repository --remove ppa:nginx/stable
 
 sudo apt-get install nginx
 sudo service nginx start
+
+# 配置nginx VHOST
+ln -s /etc/nginx/sites-available/home.linxiang.info.conf /etc/nginx/sites-enabled/home.linxiang.info.conf
 
 =================
 Prebuilt packages on Ubuntu 14.04

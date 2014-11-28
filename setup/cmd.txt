@@ -528,6 +528,8 @@ rt_field = partno
 
 "sphinx找不到中文记录"?
 
+php-fpm, phpMyAdmin: "all to undefined function __()"
+Open that file in your browser (http://localhost/test.php or similar) and look for the line session.save_path. That's your session folder; make sure the permissions are suitable and see if that helps.
 
 ==================================Problems List
 yum update error package skip-broken php55w
