@@ -22,6 +22,9 @@ DisposaBoy/GoSublime
 ============================Javascript Framework
 Ember​Script
 
+============================HTML
+emmet
+
 ============================Ruby on Rails
 SublimeERB 
 { "keys": ["ctrl+shift+."], "command": "erb", "context":

@@ -1,5 +1,5 @@
 Go Lang
-=====
+==========================================
 
 Genuine knowledge comes from practice.
 
@@ -8,3 +8,12 @@ Genuine knowledge comes from practice.
 * http://www.golang-book.com/
 * [Network programming with Go](http://jan.newmarch.name/go/)
 * [GoDoc](https://godoc.org)
+* [Go Lib List](http://go-lang.cat-v.org/pure-go-libs)
+
+==========================================Env
+export GOPATH=~/golang/
+vim ~/.bashrc
+export GOPATH="$HOME/golang/"
+
+==========================================MysQL
+go get github.com/go-sql-driver/mysql
