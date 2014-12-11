@@ -18,7 +18,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 sudo vim /etc/hosts
 
 @smb error
-umount /Volumes/vc-samba
+umount -f /Volumes/vc-samba
 
 @iTerm Profile
 Command: /bin/zsh --login
