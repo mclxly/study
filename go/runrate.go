@@ -1,3 +1,23 @@
+/*
+CREATE TABLE mem_runrate_itm
+(  
+  `ItmNo` VARCHAR(11) not null,
+  `Brand` VARCHAR(10) NULL DEFAULT NULL,
+  `Cost` DOUBLE(13,4) NULL DEFAULT NULL,
+    `Onhand` BIGINT(7) NULL DEFAULT NULL,
+    PRIMARY KEY (`ItmNo`)    
+) 
+ENGINE = MEMORY;
+
+INSERT INTO `mem_runrate_itm` 
+(select `ItmNo`,`Brand`,`Cost`,`Onhand`
+from aritm01
+where lstno != '')
+INSERT INTO `mem_runrate_itm` 
+(select `ItmNo`,`Brand`,`Cost`,`Onhand`
+from aritm01
+where lstno != '' and xrecno > 238217)
+ */
 package main
 
 import (
