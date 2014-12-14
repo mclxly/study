@@ -205,6 +205,8 @@ git commit --amend
 更新npm
 npm update npm -g
 
+npm install --registry=https://registry.npm.taobao.org
+
 packages列表
 npm ls -g
 npm ls
@@ -214,6 +216,8 @@ npm rm ember-cli-ember-data --save-dev
 ===========================
 use the npm mirror
 npm set registry http://registry.cnpmjs.org
+
+npm set registry https://registry.npm.taobao.org
 
 you can reset this later with npm set registry
 npm set registry https://registry.npmjs.org/
