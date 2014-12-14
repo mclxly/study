@@ -22,6 +22,13 @@ To install Logwatch (which is basically just a collection of Perl filters for di
 https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1204-lts-server-part-1-basics
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
 
+How to open port 8000 on Ubuntu 12.04?
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-iptables-on-ubuntu-14-04
+
+close firewall?
+sudo ufw disable
+sudo ufw enable
+
 ==================================Nginx+hhvm
 sudo apt-get install php5 php5-cli php5-common php5-cgi php5-mysql php5-gd
 
