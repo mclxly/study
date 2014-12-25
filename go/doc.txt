@@ -17,3 +17,13 @@ export GOPATH="$HOME/golang/"
 
 ==========================================MysQL
 go get github.com/go-sql-driver/mysql
+
+
+
+
+
+吐槽
+1. 函数参数不支持默认值；
+
+技巧
+1. 获得类型：reflect.TypeOf(today)
