@@ -3,8 +3,7 @@
 # 1. 添加brand;2014-06-20 14:41
 # 2. 增加DEBUG模式，去除不必要的信息；2014-07-19 16:33
 # 3. 移除Sales Amt, PDL:./REB/REF/RNB
-# 4. Escape SQL var 
-# 5. 重构：减少SQL查询
+# 
 # Focus COST
 
 require 'mysql'
@@ -43,7 +42,6 @@ sql_item_list = "select * from artrs01 where ItmSKU not in ('XXXX', 'ZZZZ', 'FRE
 
 all_item_set = Hash.new
 report_pdl_set = Hash.new
-aritm01_set = Hash.new
 
 #debug purpose
 pdl_item_set = Hash.new 
@@ -70,15 +68,14 @@ def get_item_amt(row, all_item_set)
   return if ['CREDI', 'CR-MS', 'CR-WD', 'CR-TO', 'CR-TA', 'CR-AC', 'CR-HT', 
                     'CR-IN', 'CR-LC', 'CR-LG', 'CR-NB', 'CR-PJ', 'CR-PR', 'CR-SM'].include?( sku.slice(0, 5) )
 
-  puts '.' if DEBUG
+  puts '.'
   # p sku
   # p row['Cost']
   # p row
   # exit 0
   
   if all_item_set.has_key?(sku)
-    puts '+' if DEBUG
-
+    puts '+'
     all_item_set[sku] += row['Cost'].to_f * row['ShipQty'].to_i
     # puts all_item_set.length
     # exit
@@ -140,45 +137,18 @@ begin
     # get start date    
     start_dt = get_start_dt(con, end_dt, business_days)
 
-    # get item list from aritm01
-    sql = "select pdl, ItmSKU, sum(onhand * cost) as 'oh_amt', brand 
-          from aritm01
-          where LstNo != ''
-          group by ItmSKU"
-    rs = con.query sql
-    rs.each_hash do |row|
-      if row['pdl'].nil?
-        p row
-        next
-      end
-      
-      pdl = row['pdl'].slice(0, 3).strip
-      pdl = pdl + '_' + row['brand'] if row['brand'] == 'IMICRO'
-
-      aritm01_set[ row['ItmSKU'].strip ] = { 'pdl' => pdl, 
-            'oh_amt' => row['oh_amt'], 'brand' => row['brand'] }      
-    end
-
-    if DEBUG
-      p aritm01_set.length()
-      p aritm01_set['I7-4770K']
-      # exit 0      
-    end    
-
-    # cpu_pdl_items = Array.new
-    # sql_item_list = "select ItmSKU from aritm01
-    #                   where pdl like 'CPU%' and lstno != ''"
-    # rs = con.query sql_item_list
-    # rs.each_hash do |row|
-    #   cpu_pdl_items.push( row['ItmSKU'] )
-    # end
-
-    # p cpu_pdl_items.length()
+    # get cpu item list
+    cpu_pdl_items = Array.new
+    sql_item_list = "select ItmSKU from aritm01
+                      where pdl like 'CPU%' and lstno != ''"
+    rs = con.query sql_item_list
+    rs.each_hash{|row|; cpu_pdl_items.push( row['ItmSKU'] );}
+    p cpu_pdl_items.length()
     # p cpu_pdl_items
     # exit 0
 
     # puts con.get_server_info
-    sql_item_list = "select ItmSKU,Cost,ShipQty from all_artrs01 where ItmSKU not in ('XXXX', 'ZZZZ', 'FREIGHT', 'INSURANCE', 'USD$', 'SP-SHP-CHG', 'KEY-RING', 
+    sql_item_list = "select * from all_artrs01 where ItmSKU not in ('XXXX', 'ZZZZ', 'FREIGHT', 'INSURANCE', 'USD$', 'SP-SHP-CHG', 'KEY-RING', 
             'LOGO-FEE', 'THANK YOU', 'SETUP-FEE', 'B-GIFT-BOX', 'DRIVE-CASE', 'FILE-LOAD',
             'CABLE/USB2', 'STRING', 'LABOR') and shipdate between '#{start_dt}' and '#{end_dt}'"
     # sql_item_list = "select * from artrs01 where ItmSKU not in ('XXXX', 'ZZZZ', 'FREIGHT', 'INSURANCE', 'USD$', 'SP-SHP-CHG', 'KEY-RING', 
@@ -196,38 +166,48 @@ begin
 
       print '.' if (++counter % 100 == 0)
 
-      # artrs01
-      if aritm01_set.has_key?(key)
-        aritm01 = aritm01_set[key]
-        pdl = aritm01['pdl']
+      pdl = ''
+      tsku = Mysql.escape_string(key)
 
-        # detail list
-        # if pdl_item_set.has_key?(pdl)
-        #   item_set = pdl_item_set[pdl]          
-        # else
-        #   item_set = pdl_item_set[pdl] = Hash.new
-        # end
+      rs = con.query "select * from aritm01 where ItmSKU = '#{tsku}' and lstno != ''"
+      rs.each_hash do |row|
+        pdl = row['Pdl'].slice(0, 3).strip        
 
-        # if item_set.has_key?(key)
-        #   item_set[key]['onhand_amt'] += row['Onhand'].to_i * row['Cost'].to_f            
-        # else
-        #   item_set[key] = {'sales'=>value, 'onhand_amt'=>row['Onhand'].to_i * row['Cost'].to_f, 'brand'=>row['Brand']}
-        # end  
+        pdl = pdl + '_' + row['Brand'] if row['Brand'] == 'IMICRO'
 
-        # report list
-        if report_pdl_set.has_key?(pdl)          
-          report_pdl_set[pdl].onhand_amt += aritm01['oh_amt'].to_f
-          report_pdl_set[pdl].sales_amt += value
+        # classify items according to PDL
+        if pdl_item_set.has_key?(pdl)
+          item_set = pdl_item_set[pdl]          
         else
-          sales_amt = value
-          onhand_amt = aritm01['oh_amt'].to_f
+          item_set = pdl_item_set[pdl] = Hash.new
+        end
+
+        if item_set.has_key?(key)
+          item_set[key]['onhand_amt'] += row['Onhand'].to_i * row['Cost'].to_f            
+        else
+          item_set[key] = {'sales'=>value, 'onhand_amt'=>row['Onhand'].to_i * row['Cost'].to_f, 'brand'=>row['Brand']}
+        end
+
+        # if pdl == 'HD'
+        #   # hd_all_item_set[key] = value
+        #   if hd_all_item_set.has_key?(key)
+        #     hd_all_item_set[key]['onhand_amt'] += row['Onhand'].to_i * row['Cost'].to_f            
+        #   else
+        #     hd_all_item_set[key] = {'sales'=>value, 'onhand_amt'=>row['Onhand'].to_i * row['Cost'].to_f}
+        #   end          
+        # end        
+
+        if report_pdl_set.has_key?(pdl)          
+          report_pdl_set[pdl].onhand_amt += (row['Onhand'].to_i * row['Cost'].to_f)
+        else
+          sales_amt = 0
+          onhand_amt = row['Onhand'].to_i * row['Cost'].to_f
           run_rate = 0
           report_pdl_set[pdl] = Report_Row.new(pdl: pdl, onhand_amt: onhand_amt, sales_amt: sales_amt, run_rate: run_rate)
         end
-      else
-        puts('warning: not found sku ' + key)
-        next
       end
+
+      report_pdl_set[pdl].sales_amt += value if pdl != ''
     end
 
     # calc runrate
@@ -314,6 +294,6 @@ end
 puts "Summary: #{start_dt} ~ #{end_dt}, #{business_days} business days"
 
 # Print a flat profile to text
-printer = RubyProf::FlatPrinter.new(result)
-printer.print(STDOUT)
+# printer = RubyProf::FlatPrinter.new(result)
+# printer.print(STDOUT)
 
