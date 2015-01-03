@@ -13,6 +13,9 @@ sudo shutdown -h now
 显示版本号
 lsb_release -a
 
+# List all installed packages
+dpkg --get-selections | grep -v deinstall
+
 ==================================安全
 # Logwatch
 sudo apt-get install logwatch

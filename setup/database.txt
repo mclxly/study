@@ -2,3 +2,12 @@
 1. 修复数据表
 myisamchk -r all_arinv01
 REPAIR TABLE nagios_servicechecks;
+
+=======================================PostgreSQL 9.4
+http://www.unixmen.com/postgresql-9-4-released-install-centos-7/
+
+Fatal: no pg_hba.conf entry for host "", user "postgres", database "postgres"
+
+SELECT row_to_json(posts)
+  FROM posts limit 10;
+
