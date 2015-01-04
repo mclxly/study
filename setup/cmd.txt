@@ -86,6 +86,9 @@ rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.r
 rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 vim /etc/yum.repos.d/remi.repo
 
+# List all installed packages
+yum list installed
+
 pam_tally2 --user=tecmint --reset
 
 vim -O nginx.conf /etc/nginx.bak/nginx.conf
@@ -174,6 +177,9 @@ ssserver -c /etc/shadowsocks.json -d stop
 vim /etc/ssh/sshd_config
 PubkeyAuthentication yes
 ssh-keygen -t dsa -f ~/.ssh/linxiang.info
+=======
+开机时间
+uptime
 
 ============Yum
 "Protected multilib versions: libstdc++-4.6.3-2.el6.x86_64 != libstdc++-4.4.7-3.el6.i686
