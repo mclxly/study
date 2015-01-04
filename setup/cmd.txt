@@ -164,6 +164,17 @@ service --status-all
 # 直接覆盖
 \cp -ufr src des
 
+# 翻墙：https://github.com/shadowsocks/shadowsocks
+ssserver -c /etc/shadowsocks.json
+ssserver -c /etc/shadowsocks.json -d start
+ssserver -c /etc/shadowsocks.json -d stop
+198.199.112.16
+
+#public key
+vim /etc/ssh/sshd_config
+PubkeyAuthentication yes
+ssh-keygen -t dsa -f ~/.ssh/linxiang.info
+
 ============Yum
 "Protected multilib versions: libstdc++-4.6.3-2.el6.x86_64 != libstdc++-4.4.7-3.el6.i686
 Error: Protected multilib versions: libgcc-4.6.3-2.el6.x86_64 != libgcc-4.4.7-3.el6.i686"
