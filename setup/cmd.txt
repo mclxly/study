@@ -80,6 +80,9 @@ vim /etc/ssh/sshd_config
 Match Address 192.168.2.*,127.0.0.1 PermitRootLogin yes
 
 ===========================CENTOS
+# CPU
+cat /proc/cpuinfo
+
 # Update repo
 yum update
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
