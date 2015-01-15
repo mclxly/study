@@ -1,34 +1,42 @@
-// In this example we'll look at how to implement
-// a _worker pool_ using goroutines and channels.
-
 package main
 
-import "fmt"
-import "time"
+import (
+    "fmt"
+    "unsafe"
+)
 
-// Here's the worker, of which we'll run several
-// concurrent instances. These workers will receive
-// work on the `jobs` channel and send the corresponding
-// results on `results`. We'll sleep a second per job to
-// simulate an expensive task.
-func worker(id int, jobs <-chan int, results chan<- int) {
-    for j := range jobs {
-        fmt.Println("worker", id, "processing job", j)
-        time.Sleep(time.Second)
-        results <- j * 2
-    }
+type MyType struct {
+    Value1 int
+    Value2 string
 }
 
 func main() {
+    myMap := make(map[string]string)
+    myMap["Bill"] = "Jill"
 
-    // In order to use our pool of workers we need to send
-    // them work and collect their results. We make 2
-    // channels for this.
-    jobs := make(chan int, 100)
-    results := make(chan int, 100)
+    pointer := unsafe.Pointer(&myMap)
+    fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
 
-    // This starts up 3 workers, initially blocked
-    // because there are no jobs yet.
-    for w := 1; w <= 3; w++ {
-        go worker(w, jobs, results)
-    }
+    ChangeMyMap(myMap)
+    fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
+
+    ChangeMyMapAddr(&myMap)
+    fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
+}
+
+func ChangeMyMap(myMap map[string]string) {
+    myMap["Billp"] = "Joan"
+
+    pointer := unsafe.Pointer(&myMap)
+
+    fmt.Printf("Addr: %v Value : %s\n", pointer, myMap["Bill"])
+}
+
+// Don't Do This, Just For Use In This Article
+func ChangeMyMapAddr(myMapPointer *map[string]string) {
+    (*myMapPointer)["Bills"] = "Jenny"
+
+    pointer := unsafe.Pointer(myMapPointer)
+
+    fmt.Printf("Addr: %v Value : %s\n", pointer, (*myMapPointer)["Bill"])
+}

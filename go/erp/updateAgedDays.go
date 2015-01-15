@@ -15,6 +15,8 @@ import (
   "database/sql"
   _ "github.com/go-sql-driver/mysql"
   "log"
+  "sync"
+  "runtime"
 )
 
 const (
@@ -26,14 +28,48 @@ const (
   DB_PASS = /*""*/ "abc3!90"
 )
 
-// aritm01
 type Aritm01_Row struct {
-  pdl string
-  onhand_amt float64
-  brand string  
+  LstNo string
+  ItmNo string
+  // pdl string
+  // onhand_amt float64
+  // brand string  
 }
 
+type Auditq_Row struct {
+  szDate string
+  szTime string
+  Pgm string
+  User string
+  RefNo string
+  ItmNo string
+  Qty int
+  Msg string
+  RefNo_2 string
+}
+
+// var counter = struct{
+//     sync.RWMutex
+//     m map[string]int
+// }{m: make(map[string]int)}
+
+// xrecno -> Aritm01_Row
+var rec2aritm01_set map[int]Aritm01_Row
+// lstno -> branch item rec
+var lstno2recs_set map[string][]int
+// itmno -> item rec
+var itmno2rec_set map[string]int
+// xrecno -> aged days
+var rec2aged_set map[int]string
+// lstno -> Auditq_Row
+var lstno2auditq_set map[string][]Auditq_Row
+
+var wg sync.WaitGroup
+
 func main() {
+  // Init
+  rec2aged_set = make( map[int]string )
+
   // 1. get the working date
   t := time.Now()
   today := t.Format("2006-01-02")
@@ -42,10 +78,14 @@ func main() {
     today = os.Args[1]
   }
 
+  start, _ := time.Parse("2006-01-02", today)
+  start = start.AddDate(0, 0, -365)
+
   // m := time.Now().Month()
   month := fmt.Sprintf("%02d", time.Now().Month())
 
   log.Println( "Working date is " + today + " month is " + month)
+  log.Println( start.Format("2006-01-02") + " between " + today)
 
   // 2. connect db
   dsn := DB_USER + ":" + DB_PASS + "@" + DB_HOST + "/" + DB_NAME + "?charset=utf8"
@@ -55,40 +95,95 @@ func main() {
   }
   defer db.Close()
 
-  // 3. get valid item list for query
-  var aritm01_item_set map[int]string
-  aritm01_item_set = make( map[int]string )
+  log_memory()
 
-  sql := "select xRecNo, ItmNo from aritm01 where lstno != '' and onhand > 0"
-  rows, err := db.Query(sql)
-  if err != nil {
-      log.Fatal(err)
-  }  
-  
+  // 3. get valid item list for query  
+  rec2aritm01_set = make( map[int]Aritm01_Row )
+  lstno2recs_set = make( map[string][]int )
+  itmno2rec_set = make( map[string]int )
+
   var xRecNo int
-  var ItmNo string
-  for rows.Next() {
-    err := rows.Scan(&xRecNo, &ItmNo)
+  var ItmNo, LstNo string
+
+  // ------------------Goroutines 1
+  wg.Add(1)
+  go func(sql string) {
+    defer wg.Done()
+
+    rows, err := db.Query(sql)
+    if err != nil {
+        log.Fatal(err)
+    }  
+
+    for rows.Next() {
+      err := rows.Scan(&xRecNo, &ItmNo, &LstNo)
+      if err != nil {
+          log.Fatal(err)
+      }
+
+      _, ok := rec2aritm01_set[xRecNo]
+      if !ok {
+        rec2aritm01_set[xRecNo] = Aritm01_Row{LstNo, ItmNo}
+        itmno2rec_set[ItmNo] = xRecNo
+        lstno2recs_set[LstNo] = append(lstno2recs_set[LstNo], xRecNo)
+      }
+    }
+    rows.Close()
+  }("select xRecNo, ItmNo, LstNo from aritm01 where lstno != '' and onhand > 0")
+  
+  // ------------------Goroutines 2
+  lstno2auditq_set = make( map[string][]Auditq_Row )
+
+  wg.Add(1)
+  go func(sql string) {
+    defer wg.Done()
+
+    log.Println(sql)
+
+    rows, err := db.Query(sql)
     if err != nil {
         log.Fatal(err)
     }
 
-    _, ok := aritm01_item_set[xRecNo]
-    if !ok {
-      aritm01_item_set[xRecNo] = ItmNo
-    }
-  }
-  rows.Close()
+    for rows.Next() {
+      var audit Auditq_Row
 
-  log.Println("aritm01_item_set# ", len(aritm01_item_set))
+      err := rows.Scan(&audit.szDate, &audit.szTime, &audit.Pgm, &audit.User, &audit.RefNo, 
+        &audit.ItmNo, &audit.Qty, &audit.Msg, &audit.RefNo_2)
+      if err != nil {
+          log.Fatal(err)
+      }
+
+      _, ok := rec2aritm01_set[xRecNo]
+      if !ok {
+        lstno := rec2aritm01_set[ itmno2rec_set[audit.ItmNo] ].LstNo
+        lstno2auditq_set[lstno] = append(lstno2auditq_set[lstno], audit)
+      }
+    }
+    rows.Close()
+  }( fmt.Sprintf(`select A.Date, A.Time, Pgm, A.User, RefNo, ItmNo, Qty, Msg, RefNo_2 
+                from auditq_180 as A
+                where (A.Date between '%s' and '%s' and Msg like '+%%' and Flag = 1)
+                or RefNo_2 != ''`, start.Format("2006-01-02"), today) )
+
+  wg.Wait()
+
+  log.Println("rec2aritm01_set# ", len(rec2aritm01_set))
+  log.Println("itmno2rec_set# ", len(itmno2rec_set))
+  log.Println("lstno2recs_set# ", len(lstno2recs_set))
+  log.Println("lstno2auditq_set# ", len(lstno2auditq_set))
+
+  log_memory()
+
+  return
 
   // 4. get item list for upating
-  sql = fmt.Sprintf(`select xItmRecNo, ohQty from invctrl_rpt_%s
+  sql := fmt.Sprintf(`select xItmRecNo, ohQty from invctrl_rpt_%s
                       where dt = '%s'`, 
             month, today)
   logmsg(sql)
 
-  rows, err = db.Query(sql)
+  rows, err := db.Query(sql)
   if err != nil {
       log.Fatal(err)
   }
@@ -102,22 +197,38 @@ func main() {
         log.Fatal(err)
     }
 
-    _, ok := aritm01_item_set[xRecNo]
+    _, ok := rec2aritm01_set[xRecNo]
     if ok {
-      ItmNo = aritm01_item_set[xRecNo]
-      go get_aged_days(ItmNo, ohQty, today)
+      wg.Add(1)
+      arItm := rec2aritm01_set[xRecNo]
+      go get_aged_days(xRecNo, ohQty, today, arItm)
 
       counter++
-      if counter > 10 {
-        break 
-      }      
+      if counter % 250 == 0 {
+        log.Println("sleep!")
+        wg.Wait()
+        // time.Sleep(4 * time.Second)
+      }   
+
+      if counter > 10000 {   
+        break
+      }
     }
   }
 
+  wg.Wait()
   log.Println("Done!")
-  var input string
-    fmt.Scanln(&input)
-   log.Println("Done!")
+  log.Println("The rec2aged_set is %d", len(rec2aged_set))
+
+  // if DEBUG {
+  //   for key, value := range rec2aged_set {
+  //       fmt.Println("recno:", key, "aged days:", value)
+  //   }
+  // }
+
+  // var input string
+  //   fmt.Scanln(&input)
+  //  log.Println("Done!")
 }
 
 // ---------------------------------------------------
@@ -128,9 +239,26 @@ func logmsg(msg string) {
     log.Println(msg)
   }
 }
-func get_aged_days(itmno string, onhand int, dt string) {
+
+func log_memory() {
+  if DEBUG {
+    var mem runtime.MemStats
+    runtime.ReadMemStats(&mem)
+    log.Println("-----------------------")
+    log.Println(fmt.Sprintf("%10.2f Mb mem.Alloc", float64(mem.Alloc) / 1024.0 / 1024.0))
+    log.Println(fmt.Sprintf("%10.2f Mb mem.TotalAlloc", float64(mem.TotalAlloc) / 1024.0 / 1024.0))
+    log.Println(fmt.Sprintf("%10.2f Mb mem.HeapAlloc", float64(mem.HeapAlloc) / 1024.0 / 1024.0))
+    log.Println(fmt.Sprintf("%10.2f Mb mem.HeapSys", float64(mem.HeapSys) / 1024.0 / 1024.0))
+    log.Println("-----------------------")
+  }
+}
+
+func get_aged_days(recno int, onhand int, dt string, arItm Aritm01_Row) {
+  defer wg.Done()
+
   // run php
   ohQty := fmt.Sprintf("%d", onhand)
+  itmno := arItm.ItmNo
   cmd := exec.Command("php", "queryAgedItem_cmd.php", itmno, ohQty, dt)
   stdout, err := cmd.Output()
 
@@ -139,7 +267,11 @@ func get_aged_days(itmno string, onhand int, dt string) {
       return
   }
 
-  print(string(stdout))
+  rec2aged_set[recno] = string(stdout)
+
+  // logmsg(string(stdout))
+
+  // return string(stdout), nil
 
   // cmd := fmt.Sprintf(`/usr/bin/php /var/www/html/colin/github/study/go/erp/queryAgedItem_cmd.php '%s' %d '%s'`,
   //       itmno, onhand, dt)
