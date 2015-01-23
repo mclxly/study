@@ -33,6 +33,9 @@ pip2.7 install Django
 如果安装了某个package但import仍然出错，就需要查看pip是否对应的版本
 pip -V
 
+===========================Redis
+pip3.3 install redis
+
 ===========================Django===========================
 最新Django只支持Python 2.7+
 pip2 install MySQL-python

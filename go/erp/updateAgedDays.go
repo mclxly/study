@@ -17,6 +17,7 @@ import (
   "log"
   "sync"
   "runtime"
+  // "math"
 )
 
 const (
@@ -51,6 +52,7 @@ type Auditq_Row struct {
 }
 
 type Aged_Row struct {
+  ohDays int
   agedQ30 int
   agedQ60 int
   agedQ90 int
@@ -75,8 +77,12 @@ var itmno2rec_set map[string]int
 var itmsku2rec_set map[string]int
 // xrecno -> aged days
 var rec2aged_php_set map[int]string
+
 // xrecno -> Aged_Row
-var rec2aged_set map[int]Aged_Row
+var rec2aged_lock_set = struct{
+  sync.RWMutex
+  m map[int]Aged_Row
+} {m: make( map[int]Aged_Row )}
 // itmsku -> Auditq_Row
 var itmsku2auditq_lock_set = struct{
   sync.RWMutex
@@ -84,8 +90,9 @@ var itmsku2auditq_lock_set = struct{
 } {m: make( map[string][]Auditq_Row )}
 
 var wg sync.WaitGroup
+var nsToday  time.Time
 
-func main() {
+func main() {  
   // Init
   var szSql string
 
@@ -99,8 +106,8 @@ func main() {
     today = os.Args[1]
   }
 
-  start, _ := time.Parse("2006-01-02", today)
-  start = start.AddDate(0, 0, -365)
+  nsToday, _ := time.Parse("2006-01-02", today)
+  start := nsToday.AddDate(0, 0, -365)
 
   // m := time.Now().Month()
   month := fmt.Sprintf("%02d", time.Now().Month())
@@ -140,7 +147,6 @@ func main() {
   rec2aritm01_set = make( map[int]Aritm01_Row )
   itmsku2recs_set = make( map[string][]int )
   itmno2rec_set = make( map[string]int )
-  rec2aged_set = make( map[int]Aged_Row )
 
   var xRecNo int
   var ItmNo, LstNo, ItmSku string
@@ -257,7 +263,7 @@ func main() {
         // time.Sleep(4 * time.Second)
       }   
 
-      if counter > 1 {   
+      if counter > 200 {   
         break
       }
     }
@@ -265,7 +271,14 @@ func main() {
 
   wg.Wait()
   log.Println("Done!")
+  log.Println("The rec2aged_lock_set is %d", len(rec2aged_lock_set.m))
   log.Println("The rec2aged_php_set is %d", len(rec2aged_php_set))
+
+  for i, v := range rec2aged_lock_set.m {
+    log.Println("aged: %d %d", i, v.ohDays )
+  }
+
+  logAuditq(3086)
 
   // if DEBUG {
   //   for key, value := range rec2aged_php_set {
@@ -287,12 +300,73 @@ func get_aged_days(recno int, onhand int, dt string, arItm Aritm01_Row) {
   szOnhand := fmt.Sprintf("%d", onhand)
   itmno := arItm.ItmNo
 
+/*  type Aged_Row struct {
+    ohDays int
+    agedQ30 int
+    agedQ60 int
+    agedQ90 int
+    agedQ120 int
+    agedQ150 int
+    agedQ180 int
+    agedQ365 int
+  }
+  type Auditq_Row struct {
+  szDate string
+  szTime string
+  Pgm string
+  User string
+  RefNo string
+  ItmNo string
+  Qty int
+  Msg string
+  RefNo_2 string
+}
+    t1, _ := time.Parse("2006-01-02", "2015-01-03")
+    t2, _ := time.Parse("2006-01-02", "2014-09-02")
+    dd := t1.Sub(t2)
+    fmt.Printf("The call took %d to run.\n", dd / time.Hour / 24)
+*/
+  var ar Aged_Row
+  var maxDays int
 
-  for _, v := range itmsku2auditq_lock_set.m[arItm.ItmSku] {
-    fmt.Printf("%+v\n", v)
+  for i, v := range itmsku2auditq_lock_set.m[arItm.ItmSku] { 
+    // --------------------------
+    // skip invalid rec
+    if v.ItmNo != rec2aritm01_set[recno].ItmNo {
+      continue
+    }
+    
+    // --------------------------
+    // count  
+    t2, _ := time.Parse("2006-01-02", v.szDate)
+    days := int(nsToday.Sub(t2) / time.Hour / 24)
+
+    if maxDays < days {
+      maxDays = days
+    }
+
+    if v.Qty >= onhand {
+      itmsku2auditq_lock_set.Lock()  
+      itmsku2auditq_lock_set.m[arItm.ItmSku][i].Qty = itmsku2auditq_lock_set.m[arItm.ItmSku][i].Qty - onhand
+      itmsku2auditq_lock_set.Unlock()
+      break
+    } else {
+      itmsku2auditq_lock_set.Lock()  
+      itmsku2auditq_lock_set.m[arItm.ItmSku][i].Qty = 0
+      itmsku2auditq_lock_set.Unlock()
+
+      onhand = onhand - v.Qty
+    }
+    
+    // fmt.Printf("%+v\n", v)
   }
 
-  log.Fatal("aged!!")
+  ar.ohDays = maxDays
+  rec2aged_lock_set.Lock()
+  rec2aged_lock_set.m[recno] = ar
+  rec2aged_lock_set.Unlock()
+
+  //log.Fatal("aged!!")
 
   return
 
@@ -342,5 +416,16 @@ func log_memory() {
     log.Println(fmt.Sprintf("%10.2f Mb mem.HeapAlloc", float64(mem.HeapAlloc) / 1024.0 / 1024.0))
     log.Println(fmt.Sprintf("%10.2f Mb mem.HeapSys", float64(mem.HeapSys) / 1024.0 / 1024.0))
     log.Println("-----------------------")
+  }
+}
+
+func logAuditq(recno int) {
+  if !DEBUG {
+    return
+  }
+
+  arItm := rec2aritm01_set[recno]
+  for _, v := range itmsku2auditq_lock_set.m[arItm.ItmSku] {
+    fmt.Printf("%+v\n", v)
   }
 }
