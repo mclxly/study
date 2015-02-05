@@ -1,0 +1,21 @@
+===========================Laravel 5
+1. mkdir blog_l5
+2. cd blog_l5
+3. composer create-project laravel/laravel --prefer-dist
+4. cp .env.example .env
+5. php artisan key:generate
+6. php artisan config:cache
+7. chmod -R 775 storage
+8. chown -R :apache storage
+
+
+===========================Laravel 4.*
+# list routes
+php artisan routes
+
+# maintenance mode
+php artisan down/up
+
+chmod -R 775 app/storage
+
+ git clone --depth=1 https://github.com/twostairs/paperwork

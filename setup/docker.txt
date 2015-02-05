@@ -1,0 +1,32 @@
+===========================Docker
+# show version
+docker version
+
+# search image
+docker search tutorial
+
+# downloading container images
+docker pull learn/tutorial
+
+# run image
+# docker run IMAGE COMMAND PARA
+docker run learn/tutorial echo hello world
+
+# Installing things (not save yet)
+docker run learn/tutorial apt-get install -y ping
+
+# save changes
+docker ps -l
+docker commit -author="hah<colin.lin@a.com>" -m="add ping" 698 learn/ping
+docker commit -author="hah<colin.lin@a.com>" -m="add ping" 6989 learn/ping
+
+# Check your container
+# Your image is now a running container.
+docker ps
+
+# We can see useful information about this container.
+docker inspect
+
+# show you which images are currently on your host
+docker images
+

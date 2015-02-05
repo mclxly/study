@@ -1,42 +1,54 @@
 package main
 
 import (
-    "fmt"
-    "unsafe"
+	"fmt"
+	"unsafe"
 )
 
 type MyType struct {
-    Value1 int
-    Value2 string
+	Value1 int
+	Value2 string
 }
 
 func main() {
-    myMap := make(map[string]string)
-    myMap["Bill"] = "Jill"
+	if shouldEscape('1') {
+		fmt.Println("Addr")
+	}
 
-    pointer := unsafe.Pointer(&myMap)
-    fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
+	myMap := make(map[string]string)
+	myMap["Bill"] = "Jill"
 
-    ChangeMyMap(myMap)
-    fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
+	pointer := unsafe.Pointer(&myMap)
+	fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
 
-    ChangeMyMapAddr(&myMap)
-    fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
+	ChangeMyMap(myMap)
+	fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
+
+	ChangeMyMapAddr(&myMap)
+	fmt.Printf("Addr: %v Value : %s len: %d\n", pointer, myMap["Bill"], len(myMap))
+}
+
+func shouldEscape(c byte) bool {
+	switch c {
+	case ' ', '?', '&', '=', '#', '+', '%':
+		return true
+	}
+	return false
 }
 
 func ChangeMyMap(myMap map[string]string) {
-    myMap["Billp"] = "Joan"
+	myMap["Billp"] = "Joan"
 
-    pointer := unsafe.Pointer(&myMap)
+	pointer := unsafe.Pointer(&myMap)
 
-    fmt.Printf("Addr: %v Value : %s\n", pointer, myMap["Bill"])
+	fmt.Printf("Addr: %v Value : %s\n", pointer, myMap["Bill"])
 }
 
 // Don't Do This, Just For Use In This Article
 func ChangeMyMapAddr(myMapPointer *map[string]string) {
-    (*myMapPointer)["Bills"] = "Jenny"
+	(*myMapPointer)["Bills"] = "Jenny"
 
-    pointer := unsafe.Pointer(myMapPointer)
+	pointer := unsafe.Pointer(myMapPointer)
 
-    fmt.Printf("Addr: %v Value : %s\n", pointer, (*myMapPointer)["Bill"])
+	fmt.Printf("Addr: %v Value : %s\n", pointer, (*myMapPointer)["Bill"])
 }
