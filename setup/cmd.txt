@@ -111,6 +111,9 @@ ln -s ../sites-available/yourdomainname.com .
 copy file to remote server
 scp mylocalfile.txt root@192.168.1.10:/recipient/directory/
 
+copy remote file to local
+scp -r user@your.server.example.com:/path/to/foo /home/user/Desktop/
+
 list users
 cat /etc/passwd | cut -d ":" -f1
 
@@ -196,10 +199,24 @@ uptime
 # Search in my /var/log directory:
 find /var/log -type f -size +100000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
 
+# get host name
+hostname
+
 ============Yum
 "Protected multilib versions: libstdc++-4.6.3-2.el6.x86_64 != libstdc++-4.4.7-3.el6.i686
 Error: Protected multilib versions: libgcc-4.6.3-2.el6.x86_64 != libgcc-4.4.7-3.el6.i686"
 yum remove libgcc-4.4.7-4.el6.i686
+
+# proxy setting
+export http_proxy=http://192.168.4.192:1080
+export https_proxy=http://192.168.4.192:1080
+export ftp_proxy=http://192.168.4.192:1080
+unset http_proxy
+unset https_proxy
+
+# 添加路径 ~/.bash_profile
+export PATH=/usr/sbin:$PATH
+PATH=/home/colin.lin/.composer/vendor/bin:$PATH
 
 =========================================Nginx
 检查nginx工作进程
