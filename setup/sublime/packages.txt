@@ -32,3 +32,6 @@ SublimeERB
         { "key": "selector", "operator": "equal", "operand": "text.html.ruby, text.haml, source.yaml, source.css, source.scss, source.js, source.coffee" }
       ]
 }
+
+============================Laravel
+Laravel 4 Artisan 
