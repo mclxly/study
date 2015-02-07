@@ -8,6 +8,11 @@
 7. chmod -R 775 storage
 8. chown -R :apache storage
 
+# command line
+php artisan tinker --env=local
+
+# list routes
+php artisan route:list
 
 ===========================Laravel 4.*
 # list routes
