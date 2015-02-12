@@ -80,6 +80,10 @@ vim /etc/ssh/sshd_config
 Match Address 192.168.2.*,127.0.0.1 PermitRootLogin yes
 
 ===========================CENTOS
+# clear console
+reset
+ctrl+l
+
 # htop better than top
 # htop - an interactive process-viewer for Linux - hisham.hm
 yum install htop

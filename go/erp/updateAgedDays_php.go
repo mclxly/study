@@ -6,27 +6,30 @@ Usage: go run updateAgedDays.go [date:optional]
 package main
 
 import (
-	"fmt"
-	"time"
-	// "strings"
-	// "strconv"
+	// "bytes"
 	"database/sql"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"os"
 	"os/exec"
 	"runtime"
+	"strconv"
+	"strings"
 	"sync"
+	"time"
 	// "math"
 )
 
 const (
-	DEBUG      = true
-	BIZ_DAYS   = 30
-	DB_HOST    = "tcp(192.168.0.121:3306)"
-	DB_NAME    = "madev_ma88"
-	DB_USER    = /*"root"*/ "wh_report_user"
-	DB_PASS    = /*""*/ "abc3!90"
+	DEBUG    = true
+	BIZ_DAYS = 30
+	DB_HOST  = "tcp(192.168.0.121:3306)"
+	DB_NAME  = "madev_ma88"
+	// DB_USER    = /*"root"*/ "wh_report_user"
+	// DB_PASS    = /*""*/ "abc3!90"
+	DB_USER    = /*"root"*/ ""
+	DB_PASS    = /*""*/ ""
 	WORKER_NUM = 6
 )
 
@@ -178,8 +181,9 @@ func main() {
 	log.Println("itmsku2recs_set# ", len(itmsku2recs_set))
 
 	// 5. get item list for upating
+	// limit 200000
 	sql := fmt.Sprintf(`select xItmRecNo, ohQty from invctrl_rpt_%s
-                      where dt = '%s' limit 2000`,
+                      where dt = '%s' and ohQty > 0`,
 		month, today)
 	logmsg(sql)
 
@@ -211,9 +215,9 @@ func main() {
 				// time.Sleep(4 * time.Second)
 			}
 
-			if counter > 1000 {
-				break
-			}
+			// if counter > 1000 {
+			// 	break
+			// }
 		}
 	}
 
@@ -224,20 +228,87 @@ func main() {
 	log_memory()
 
 	// update database
+	// var buffer bytes.Buffer
+	// nTotalLen := 0
+	counter = 0
 	for i, v := range rec2aged_lock_set.m {
-		log.Println("aged: %d %d", i, v.ohDays)
+		if DEBUG {
+			log.Println("aged: %d %d", i, v.ohDays)
+		}
+
 		// 2015-01-23: update SQL TODO*********************************************************************
+
+		sql := fmt.Sprintf(`update invctrl_rpt_%s set ohDays = %d, 
+								agedQ30 = %d, agedQ60 = %d, agedQ90 = %d,
+								agedQ120 = %d, agedQ150 = %d, 
+								agedQ180 = %d, agedQ365 = %d
+								where xItmRecNo = %d and dt = '%s'`,
+			month, v.ohDays, v.agedQ30, v.agedQ60, v.agedQ90, v.agedQ120, v.agedQ150,
+			v.agedQ180, v.agedQ365, i, today)
+		// log.Println(sql)
+		// log.Fatal(sql)
+
+		// _, err := db.Exec(sql) // OK
+		// if err != nil {
+		// 	log.Println(buffer.String())
+		// 	log.Fatal(err)
+		// }
+
+		wg.Add(1)
+		go func(sql string) {
+			defer wg.Done()
+			result, err := db.Exec(sql) // OK
+			if err != nil {
+				log.Println(sql)
+				log.Fatal(err)
+			}
+
+			num, err := result.RowsAffected()
+			if err != nil {
+				fmt.Println("fetch row affected failed:", err.Error())
+				return
+			}
+			fmt.Println("update recors number", num)
+		}(sql)
+
+		counter++
+		if counter%50 == 0 {
+			log.Println("waiiiiiiiit!")
+			wg.Wait()
+			// time.Sleep(4 * time.Second)
+		}
+
+		// nLen, _ := buffer.WriteString(sql)
+		// nTotalLen += nLen
+		// if nTotalLen > 1024 {
+		// 	_, err := db.Exec(buffer.String()) // OK
+		// 	if err != nil {
+		// 		log.Println(buffer.String())
+		// 		log.Fatal(err)
+		// 	}
+
+		// 	log.Println(buffer.String())
+
+		// 	// reset buffer
+		// 	buffer.Reset()
+		// 	nTotalLen = 0
+		// }
 	}
 
-	if DEBUG {
-		for key, value := range rec2aged_lock_php_set.m {
-			fmt.Println("recno:", key, "aged days:", value)
-		}
-	}
+	wg.Wait()
+	fmt.Println("counter: ", counter)
+	log.Println("Done Phrase3!")
+
+	// if DEBUG {
+	// 	for key, value := range rec2aged_lock_php_set.m {
+	// 		fmt.Println("recno:", key, "aged days:", value)
+	// 	}
+	// }
 
 	// var input string
 	//   fmt.Scanln(&input)
-	//  log.Println("Done!")
+
+	log.Println("Done!")
 }
 
 // ---------------------------------------------------
@@ -258,9 +329,17 @@ func get_aged_days(recno int, onhand int, dt string, arItm Aritm01_Row) {
 		return
 	}
 
-	ret := strings.Split(stdout, ",")
-	ar := Aged_Row{ret[0], ret[1], ret[2], ret[3], ret[4], ret[5],
-		ret[6], ret[7]}
+	szTT := fmt.Sprintf("%s", stdout)
+	ret := strings.Split(szTT, ",")
+	i0, err := strconv.Atoi(ret[0])
+	i1, err := strconv.Atoi(ret[1])
+	i2, err := strconv.Atoi(ret[2])
+	i3, err := strconv.Atoi(ret[3])
+	i4, err := strconv.Atoi(ret[4])
+	i5, err := strconv.Atoi(ret[5])
+	i6, err := strconv.Atoi(ret[6])
+	i7, err := strconv.Atoi(ret[7])
+	ar := Aged_Row{i0, i1, i2, i3, i4, i5, i6, i7}
 
 	rec2aged_lock_set.Lock()
 	rec2aged_lock_set.m[recno] = ar

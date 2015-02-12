@@ -14,6 +14,9 @@ php artisan tinker --env=local
 # list routes
 php artisan route:list
 
+===========================Laravel 5 starter
+https://github.com/mrakodol/Laravel-5-Bootstrap-3-Starter-Site
+
 ===========================Laravel 4.*
 # list routes
 php artisan routes
