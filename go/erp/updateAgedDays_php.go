@@ -28,8 +28,8 @@ const (
 	DB_NAME  = "madev_ma88"
 	// DB_USER    = /*"root"*/ "wh_report_user"
 	// DB_PASS    = /*""*/ "abc3!90"
-	DB_USER    = /*"root"*/ ""
-	DB_PASS    = /*""*/ ""
+	DB_USER    = /*"root"*/ "maadmin"
+	DB_PASS    = /*""*/ "c0m1ab"
 	WORKER_NUM = 6
 )
 
