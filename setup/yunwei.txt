@@ -1,0 +1,9 @@
+==================================Metrics Cocktail: StatsD+InfluxDB+Grafana
+http://www.symantec.com/connect/blogs/metrics-cocktail-statsdinfluxdbgrafana
+1. 先启动StatsD
+2. python3.3 test.py
+3. select value from my.test.1.counter;
+
+
+==================================InfluxDB
+select value from my.test.1.counter;
