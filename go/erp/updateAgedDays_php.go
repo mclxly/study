@@ -124,7 +124,9 @@ func main() {
 	// nsToday = t
 
 	// m := time.Now().Month()
-	month := fmt.Sprintf("%02d", time.Now().Month())
+	//month := fmt.Sprintf("%02d", time.Now().Month())
+	month := fmt.Sprintf("%02d", start.Month())
+	// log.Fatal(month)
 
 	log.Println("Working date is " + today + " month is " + month)
 	log.Println(start.Format("2006-01-02") + " between " + today)

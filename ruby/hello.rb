@@ -2,6 +2,33 @@
 #
 # Hello world ruby program
 
+# loip = `ipvsadm -G |awk 'NR>1{if($3!="") print $1,$2}'`
+localip = {}
+loiptmp = {}
+
+loip = ['10.79.244.34 0',
+'10.79.244.34 65',
+'10.79.244.35 152']
+
+loip.each do |i|
+  t = i.chomp.split(' ')
+  localip[t[0]] = localip[t[0]].to_i + t[1].to_i
+  # print localip[t[0]].to_i
+end
+
+print localip['10.79.244.34']
+
+file = File.open('old.txt',"a+")
+# file = IO.readlines('old.txt')
+file.each do |old_line|
+  d = old_line.chomp.split(':')
+  loiptmp[d[0]] = d[1].to_i
+  puts  d[0]
+end
+
+print loiptmp['10.79.244.34']
+exit 0                       
+
 num = 112_222_000_000
 puts num
 
