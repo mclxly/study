@@ -275,6 +275,9 @@ npm ls
 
 npm rm ember-cli-ember-data --save-dev
 
+更新node.js
+从源代码编译覆盖现有版本
+
 ===========================
 use the npm mirror
 npm set registry http://registry.cnpmjs.org
