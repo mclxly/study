@@ -40,3 +40,6 @@ Laravel 4 Artisan
 ============================Laravel - Blade Templates
 Laravel Blade Highlighter by Eric Percifield
 
+============================ReactJS
+https://packagecontrol.io/packages/ReactJS
+
