@@ -267,6 +267,9 @@ git commit --amend
 更新npm
 npm update npm -g
 
+淘宝镜像
+http://npm.taobao.org/
+
 npm install --registry=https://registry.npm.taobao.org
 
 packages列表
@@ -450,6 +453,7 @@ To add the line above or below to the selection, use Ctl+Alt+Up and Ctrl+Alt+dow
 If you go too far, use Undo Selection (Ctrl+U, or Command+U on OS X) to step backwards.
 
 ===========================Yeoman
+npm install --global gulp
 npm install --global yo
 npm install --global generator-backbone
 yo backbone library
