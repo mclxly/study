@@ -31,6 +31,10 @@ Fix: export DISABLE_NOTIFIER=true;
 "Hash A File"
 Fix:  gulp --production
 
+=============CROS
+No 'Access-Control-Allow-Origin' header is present
+Fix: https://github.com/barryvdh/laravel-cors
+
 ========================================Laravel 5 starter
 https://github.com/mrakodol/Laravel-5-Bootstrap-3-Starter-Site
 
