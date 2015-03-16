@@ -604,6 +604,7 @@ rt_field = partno
 
 php-fpm, phpMyAdmin: "all to undefined function __()"
 Open that file in your browser (http://localhost/test.php or similar) and look for the line session.save_path. That's your session folder; make sure the permissions are suitable and see if that helps.
+chmod 777 -R /var/lib/php/session
 
 ==================================Problems List
 yum update error package skip-broken php55w

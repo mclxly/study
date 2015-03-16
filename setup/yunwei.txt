@@ -7,3 +7,9 @@ http://www.symantec.com/connect/blogs/metrics-cocktail-statsdinfluxdbgrafana
 
 ==================================InfluxDB
 select value from my.test.1.counter;
+
+==================================Log.io
+[CentOS] npm install -g log.io --user "root"
+log.io-server
+log.io-harvester
+vim ~/.log.io/harvester.conf

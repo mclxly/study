@@ -1,3 +1,16 @@
+========================================php
+error_reporting(E_ALL); 
+ini_set("display_errors", 1);
+error_log('Test');
+
+php.ini error_log
+touch /var/log/php_errors.log
+chown nginx: /var/log/php_errors.log
+chmod 777 /var/log/php_errors.log
+
+========================================php.ini
+date.timezone = 'Asia/Hong_Kong'
+
 ========================================Laravel 5
 1. mkdir blog_l5
 2. cd blog_l5
@@ -20,6 +33,7 @@ php artisan serve --port=8081 --host=0.0.0.0
 
 #  create a migration for the failed_jobs table
 php artisan queue:failed-table
+
 
 ========================================Laravel 5 Issues
 "gulp-notify: [Error in notifier] Error in plugin 'gulp-notify'
