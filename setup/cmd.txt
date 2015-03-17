@@ -222,6 +222,11 @@ unset https_proxy
 export PATH=/usr/sbin:$PATH
 PATH=/home/colin.lin/.composer/vendor/bin:$PATH
 
+=========================================Selinux
+/var/log/audit/audit.log
+turn off: setenforce Permissive
+turn on: setenforce Enforcing
+
 =========================================Nginx
 检查nginx工作进程
 netstat -nap | grep nginx
@@ -238,6 +243,10 @@ nginx -V
 
 最新安装教程
 http://xmodulo.com/2014/01/compile-install-nginx-web-server.html
+
+如果配置没发现问题，可能是seLinux引起的
+/var/log/audit/audit.log
+setenforce Permissive
 
 =========================================Deploy h5bp/server-configs-nginx
 /bin/cp mime.types /etc/nginx
