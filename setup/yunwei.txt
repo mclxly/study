@@ -13,3 +13,35 @@ select value from my.test.1.counter;
 log.io-server
 log.io-harvester
 vim ~/.log.io/harvester.conf
+http://192.168.1.30:28778/
+
+==========================Problems
+error: Invalid TCP message: Accept-Language: en-us
+
+==========================harvester.conf
+exports.config = {
+  nodeName: "development_server",
+  logStreams: {
+    blog_linxiang_dev: [
+      "/var/log/nginx/blog.linxiang.access",
+      "/var/log/nginx/blog.linxiang.error"
+    ],
+    php_fpm: [
+      "/var/log/php_errors.log",
+      "/var/log/php-fpm/error.log",
+      "/var/log/php-fpm/www-error.log"
+    ],
+    nginx: [
+      "/var/log/nginx/error.log",
+      "/var/log/nginx/access.log"
+    ],
+    system: [
+      "/var/log/audit/audit.log"
+    ]
+
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 28777
+  }
+}
