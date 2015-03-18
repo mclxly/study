@@ -1,3 +1,8 @@
+========================================wordpress
+WordPress 中文摘要问题
+wp-includes/formatting.php
+wp_trim_words
+
 ========================================php
 error_reporting(E_ALL); 
 ini_set("display_errors", 1);

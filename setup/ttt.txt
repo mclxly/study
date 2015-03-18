@@ -1,9 +1,0 @@
-lastlog(8) will report the most recent information from the /var/log/lastlog facility, if you have pam_lastlog(8) configured.
-
-aulastlog(8) will make a similar report, but from the audit logs in /var/log/audit/audit.log. (Recommended, as auditd(8) records are harder to tamper with than syslog(3) records.)
-
-ausearch -c sshd will search your audit logs for reports from the sshd process.
-
-last(8) will search through /var/log/wtmp for the most recent logins. lastb(8) will show bad login attempts.
-
-/var/log/secure
