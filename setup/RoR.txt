@@ -1,5 +1,16 @@
+==================================Ruby
+#upgrade rvm
+
+
+rvm list known
+
 ==================================Ruby on Rails
-ruby command line
+#upgrade Rails
+
+#upgrade gem
+gem update --system
+
+#ruby command line
 IRB
 
 nginx+unicorn+rack-cache
@@ -88,3 +99,7 @@ rails g devise:views admin_user
 
 ===============Gem: mysql2
 yum install libmysqlclient-dev mysql-devel
+
+==================================Problems
+nokogiri gem installation error
+gem install nokogiri -v 1.6.6.2 -- --use-system-libraries
