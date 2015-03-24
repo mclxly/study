@@ -1,11 +1,14 @@
 ==================================Ruby
 #upgrade rvm
-
+rvm get stable
 
 rvm list known
 
+rvm upgrade ruby-1.9.3-p125 ruby-1.9.3-p327
+
 ==================================Ruby on Rails
 #upgrade Rails
+gem install rails
 
 #upgrade gem
 gem update --system
@@ -27,7 +30,9 @@ ps aux | grep 'unicorn' | awk '{print $2}' | xargs kill -9
 ps aux | grep 'unicorn' | awk '{print $2}' | xargs sudo kill -9
 
 数据库操作
-db:migrate runs (single) migrations that have not run yet.
+#runs (single) migrations that have not run yet.
+rake db:migrate 
+
 db:create creates the database
 db:drop deletes the database
 db:schema:load creates tables and columns within the (existing) database following schema.rb
@@ -50,11 +55,20 @@ Edit the config/secrets.yml file to change the secret token.
 
 ===============Rails command
 rails console
-rails server
+rails server -b 0.0.0.0 -p 3001
 rake
 rails generate
 rails dbconsole
 rails new app_name
+
+# list urls
+rake routes
+
+# create namespace controller
+rails g controller namespace/basectl
+
+#generate migration
+rails g migration add_accessToken_to_users access_token:string
 
 rails generate controller Article create
 
@@ -71,6 +85,9 @@ RAILS_ENV=production rake secret
 gem sources --remove https://rubygems.org/
 gem sources -a https://ruby.taobao.org/
 gem sources -l
+
+#更新系统gem
+gem update
 
 ===============Gems: ActiveAdmin
 更新Gemfile
