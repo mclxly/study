@@ -14,3 +14,8 @@ Fatal: no pg_hba.conf entry for host "", user "postgres", database "postgres"
 SELECT row_to_json(posts)
   FROM posts limit 10;
 
+===========================Mysql
+grant all on blog.* to cmsuser@localhost identified by 'password';
+grant all on rails_testapp.* to 'rails'@'%' identified by 'password';
+GRANT SELECT ON *.* TO 'readonly_user'@'%' IDENTIFIED BY '123456';
+flush privileges;

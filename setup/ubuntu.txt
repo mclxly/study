@@ -2,6 +2,8 @@
 sudo apt-get update
 sudo apt-get upgrade
 
+sudo apt-get uninstall nodejs
+
 # configure network
 sudo nano /etc/network/interfaces
 sudo nano /etc/resolv.conf
@@ -15,6 +17,20 @@ lsb_release -a
 
 # List all installed packages
 dpkg --get-selections | grep -v deinstall
+
+# upgrade php
+
+===============node.js
+sudo apt-get install nodejs
+
+npm install -g npm@latest
+
+# 如果从源代码安装
+echo 'PATH=$PATH:$HOME/local/bin' >> $HOME/.bashrc
+source ~/.bashrc
+
+===============http://logio.org/
+sudo npm install -g log.io --user "ubuntu"
 
 ==================================安全
 # Logwatch
@@ -89,3 +105,7 @@ pam-auth-update
 
 2."rying to overwrite '/etc/logrotate.d/nginx', which is also in package"
 sudo apt-get remove nginx-common 
+
+3.Error: Cannot find module 'rx'
+echo $NODE_PATH
+
