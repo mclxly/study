@@ -20,6 +20,14 @@ dpkg --get-selections | grep -v deinstall
 
 # upgrade php
 
+# get external/public IP
+wget -qO- http://ipecho.net/plain ; echo
+
+===============oh-my-zsh
+sudo apt-get install zsh
+wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+
+
 ===============node.js
 sudo apt-get install nodejs
 
