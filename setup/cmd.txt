@@ -272,6 +272,9 @@ git push -f
 # Amend your last commit
 git commit --amend
 
+# 合并到最新的branch
+git merge upstream/master
+
 =========================================NPM
 更新npm
 npm update npm -g
