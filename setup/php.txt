@@ -39,7 +39,7 @@ php artisan serve --port=8081 --host=0.0.0.0
 #  create a migration for the failed_jobs table
 php artisan queue:failed-table
 
-# tool set
+========================================Laravel 5 packages
 composer require monolog/monolog
 composer require barryvdh/laravel-debugbar
 

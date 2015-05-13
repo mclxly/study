@@ -25,6 +25,7 @@ DisposaBoy/GoSublime
 ============================Javascript
 Ember​Script
 Java​Script Snippets
+JavaScript Completions
 
 ============================HTML
 emmet
