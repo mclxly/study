@@ -5,6 +5,9 @@ Package List:
 2. EJS
 An EJS syntax definition specifically for sublime text
 
+============================Common
+DocBlockr
+
 ============================Python
 Anaconda - It's great, maybe 
 
@@ -19,8 +22,10 @@ https://realpython.com/blog/python/setting-up-sublime-text-3-for-full-stack-pyth
 https://github.com/DisposaBoy/GoSublime
 DisposaBoy/GoSublime
 
-============================Javascript Framework
+============================Javascript
 Ember​Script
+Java​Script Snippets
+JavaScript Completions
 
 ============================HTML
 emmet
