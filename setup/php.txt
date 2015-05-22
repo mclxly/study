@@ -42,6 +42,7 @@ php artisan queue:failed-table
 ========================================Laravel 5 packages
 composer require monolog/monolog
 composer require barryvdh/laravel-debugbar
+composer require predis/predis
 
 ========================================Laravel 5 Issues
 "gulp-notify: [Error in notifier] Error in plugin 'gulp-notify'

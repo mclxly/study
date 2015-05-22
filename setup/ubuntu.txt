@@ -23,12 +23,33 @@ dpkg --get-selections | grep -v deinstall
 # get external/public IP
 wget -qO- http://ipecho.net/plain ; echo
 
+===================================================
+                  DigitalOcean
+===================================================                  
+1. Prepare
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
+https://www.digitalocean.com/community/tutorials/additional-recommended-steps-for-new-ubuntu-14-04-servers
+1. LNMP
+===============nginx
+Upgrade nginx 1.6.0+ to 1.8 (see Nginx+hhvm);
+/etc/init.d/nginx start
+
+https://github.com/h5bp/server-configs-nginx
+https://github.com/h5bp/server-configs-nginx/blob/master/doc/getting-started.md
+
+===============php
+ /var/run/php5-fpm.sock
+ vim /etc/php5/fpm/php.ini
+
+2. disable remote login with root
+
 ===============oh-my-zsh
 sudo apt-get install zsh
 wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 
 
 ===============node.js
+curl -sL https://deb.nodesource.com/setup | sudo bash -
 sudo apt-get install nodejs
 
 npm install -g npm@latest
