@@ -3,20 +3,55 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 
 #install packages
-sudo apt-get -y install php5-cli git
+sudo apt-get install make g++ libssl-dev git build-essential
+sudo apt-get -y install php5-cli git php5-mcrypt php5-fpm
 sudo php5enmod mcrypt
-sudo service php5-fpm restart
-
- 
+sudo service php5-fpm restart 
 
 #installcomposer
 sudo curl -sS https://getcomposer.org/installer | php5
 sudo mv composer.phar /usr/local/bin/composer
 
+#install node.js
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt-get install nodejs
+
 #make swap
 sudo fallocate -l 1G /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
+sudo sh -c 'echo "/swapfile none swap sw 0 0" >> /etc/fstab'
+
+#make nginx
+sudo vim /etc/apt/sources.list
+deb http://nginx.org/packages/ubuntu/ trusty nginx
+deb-src http://nginx.org/packages/ubuntu/ trusty nginx
+
+sudo apt-get update
+wget http://nginx.org/keys/nginx_signing.key
+sudo apt-key add nginx_signing.key
+sudo apt-get install nginx
+
+https://github.com/h5bp/server-configs-nginx
+https://github.com/h5bp/server-configs-nginx/blob/master/doc/usage.md
+https://github.com/h5bp/server-configs-nginx/blob/master/doc/getting-started.md
+
+cd /etc/nginx-previous/
+sudo cp uwsgi_params scgi_params fastcgi_params /etc/nginx/
+
+#setup firewall
+sudo ufw allow ssh
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw show added
+sudo ufw enable
+sudo ufw status
+https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
+
+#Configure Timezones/NTP Synchronization
+sudo dpkg-reconfigure tzdata
+sudo apt-get update
+sudo apt-get install ntp
 
 #setup site
 sudo mkdir -p /var/www/laravel/
@@ -46,7 +81,15 @@ server {
 EOF
 sudo service nginx restart 
 
- 
+# Enabling a site
+cd /etc/nginx/sites-enabled
+ln -s ../sites-available/yourdomainname.com .
+sudo /etc/init.d/nginx configtest
+
+# Basic Auth
+https://www.digitalocean.com/community/tutorials/how-to-set-up-http-authentication-with-nginx-on-ubuntu-12-10
+# How to Proxy Port 80 to 2368 for Ghost with Nginx
+https://allaboutghost.com/how-to-proxy-port-80-to-2368-for-ghost-with-nginx/
 
 #install laravel
 sudo composer global require "laravel/installer=~1.1"

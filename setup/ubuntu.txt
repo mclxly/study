@@ -60,6 +60,7 @@ source ~/.bashrc
 
 ===============http://logio.org/
 sudo npm install -g log.io --user "ubuntu"
+https://github.com/NarrativeScience/Log.io/wiki/Daemonizing-log.io-on-Ubuntu-using-upstart-(v0.3.x)
 
 ==================================安全
 # Logwatch
@@ -74,8 +75,10 @@ How to open port 8000 on Ubuntu 12.04?
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-iptables-on-ubuntu-14-04
 
 close firewall?
+sudo ufw status
 sudo ufw disable
 sudo ufw enable
+https://www.digitalocean.com/community/tutorials/additional-recommended-steps-for-new-ubuntu-14-04-servers
 
 ==================================Nginx+hhvm
 sudo apt-get install php5 php5-cli php5-common php5-cgi php5-mysql php5-gd
@@ -138,3 +141,8 @@ sudo apt-get remove nginx-common
 3.Error: Cannot find module 'rx'
 echo $NODE_PATH
 
+
+==================================Gitlab
+sudo dpkg -i gitlab-ce_7.11.2~omnibus-1_amd64.deb
+sudo gitlab-ctl reconfigure
+sudo gitlab-ctl restart
