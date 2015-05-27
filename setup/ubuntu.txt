@@ -23,6 +23,11 @@ dpkg --get-selections | grep -v deinstall
 # get external/public IP
 wget -qO- http://ipecho.net/plain ; echo
 
+# correct local datetime
+sudo service ntp stop
+sudo ntpdate pool.ntp.org
+sudo service ntp start
+
 ===================================================
                   DigitalOcean
 ===================================================                  
@@ -146,3 +151,6 @@ echo $NODE_PATH
 sudo dpkg -i gitlab-ce_7.11.2~omnibus-1_amd64.deb
 sudo gitlab-ctl reconfigure
 sudo gitlab-ctl restart
+
+# Add an SSH Key
+/help/ssh/README
