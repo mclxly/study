@@ -23,6 +23,11 @@ dpkg --get-selections | grep -v deinstall
 # get external/public IP
 wget -qO- http://ipecho.net/plain ; echo
 
+# correct local datetime
+sudo service ntp stop
+sudo ntpdate pool.ntp.org
+sudo service ntp start
+
 ===================================================
                   DigitalOcean
 ===================================================                  
@@ -148,6 +153,12 @@ sudo gitlab-ctl reconfigure
 sudo gitlab-ctl restart
  /etc/gitlab/gitlab.rb 
 
+# Add an SSH Key to Gitlab
+/help/ssh/README
+
+# Generate SSH Key from client
+https://help.github.com/articles/generating-ssh-keys/
+
 ===============GitLab note
 /etc/gitlab/gitlab.rb
 external_http会直接影响端口
@@ -156,4 +167,5 @@ external_http会直接影响端口
 ==================================SMTP Server
 https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-as-a-send-only-smtp-server-on-ubuntu-14-04
 sudo apt-get install mailutils
+
 

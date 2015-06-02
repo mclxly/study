@@ -52,6 +52,8 @@ https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-uf
 sudo dpkg-reconfigure tzdata
 sudo apt-get update
 sudo apt-get install ntp
+ntpdate -d ntp.ubuntu.com # Debug mode
+ntpdate -q ntp.ubuntu.com # Query mode
 
 #setup site
 sudo mkdir -p /var/www/laravel/
