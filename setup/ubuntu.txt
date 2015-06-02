@@ -146,3 +146,14 @@ echo $NODE_PATH
 sudo dpkg -i gitlab-ce_7.11.2~omnibus-1_amd64.deb
 sudo gitlab-ctl reconfigure
 sudo gitlab-ctl restart
+ /etc/gitlab/gitlab.rb 
+
+===============GitLab note
+/etc/gitlab/gitlab.rb
+external_http会直接影响端口
+/opt/gitlab/embedded/service/gitlab-rails/app/views
+
+==================================SMTP Server
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-as-a-send-only-smtp-server-on-ubuntu-14-04
+sudo apt-get install mailutils
+

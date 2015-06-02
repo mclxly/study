@@ -4,7 +4,7 @@ sudo apt-get -y upgrade
 
 #install packages
 sudo apt-get install make g++ libssl-dev git build-essential
-sudo apt-get -y install php5-cli git php5-mcrypt php5-fpm
+sudo apt-get -y install php5-cli git php5-mcrypt php5-fpm php5-curl
 sudo php5enmod mcrypt
 sudo service php5-fpm restart 
 
