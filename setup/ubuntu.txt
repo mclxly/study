@@ -152,5 +152,8 @@ sudo dpkg -i gitlab-ce_7.11.2~omnibus-1_amd64.deb
 sudo gitlab-ctl reconfigure
 sudo gitlab-ctl restart
 
-# Add an SSH Key
+# Add an SSH Key to Gitlab
 /help/ssh/README
+
+# Generate SSH Key from client
+https://help.github.com/articles/generating-ssh-keys/
