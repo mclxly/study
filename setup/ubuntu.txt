@@ -28,6 +28,12 @@ sudo service ntp stop
 sudo ntpdate pool.ntp.org
 sudo service ntp start
 
+# superuser run crontab
+sudo crontab -e
+
+# normal user run crontab
+crontab -e
+
 ===================================================
                   DigitalOcean
 ===================================================                  
