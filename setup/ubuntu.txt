@@ -28,6 +28,9 @@ sudo service ntp stop
 sudo ntpdate pool.ntp.org
 sudo service ntp start
 
+# Delete all root mail / inbox from a shell prompt
+sudo rm /var/spool/mail/root
+
 ===================================================
                   DigitalOcean
 ===================================================                  

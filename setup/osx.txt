@@ -8,3 +8,7 @@ sudo lsof -i -n -P|grep 8080
 
 3. 映射远程路径到本地
 sshfs -o defer_permissions linxiang@192.168.1.51:/data /Users/colin/my-mount    
+
+4. 强制关闭程序
+ps -fe | grep 'Sequel'
+kill -9 pid

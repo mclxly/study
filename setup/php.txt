@@ -16,6 +16,9 @@ chmod 777 /var/log/php_errors.log
 ========================================php.ini
 date.timezone = 'Asia/Hong_Kong'
 
+========================================Install Laravel 5
+
+
 ========================================Laravel 5
 1. mkdir blog_l5
 2. cd blog_l5
