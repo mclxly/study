@@ -2,6 +2,9 @@
 sudo apt-get update
 sudo apt-get upgrade
 
+# 更换package source源 (cn.archive....比较快)
+/etc/apt/sources.list
+
 sudo apt-get uninstall nodejs
 
 # configure network

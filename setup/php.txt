@@ -3,6 +3,23 @@ WordPress 中文摘要问题
 wp-includes/formatting.php
 wp_trim_words
 
+========================================composer
+# 解决安装包速度问题
+composer config -l -g
+# config.json
+{
+    "config": {},
+    "repositories": [
+      {"type": "composer", "url": "http://pkg.phpcomposer.com/repo/packagist/"},
+      {"packagist": false}
+    ]
+}
+sudo /usr/local/bin/composer selfupdate
+composer install --no-dev
+
+Executing command (CWD): php artisan clear-compiled
+Executing command (CWD): php artisan optimize
+
 ========================================php
 error_reporting(E_ALL); 
 ini_set("display_errors", 1);
@@ -41,6 +58,7 @@ php artisan route:list
 
 # start server
 php artisan serve --port=8081 --host=0.0.0.0
+php artisan serve --port=8000 --host=0.0.0.0
 
 #  create a migration for the failed_jobs table
 php artisan queue:failed-table

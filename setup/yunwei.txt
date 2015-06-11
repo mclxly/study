@@ -1,4 +1,10 @@
 ==================================Deploy code
+http://www.computerhope.com/unix/rsync.htm
+# no interactive
+sshpass -p 'password' rsync -r -avz -e "ssh -l user -o StrictHostKeyChecking=no" --exclude-from=/home/colin/rsync_exclude.lst /var/www/html 192.168.0.140:/var/www
+
+# interactive
+rsync -avz --exclude-from /home/colin.lin/rsync_exclude_demo.lst colin.lin@githere.com:/data/github/laravel-5.1-tutorial/demo /var/www/html/colin/github/laravel-5.1-tutorial
 
 ==================================Metrics Cocktail: StatsD+InfluxDB+Grafana
 http://www.symantec.com/connect/blogs/metrics-cocktail-statsdinfluxdbgrafana
