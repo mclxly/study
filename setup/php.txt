@@ -68,6 +68,11 @@ composer require monolog/monolog
 composer require barryvdh/laravel-debugbar
 composer require predis/predis
 
+# developing your packages in Laravel 5
+https://laracasts.com/discuss/channels/tips/developing-your-packages-in-laravel-5
+http://stackoverflow.com/questions/28378460/laravel-5-package-development/28383338#28383338
+https://github.com/franzliedke/studio
+
 ========================================Laravel 5 Issues
 "gulp-notify: [Error in notifier] Error in plugin 'gulp-notify'
 
