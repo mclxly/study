@@ -34,6 +34,7 @@ chmod 777 /var/log/php_errors.log
 date.timezone = 'Asia/Hong_Kong'
 
 ========================================Install Laravel 5
+// upgrade to laravel 5.1 LTS
 composer global require "laravel/installer=~1.1"
 echo 'export PATH="$PATH:~/.composer/vendor/bin"' >> ~/.bashrc
 source ~/.bashrc
@@ -63,6 +64,12 @@ php artisan serve --port=8000 --host=0.0.0.0
 #  create a migration for the failed_jobs table
 php artisan queue:failed-table
 
+
+========================================Laravel 5 tricks
+http://stackoverflow.com/questions/2090910/how-can-i-throttle-user-login-attempts-in-php
+http://stackoverflow.com/questions/886665/how-to-delay-login-attempts-after-too-many-tries-php
+https://github.com/laracasts/Email-Verification-In-Laravel
+
 ========================================Laravel 5 packages
 composer require monolog/monolog
 composer require barryvdh/laravel-debugbar
@@ -86,6 +93,12 @@ Fix:  gulp --production
 =============CROS
 No 'Access-Control-Allow-Origin' header is present
 Fix: https://github.com/barryvdh/laravel-cors
+
+# "Class UserTableSeeder does not exist"
+Fix:　composer dump-autoload
+
+# "The cipher and / or key length are invalid."
+
 
 ========================================Laravel 5 starter
 https://github.com/mrakodol/Laravel-5-Bootstrap-3-Starter-Site
