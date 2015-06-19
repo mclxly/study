@@ -7,3 +7,110 @@
     { "keys": ["shift+end"], "command": "move_to", "args": {"to": "eol", "extend": true} },
     { "keys": ["shift+home"], "command": "move_to", "args": {"to": "bol", "extend": true } }
 ]
+
+======================================usage
+常用热键
+多重文本选择：ctrl + cmd + g
+多重光标选择：shift + ctrl + up/down
+选择标签本身：shift + ctrl + a
+选择标签内容：shift + cmd + a
+重新打开刚刚关闭的标签页：cmd + shift + t
+括号前后移动光标：ctrl + m
+向光标前插入一行：shift + cmd + enter
+向光标后插入一行：cmd + enter
+快速折叠文件内所有函数：cmd + k ,1 （数字表示级别）
+折叠属性：cmd + k, t （编辑 HTML 模板最有用）
+
+很多热键是可以组合的的，比如需求：如何把某 `class="edit"` 的 `div` 元素的标签名改成 `fieldset` ？
+三步就可以了，选择所有 `class="edit"`，再扩选到标签，再命名了就好了。
+
+命令面板 shift + cmd + p
+那些用热键没什么必要的、第三方扩展添加的常用操作在这里。
+比如 Lorem ipsum，Color Picker，Rot 13，HTML Entity Encode，Install Package 等等
+
+Project 配置
+prj-name.sublime-project，主要是单独设定一致的缩进格式和文件排除（在 cmd + p, GOTO 命令时加快速度）选项：
+{
+    "folders":
+    [
+        {
+            "path": "path_to_project",
+            "folder_exclude_patterns": ["img","x-library"]
+        }
+
+    ],
+    "settings":
+    {
+        "translate_tabs_to_spaces": true,
+        "tab_size": 4
+    }
+}
+
+配置移动化
+最好全部定义在 `path_to_sublime/Packages/User/` 目录中，然后用一个 repo 保存它们，这样随时可以同步到你的所有设备上，并且不同的操纵系统有不同的文件来进行配置。
+
+终端调用
+定义一个链接：
+ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+然后任何时候可以调用了，比如在 sublime 中打开当前目录所有文件：
+subl .
+
+Snippets
+自定义一些贴心的代码片断是必须的。
+这个也保存到在 User 目录比较好，扩展名为 `.sublime-snippet` 。
+比如定义一个 `ci` 为 `console.info(args)` ，保存在 User/js-snippets/console-info.sublime-snippet ：
+<snippet>
+    <content><![CDATA[console.info(${1})]]></content>
+    <tabTrigger>ci</tabTrigger>
+    <scope>source.js</scope>
+    <description>console.info</description>
+</snippet>
+
+Build
+cmd + b 是编译，比如我添加了直接调用 node.js ，这样测试一些函数最方便了，不用打开浏览器。
+文件名参考，User/node.sublime-build：
+{
+    "cmd": ["/usr/local/bin/node", "$file"],
+    "selector": "source.js"
+}
+
+主题
+可以兼容使用 TextMate 的主题。现在我最喜欢的主题是 Solarized Light 了，字体是 Menlo 或 Monaco 。
+
+宏
+需要批量热键操作的话，可以定义宏： Macros — Sublime Text Unofficial Documentation
+
+扩展
+宏无法达到要求时，定义一个扩展：1）How to Create a Sublime Text 2 Plugin 2） Sublime Text
+
+扩展管理
+必装的是 Sublime Package Control： Sublime Package Control
+然后可以随时查询，安装其他扩展，一些推荐的： 
+Prefixr、Alignment、HexViewer、JSFormat、Zen Coding（已更名，叫 Emmet）、FileDiffs、Color Picker
+
+---- update 2013-03-25
+额外配置
+推荐三个特别有用的：
+"default_line_ending": "unix",  
+"trim_trailing_white_space_on_save": true,
+"ensure_newline_at_eof_on_save": true,
+作用分别为：
+default_line_ending 保证为 unix 风格的换行符（跨平台工作时特有用）。
+trim_trailing_white_space_on_save 保证在文件保存时，移除每行结尾多余空格（升级过 JSHint 之后特有用）。
+ensure_newline_at_eof_on_save 保证在文件保存时，在结尾插入一个换行符（让 git 提交时不生产额外的 diff）。
+
+Goto
+一共有四种 Goto ：
+cmd+p 文件定位
+cmd+; 词语定位 #
+cmd+r 函数定位 @
+cmd+g 行号定位 :
+
+第一种可以和其余三种搭配使用，比如 cmd+p 后，输入 util@parse 可以即时查询名字带 util 的文件中，以 parse 开头的函数。
+
+Lint 扩展
+SublimeLinter 试过多个同类扩展之后发现它最好用，并且支持多种语言、不需要热键——它在输入时就自动校验。
+
+多文件中搜索
+Where 中可以使用通配符，比如 *.js, *.less 将在项目中所有后缀为 js 和 less 的文件中搜索。
+======================================usage
