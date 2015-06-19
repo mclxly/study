@@ -181,6 +181,9 @@ service --status-all
 # 直接覆盖
 \cp -ufr src des
 
+# copy all files to another dir
+cp -a backend.bak/. ubackend/
+
 # remove file no prompt
 \rm -f aa.file
 
