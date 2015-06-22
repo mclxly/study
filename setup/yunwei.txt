@@ -6,6 +6,8 @@ sshpass -p 'password' rsync -r -avz -e "ssh -l user -o StrictHostKeyChecking=no"
 # interactive
 rsync -avz --exclude-from /home/colin.lin/rsync_exclude_demo.lst colin.lin@githere.com:/data/github/laravel-5.1-tutorial/demo /var/www/html/colin/github/laravel-5.1-tutorial
 rsync -avz colin.lin@githere.com:/data/git/stock-notes/backend /var/www/html/colin/git/stock-notes
+rsync -avz colin.lin@githere.com:/data/git/ugcar/ugcar.com.backend/vendor ./
+
 
 ==================================Metrics Cocktail: StatsD+InfluxDB+Grafana
 http://www.symantec.com/connect/blogs/metrics-cocktail-statsdinfluxdbgrafana
