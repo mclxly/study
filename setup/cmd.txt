@@ -198,6 +198,9 @@ vim /etc/ssh/sshd_config
 PubkeyAuthentication yes
 ssh-keygen -t dsa -f ~/.ssh/linxiang.info
 
+# 删除当前目录下以"._"开始的文件
+find . -name "._*" -delete
+
 =======
 开机时间
 uptime
