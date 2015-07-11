@@ -10,6 +10,10 @@ rsync -avz --exclude-from /home/colin.lin/rsync_exclude_demo.lst colin.lin@githe
 rsync -avz colin.lin@githere.com:/data/git/stock-notes/backend /var/www/html/colin/git/stock-notes
 rsync -avz colin.lin@githere.com:/data/git/ugcar/ugcar.com.backend/vendor ./
 
+#Git Pull While Ignoring Local Changes?
+git fetch --all
+git reset --hard origin/master
+git pull
 
 ==================================Metrics Cocktail: StatsD+InfluxDB+Grafana
 http://www.symantec.com/connect/blogs/metrics-cocktail-statsdinfluxdbgrafana
