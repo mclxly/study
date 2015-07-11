@@ -6,6 +6,8 @@ REPAIR TABLE nagios_servicechecks;
 2. backup/recover db
 mysqldump -u root -p --databases myblog > content_backup.sql
 mysql -u username -p database_name < file.sql
+ mysqldump ugcar_dev car_configs -u dev -p > car_configs.sql
+
 
 =======================================PostgreSQL 9.4
 http://www.unixmen.com/postgresql-9-4-released-install-centos-7/
@@ -20,3 +22,13 @@ grant all on blog.* to cmsuser@localhost identified by 'password';
 grant all on rails_testapp.* to 'rails'@'%' identified by 'password';
 GRANT SELECT ON *.* TO 'readonly_user'@'%' IDENTIFIED BY '123456';
 flush privileges;
+
+# 修改字段类型
+alter table shop_settings modify column s_value text;
+
+# 增加字段
+ALTER TABLE shop_settings    
+    ADD COLUMN description VARCHAR(255) default ''；
+
+# 显示结构
+describe
