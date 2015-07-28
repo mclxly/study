@@ -2,6 +2,24 @@
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
+==================================================================2015-07-28
+sudo apt-get install nginx
+sudo service nginx start
+sudo apt-get install mysql-server-5.6
+sudo mysql_secure_installation
+sudo apt-get install php5-fpm php5-mysql git php5-mcrypt php5-curl imagemagick php5-imagick php5-cli
+
+sudo vim /etc/php5/fpm/php.ini
+cgi.fix_pathinfo=0
+sudo service php5-fpm restart
+
+sudo ufw allow ssh
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw show added
+sudo ufw enable
+
+==================================================================
 #install packages
 sudo apt-get install make g++ libssl-dev git build-essential
 sudo apt-get -y install php5-cli git php5-mcrypt php5-fpm php5-curl
