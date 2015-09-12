@@ -19,6 +19,8 @@ sudo ufw allow 443/tcp
 sudo ufw show added
 sudo ufw enable
 
+sudo apt-get install -y redis-server
+
 ==================================================================
 #install packages
 sudo apt-get install make g++ libssl-dev git build-essential
