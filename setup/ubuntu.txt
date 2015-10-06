@@ -40,6 +40,10 @@ sudo crontab -e
 # normal user run crontab
 crontab -e
 
+# delete files containing special characters in the file name
+ls -ali
+find . -inum <inode ID of your file> -exec rm -i {} \;
+
 ===================================================
                   DigitalOcean
 ===================================================                  

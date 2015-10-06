@@ -1,0 +1,28 @@
+/**********************************************************
+中文搜索相关工具
+**********************************************************/
+
+================================================
+Sphinx
+================================================
+To manage indexes:
+    editor /etc/sphinx/sphinx.conf
+
+To rebuild all disk indexes:
+    sudo -u sphinx indexer --all --rotate
+
+To start/stop search daemon:
+    service searchd start/stop
+
+To query search daemon using MySQL client:
+    mysql -h 0 -P 9306
+    mysql> SELECT * FROM test1 WHERE MATCH('test');
+
+
+======================================Install on CentOS 6
+1. http://sphinxsearch.com/files/sphinx-2.2.10-1.rhel6.x86_64.rpm
+2. yum install postgresql-libs unixODBC
+3. rpm -Uhv sphinx-2.2.10-1.rhel6.x86_64.rpm
+4. service searchd start
+
+/usr/local/sphinx-for-chinese/bin/indexer --all

@@ -125,3 +125,10 @@ sudo composer create-project laravel/laravel /var/www/laravel --prefer-dist
 #Proper way would be to create a user, chown -R user:www-data
 #and then chmod -r storage/ and vendor/ to 770 or 775 
 sudo chmod -R 777 /var/www/laravel/
+
+==================================================================Security
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
+
+# disable remote login with root
+Edit the file /etc/ssh/sshd_config
+PermitRootLogin no

@@ -34,3 +34,8 @@ ALTER TABLE shop_settings
 
 # 显示结构
 describe
+
+# 索引
+SHOW INDEX FROM <table_name>
+ALTER TABLE <table_name> DROP INDEX <index_name>;
+ALTER TABLE shipping_fees ADD UNIQUE (`from_city_id`, `to_city_id`, `shipping_type`);
