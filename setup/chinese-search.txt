@@ -15,9 +15,10 @@ To start/stop search daemon:
     service searchd start/stop
 
 To query search daemon using MySQL client:
-    mysql -h 0 -P 9306
+    mysql -h0 -P9306
     mysql> SELECT * FROM test1 WHERE MATCH('test');
 
+总结: centos比ubuntu下配置顺利，sphinx支持模糊搜索。
 
 ======================================Install on CentOS 6
 1. http://sphinxsearch.com/files/sphinx-2.2.10-1.rhel6.x86_64.rpm
@@ -25,4 +26,287 @@ To query search daemon using MySQL client:
 3. rpm -Uhv sphinx-2.2.10-1.rhel6.x86_64.rpm
 4. service searchd start
 
-/usr/local/sphinx-for-chinese/bin/indexer --all
+旧版
+/usr/local/sphinx-for-chinese/bin/indexer -c /etc/sphinx/sphinx.conf --all
+新版
+indexer -c /etc/sphinx/sphinx.conf --all
+
+======================================Problems
+1. mysql -h 0 -P 9306
+  error:ERROR 2003 (HY000): Can't connect to MySQL server on '0' (111)
+一般是因为sphinx服务没有正确启动
+netstat -tulpn | grep :9306
+
+2. WARNING: index 'catalog_index': lock: failed to open /data/sphinx/catalog.spl: 
+    Permission denied; NOT SERVING
+    FATAL: no valid indexes to serve
+权限问题，需要以sphinx运行indexer
+sudo -u sphinx /usr/local/sphinx-for-chinese/bin/indexer -c /etc/sphinx/sphinx.conf --all
+
+3. Lost connection to MySQL server during query
+
+======================================Install on Ubuntu 14
+ sudo apt-get install odbcinst1debian2 libodbc1 unixodbc libpq5 odbcinst
+
+wget http://sphinxsearch.com/files/sphinxsearch_2.2.10-release-0ubuntu12~trusty_amd64.deb
+ 
+ sudo apt-get install sphinxsearch
+
+sudo service sphinxsearch start
+
+sudo searchd
+
+
+================================================
+Elasticsearch
+================================================
+启动比较慢
+
+# cluster health
+curl 'localhost:9200/_cat/health?v'
+
+# We can also get a list of nodes in our cluster as follows:
+curl 'localhost:9200/_cat/nodes?v'
+
+# list all indices
+curl 'localhost:9200/_cat/indices?v'
+
+# remove index
+ curl -XDELETE 'http://localhost:9200/eng_test_index/'
+
+======================================Java SDK
+jsdk: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+http://tecadmin.net/install-java-8-on-centos-rhel-and-fedora/#
+
+======================================Install on CentOS 6
+https://www.elastic.co/guide/en/elasticsearch/reference/2.0/setup-repositories.html
+java -version
+echo $JAVA_HOME
+
+service elasticsearch start
+启动服务后调用接口查看状态
+
+/usr/share/elasticsearch
+
+# list plugin
+./bin/plugin list
+
+======================================英文测试
+# The title field will use the english analyzer instead of the default standard analyzer.
+
+# create new index
+curl -XPUT 'http://localhost:9200/eng_test_index' -d '
+{
+  "mappings": {
+    "blog": {
+      "properties": {
+        "title": {
+          "type":     "string",
+          "analyzer": "english" 
+        }
+      }
+    }
+  }
+}'
+
+# 分析语义
+curl -XGET 'http://localhost:9200/eng_test_index/_analyze?field=title' -d '
+Im not happy about the foxes
+'
+
+# 设置语言分析器
+curl -XPUT 'http://localhost:9200/eng_test_index' -d '
+{
+  "mappings": {
+    "blog": {
+      "properties": {
+        "title": { 
+          "type": "string",
+          "fields": {
+            "english": { 
+              "type":     "string",
+              "analyzer": "english"
+            }
+          }
+        }
+      }
+    }
+  }
+}'
+
+# 添加测试数据
+curl -XPUT 'http://localhost:9200/eng_test_index/blog/1' -d '
+{ "title": "Im happy for this fox" }
+'
+
+curl -XPUT 'http://localhost:9200/eng_test_index/blog/2' -d '
+{ "title": "I'"'"'m happy for this fox" }
+'
+
+curl -XPUT 'http://localhost:9200/eng_test_index/blog/3' -d '
+{ "title": "I'"'"'m not happy about my fox problem" }
+'
+
+# 测试搜索
+curl -XGET 'http://localhost:9200/_search' -d '
+{
+  "query": {
+    "multi_match": {
+      "type":     "most_fields", 
+      "query":    "not happy foxes",
+      "fields": [ "title", "title.english" ]
+    }
+  }
+}
+'
+
+======================================中文测试
+cd /usr/share/elasticsearch
+bin/plugin install analysis-icu
+bin/plugin install analysis-smartcn
+
+======================================中文测试: analysis-smartcn
+curl -XPUT 'http://localhost:9200/smartcn_test' -d '
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "default": {
+            "type": "smartcn"
+          }
+        }
+      }
+    }
+  }
+}
+'
+# 测试分词
+curl -XGET 'http://localhost:9200/smartcn_test/_analyze?pretty=true' -d '湖北武汉洪山区光谷软件园'
+
+{
+  "tokens" : [ {
+    "token" : "湖北",
+    "start_offset" : 0,
+    "end_offset" : 2,
+    "type" : "word",
+    "position" : 0
+  }, {
+    "token" : "武汉",
+    "start_offset" : 2,
+    "end_offset" : 4,
+    "type" : "word",
+    "position" : 1
+  }, {
+    "token" : "洪",
+    "start_offset" : 4,
+    "end_offset" : 5,
+    "type" : "word",
+    "position" : 2
+  }, {
+    "token" : "山区",
+    "start_offset" : 5,
+    "end_offset" : 7,
+    "type" : "word",
+    "position" : 3
+  }, {
+    "token" : "光",
+    "start_offset" : 7,
+    "end_offset" : 8,
+    "type" : "word",
+    "position" : 4
+  }, {
+    "token" : "谷",
+    "start_offset" : 8,
+    "end_offset" : 9,
+    "type" : "word",
+    "position" : 5
+  }, {
+    "token" : "软件",
+    "start_offset" : 9,
+    "end_offset" : 11,
+    "type" : "word",
+    "position" : 6
+  }, {
+    "token" : "园",
+    "start_offset" : 11,
+    "end_offset" : 12,
+    "type" : "word",
+    "position" : 7
+  } ]
+}
+
+# 测试中文搜索
+curl -XPUT 'http://localhost:9200/smartcn_test_1' -d '
+{
+  "mappings": {
+    "blog": {
+      "properties": {
+        "title": { 
+          "type": "string",
+          "fields": {
+            "english": { 
+              "type":     "string",
+              "analyzer": "smartcn"
+            }
+          }
+        }
+      }
+    }
+  }
+}'
+
+curl -XPUT 'http://localhost:9200/smartcn_test_1/blog/1' -d '
+{ "title": "湖北武汉洪山区光谷软件园" }
+'
+
+curl -XPUT 'http://localhost:9200/smartcn_test_1/blog/2' -d '
+{ "title": "广东深圳科技园" }
+'
+
+curl -XGET 'http://localhost:9200/_search' -d '
+{
+  "query": {
+    "multi_match": {
+      "type":     "most_fields", 
+      "query":    "深圳之家",
+      "fields": [ "title", "title.smartcn" ]
+    }
+  }
+}
+'
+
+======================================中文测试: ICU Analysis Plugin
+PUT icu_sample
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "my_icu_analyzer": {
+            "tokenizer": "icu_tokenizer"
+          }
+        }
+      }
+    }
+  }
+}
+
+curl -XPUT 'http://localhost:9200/icu_test' -d '
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "my_icu_analyzer": {
+            "tokenizer": "icu_tokenizer"
+          }
+        }
+      }
+    }
+  }
+}
+'
+
+# 测试分词
+curl -XGET 'http://localhost:9200/icu_test/_analyze?pretty=true' -d '湖北武汉洪山区光谷软件园'

@@ -18,6 +18,9 @@ sudo shutdown -h now
 显示版本号
 lsb_release -a
 
+检查进程是否启动
+ps -p 15942
+
 # List all installed packages
 dpkg --get-selections | grep -v deinstall
 
