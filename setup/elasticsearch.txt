@@ -3,61 +3,6 @@
 **********************************************************/
 
 ================================================
-Sphinx
-================================================
-To manage indexes:
-    editor /etc/sphinx/sphinx.conf
-
-To rebuild all disk indexes:
-    sudo -u sphinx indexer --all --rotate
-
-To start/stop search daemon:
-    service searchd start/stop
-
-To query search daemon using MySQL client:
-    mysql -h0 -P9306
-    mysql> SELECT * FROM test1 WHERE MATCH('test');
-
-总结: centos比ubuntu下配置顺利，sphinx支持模糊搜索。
-
-======================================Install on CentOS 6
-1. http://sphinxsearch.com/files/sphinx-2.2.10-1.rhel6.x86_64.rpm
-2. yum install postgresql-libs unixODBC
-3. rpm -Uhv sphinx-2.2.10-1.rhel6.x86_64.rpm
-4. service searchd start
-
-旧版
-/usr/local/sphinx-for-chinese/bin/indexer -c /etc/sphinx/sphinx.conf --all
-新版
-indexer -c /etc/sphinx/sphinx.conf --all
-
-======================================Problems
-1. mysql -h 0 -P 9306
-  error:ERROR 2003 (HY000): Can't connect to MySQL server on '0' (111)
-一般是因为sphinx服务没有正确启动
-netstat -tulpn | grep :9306
-
-2. WARNING: index 'catalog_index': lock: failed to open /data/sphinx/catalog.spl: 
-    Permission denied; NOT SERVING
-    FATAL: no valid indexes to serve
-权限问题，需要以sphinx运行indexer
-sudo -u sphinx /usr/local/sphinx-for-chinese/bin/indexer -c /etc/sphinx/sphinx.conf --all
-
-3. Lost connection to MySQL server during query
-
-======================================Install on Ubuntu 14
- sudo apt-get install odbcinst1debian2 libodbc1 unixodbc libpq5 odbcinst
-
-wget http://sphinxsearch.com/files/sphinxsearch_2.2.10-release-0ubuntu12~trusty_amd64.deb
- 
- sudo apt-get install sphinxsearch
-
-sudo service sphinxsearch start
-
-sudo searchd
-
-
-================================================
 Elasticsearch
 ================================================
 启动比较慢
@@ -78,6 +23,8 @@ curl 'localhost:9200/_cat/indices?v'
 jsdk: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 http://tecadmin.net/install-java-8-on-centos-rhel-and-fedora/#
 
+ tar -zxvf jdk-8u60-linux-x64.gz
+
 ======================================Install on CentOS 6
 https://www.elastic.co/guide/en/elasticsearch/reference/2.0/setup-repositories.html
 java -version
@@ -90,6 +37,13 @@ service elasticsearch start
 
 # list plugin
 ./bin/plugin list
+
+
+
+======================================Install on Ubuntu 14LTS
+wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.0.0-rc1/elasticsearch-2.0.0-rc1.deb
+
+sudo dpkg -i elasticsearch-2.0.0-rc1.deb
 
 ======================================英文测试
 # The title field will use the english analyzer instead of the default standard analyzer.
