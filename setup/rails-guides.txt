@@ -1,3 +1,16 @@
+Last updated: 2015-11-16 10:26
+=============================================
+
+update rails
+==================
+# upgrade the Ruby gem manager
+gem update --system
+# To get a list of gems that are outdated:
+gem outdated
+# To update all stale gems:
+gem update
+
+
 stt-backend
 ===========
 

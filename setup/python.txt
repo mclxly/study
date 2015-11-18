@@ -1,13 +1,36 @@
-2014-11-13 14:50
+Last updated: 2015-11-16 14:36
+
 ===========================Python
 wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
+tar -xvzf /path/to/yourfile.tgz
 ./configure
 make && make altinstsall
+make && make instsall(Ptyhon 3.5)
 python3.4
 
 tar -xvf Python-2.7.8.tar.xz
 ./configure --prefix=/usr/local    
 make && make altinstall
+
+===========================Django 1.8
+pip3 install mysqlclient
+pip3 install pymysql
+python3 manage.py runserver 0.0.0.0:8000
+
+# i18n
+setting.py
+必须设置
+LANGUAGE_CODE = 'zh-hans'
+LOCALE_PATHS = (
+    '/var/www/html/test/python3/mysite/locale',
+)
+另外目录名要使用zh_Hans
+
+
+mkdir locale
+django-admin makemessages -l zh_Hans
+django-admin makemessages
+django-admin compilemessages
 
 ===========================Version Project
 # Use the built-in pyvenv program in Python 3.4 to create a sandbox called my34project

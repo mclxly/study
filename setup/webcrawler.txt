@@ -1,0 +1,18 @@
+Last updated: 2015-11-17 10:53
+=========================================
+
+=========================================Solutions
+http://geeksta.net/geeklog/web-page-screenshots-phantomjs-python/
+http://www.paulhammond.org/webkit2png/
+
+# This repository contains a PhantomJS 2.0 -binary for Ubuntu.
+https://github.com/Pyppe/phantomjs2.0-ubuntu14.04x64
+
+=========================================FAQ
+# phantomjs截图中文网站网页页面乱码，安装字体解决
+在centos中执行：yum install bitmap-fonts bitmap-fonts-cjk
+
+在ubuntu中执行：sudo apt-get install xfonts-wqy
+sudo apt-get install language-pack-zh-hans
+sudo apt-get install ttf-dejavu ttf-wqy-microhei
+sudo fc-cache -f -v
