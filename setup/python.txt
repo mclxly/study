@@ -13,6 +13,7 @@ tar -xvf Python-2.7.8.tar.xz
 make && make altinstall
 
 ===========================Django 1.8
+pip3 install -U Django
 pip3 install mysqlclient
 pip3 install pymysql
 python3 manage.py runserver 0.0.0.0:8000
@@ -31,6 +32,24 @@ mkdir locale
 django-admin makemessages -l zh_Hans
 django-admin makemessages
 django-admin compilemessages
+
+# 更改model后，更新数据表
+python3 manage.py makemigrations <your app name>
+python3 manage.py migrate
+
+# 进入命令行
+python manage.py shell
+
+# legacy databese -> models
+python3 manage.py inspectdb [--database] > models.py
+
+# url list
+
+# debug (interactive debug mode)
+import pdb; pdb.set_trace()
+
+===========================New Project
+django-admin startproject small
 
 ===========================Version Project
 # Use the built-in pyvenv program in Python 3.4 to create a sandbox called my34project

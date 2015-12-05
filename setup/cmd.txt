@@ -302,6 +302,10 @@ npm rm ember-cli-ember-data --save-dev
 更新node.js
 从源代码编译覆盖现有版本
 
+# 在package.json查找旧的lib
+npm outdated
+npm install express@3.0.6 --save
+
 ===========================
 use the npm mirror
 npm set registry http://registry.cnpmjs.org

@@ -28,3 +28,16 @@ function toggleNavbarMethod() {
     
     // bind resize event
     $(window).resize(toggleNavbarMethod);
+
+//--------------------------------------------tech
+# flex tutorial
+http://flexboxfroggy.com/
+flex-flow: column-reverse wrap-reverse;
+align-content: stretch;
+justify-content: center;
+align-items: flex-end;
+align-self: 
+
+flex-flow: column-reverse wrap-reverse;
+justify-content: center;
+align-content: space-between;

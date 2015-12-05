@@ -1,12 +1,29 @@
 Last updated: 2015-11-17 10:53
 =========================================
 
+=========================================Purpose
+网页抓取平台：输入URL，采集，标识结果，监控状态
+
+=========================================Tools
+PostgreSQL, Redis, RabbitMQ+Celery, Django
+
+# python lib
+pip3 install beautifulsoup4
+
+# a parser
+pip3 install lxml
+pip3 install html5lib
+
 =========================================Solutions
 http://geeksta.net/geeklog/web-page-screenshots-phantomjs-python/
 http://www.paulhammond.org/webkit2png/
 
 # This repository contains a PhantomJS 2.0 -binary for Ubuntu.
 https://github.com/Pyppe/phantomjs2.0-ubuntu14.04x64
+
+# wkhtmltoimage (动态加载内容下载不完整)
+E:\Program Files\wkhtmltopdf\bin>wkhtmltoimage --javascript-delay 100000 --window-status myrandomstring http://item.jd.com/1065971.html jd1.png
+Unknown switch -t
 
 =========================================FAQ
 # phantomjs截图中文网站网页页面乱码，安装字体解决

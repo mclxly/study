@@ -73,3 +73,11 @@ ausearch -c sshd will search your audit logs for reports from the sshd process.
 last(8) will search through /var/log/wtmp for the most recent logins. lastb(8) will show bad login attempts.
 
 /var/log/secure
+
+==========================Docker
+http://davidanguita.name/articles/simple-data-visualization-stack-with-docker-influxdb-and-grafana/
+# install
+sudo apt-get -y install docker.io
+
+# start
+sudo docker -d &
