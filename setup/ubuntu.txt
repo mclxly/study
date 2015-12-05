@@ -43,9 +43,17 @@ sudo crontab -e
 # normal user run crontab
 crontab -e
 
+<<<<<<< Updated upstream
 # delete files containing special characters in the file name
 ls -ali
 find . -inum <inode ID of your file> -exec rm -i {} \;
+=======
+#remove files
+ls | grep 'public_08' | xargs rm -rf
+
+
+grep -R --include="*.php" "console.log" ./app
+>>>>>>> Stashed changes
 
 ===================================================
                   DigitalOcean

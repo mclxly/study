@@ -1,5 +1,14 @@
 ==================================GIt
 
+==================================Commands
+#remove files
+ls | grep 'public_08' | xargs rm -rf
+
+grep -R --include="*.php" "console.log" ./app
+grep -R --include="*.php" "console.log" ./resource
+grep -R --include="*.js" "console.log" ./app
+grep -R --include="*.js" "console.log" ./resource
+
 ==================================Deploy code
 http://www.computerhope.com/unix/rsync.htm
 # no interactive
@@ -81,3 +90,14 @@ sudo apt-get -y install docker.io
 
 # start
 sudo docker -d &
+
+==========================FTP
+http://www.krizna.com/ubuntu/setup-ftp-server-on-ubuntu-14-04-vsftpd/
+
+You are going to need write access to /var/www, which
+
+sudo adduser LOGIN_ID www-data
+sudo chmod g+rwX -R /var/www
+will establish. Next thing would be to create a shortcut in your home directory:
+
+sudo ln -s /var/www /home/LOGIN_ID/
