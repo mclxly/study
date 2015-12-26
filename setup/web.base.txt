@@ -7,6 +7,8 @@
 @font-family-base:          "Helvetica Neue",Helvetica,Tahoma,"Source Han Sans CN","Noto Sans S Chinese","Hiragino Sans GB","Microsoft YaHei",sans-serif;//xueqiu
 
 //--------------------------------------------Javascript
+# How do Promises Work?
+http://robotlolita.me/2015/11/15/how-do-promises-work.html
 
 
 //--------------------------------------------Menu
@@ -28,6 +30,10 @@ function toggleNavbarMethod() {
     
     // bind resize event
     $(window).resize(toggleNavbarMethod);
+
+//--------------------------------------------server
+# Choosing an HTTP Status Code — Stop Making It Hard
+http://racksburg.com/choosing-an-http-status-code/
 
 //--------------------------------------------tech
 # flex tutorial

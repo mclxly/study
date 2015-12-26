@@ -82,6 +82,7 @@ Match Address 192.168.2.*,127.0.0.1 PermitRootLogin yes
 ===========================CENTOS
 # address already in used
 netstat -anp tcp | grep 8081
+netstat -tulpn | grep --color :80
 
 # clear console
 reset

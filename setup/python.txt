@@ -12,6 +12,15 @@ tar -xvf Python-2.7.8.tar.xz
 ./configure --prefix=/usr/local    
 make && make altinstall
 
+===========================Django 1.9
+# If you set DEBUG to False, you also need to properly set the ALLOWED_HOSTS setting.
+ALLOWED_HOSTS = ['www.example.com']
+DEBUG = False
+DEFAULT_FROM_EMAIL = 'webmaster@example.com'
+
+# 执行自定义命令
+python3 manage.py NAME
+
 ===========================Django 1.8
 pip3 install -U Django
 pip3 install mysqlclient
