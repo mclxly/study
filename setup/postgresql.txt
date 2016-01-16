@@ -1,0 +1,22 @@
+postgresql.txt
+
+==============================================CentOS 6.5
+# 进入PostgreSQL
+sudo -u postgres psql postgres
+
+# list databases
+\l
+
+# help
+\h
+
+# open database
+\connect NAME
+
+==============================================PostgreSQL 9.4
+http://www.unixmen.com/postgresql-9-4-released-install-centos-7/
+
+Fatal: no pg_hba.conf entry for host "", user "postgres", database "postgres"
+
+SELECT row_to_json(posts)
+  FROM posts limit 10;

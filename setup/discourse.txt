@@ -10,8 +10,39 @@ Built With
 https://www.digitalocean.com/community/tutorials/how-to-install-discourse-on-a-centos-6-4-x64-vps
 https://meta.discourse.org/t/installing-discourse-on-centos-with-apache-mysql-and-php-alongside/2822
 http://www.howtoinstalldiscourse.com/how-to-install-discourse-on-centos/
+
+========================================================================2016-01-16
+在 Ubuntu 14.04 上构建 Discourse 用开发／生产
+=======================================================
+https://github.com/discourse/discourse/blob/master/docs/DEVELOPER-ADVANCED.md
+
+sudo apt-get install postgresql-client libpq5 libpq-dev
+sudo apt-get install ImageMagick libxml2 g++ gifsicle libjpeg-progs make
+
+# 进入discourse代码目录
+bundle install
+
+# 配置文件设置
+cp config/discourse_defaults.conf config/discourse.conf
+
+bundle exec rake db:create db:migrate db:test:prepare RAILS_ENV=development
+bundle exec rake autospec RAILS_ENV=development
+# start service
+bundle exec rails s -b 0.0.0.0
+# sending email
+bundle exec sidekiq RAILS_ENV=development
+
+bin/rake db:migrate RAILS_ENV=production
+
+# 邮件不工作
+查看log,搜索：activate-account
+
+# monitor redis
+redis-cli monitor
+
 ========================================================================2014-09-25
 在 CentOS 7 mininal server 上构建 Discourse 用开发／生产
+=======================================================
 
 ===================系统准备
 yum install net-tools ruby vim

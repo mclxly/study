@@ -27,6 +27,13 @@ pip3 install mysqlclient
 pip3 install pymysql
 python3 manage.py runserver 0.0.0.0:8000
 
+
+# RESET
+pip3 install djangorestframework Markdown django-filter
+
+# PostgreSQL
+pip3 install psycopg2
+
 # i18n
 setting.py
 必须设置

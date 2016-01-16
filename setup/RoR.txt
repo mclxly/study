@@ -8,6 +8,9 @@ rvm list known
 
 rvm upgrade ruby-1.9.3-p125 ruby-1.9.3-p327
 
+==================================Discourse on Ubuntu 14.04
+https://ruby.taobao.org/
+
 ==================================Ruby on Rails
 #upgrade Rails
 gem install rails
