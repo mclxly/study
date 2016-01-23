@@ -22,3 +22,15 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 =============================npm
 # To upgrade, run: 
 [sudo] npm install npm@latest -g
+
+=============================Tips
+# Tip to measure performance of a javascript block
+console.time("Array initialize");
+var arr = new Array(100),
+    len = arr.length,
+    i;
+
+for (i = 0; i < len; i++) {
+    arr[i] = new Object();
+};
+console.timeEnd("Array initialize"); // Outputs: Array initialize: 0.711ms

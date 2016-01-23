@@ -79,7 +79,12 @@ netui
 vim /etc/ssh/sshd_config
 Match Address 192.168.2.*,127.0.0.1 PermitRootLogin yes
 
-===========================CENTOS
+===========================CENTOS 6
+# 生产MD5码
+echo -n 'hello world' | md5sum -
+
+# 所有的服务在/etc/init.d
+
 # address already in used
 netstat -anp tcp | grep 8081
 netstat -tulpn | grep --color :80
@@ -205,6 +210,13 @@ ssh-keygen -t dsa -f ~/.ssh/linxiang.info
 # 删除当前目录下以"._"开始的文件
 find . -name "._*" -delete
 
+# find directory
+find /dir/path/look/up -name "dir-name-here" -maxdepth 5
+
+# find directory & remove
+find . -name "node_modules" -exec rm -r "{}" \;
+find . -name "node_modules" -type d -exec rm -r "{}" \;
+
 =======
 开机时间
 uptime
@@ -215,6 +227,10 @@ find /var/log -type f -size +100000k -exec ls -lh {} \; | awk '{ print $9 ": " $
 
 # get host name
 hostname
+
+# 关闭程序
+cat tmp/pids/server.pid
+kill -9 PID
 
 ============Yum
 "Protected multilib versions: libstdc++-4.6.3-2.el6.x86_64 != libstdc++-4.4.7-3.el6.i686

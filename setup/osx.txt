@@ -12,3 +12,6 @@ sshfs -o defer_permissions linxiang@192.168.1.51:/data /Users/colin/my-mount
 4. 强制关闭程序
 ps -fe | grep 'Sequel'
 kill -9 pid
+
+5. 休眠状态还会自动连接wifi
+"Energy Saver" --> "Wake for Network Access" 选项关掉

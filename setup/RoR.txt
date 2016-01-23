@@ -11,6 +11,8 @@ rvm upgrade ruby-1.9.3-p125 ruby-1.9.3-p327
 ==================================Discourse on Ubuntu 14.04
 https://ruby.taobao.org/
 
+rails new appname -d postgresql
+
 ==================================Ruby on Rails
 #upgrade Rails
 gem install rails
@@ -90,6 +92,7 @@ RAILS_ENV=production rake secret
 gem sources --remove https://rubygems.org/
 gem sources -a https://ruby.taobao.org/
 gem sources -l
+也可以直接修改Gemfile
 
 #更新系统gem
 gem update
@@ -129,3 +132,23 @@ gem install nokogiri -v 1.6.6.2 -- --use-system-libraries
 # ERROR: While executing gem ... (Gem::RemoteFetcher::FetchError)
 # Errno::ECONNREFUSED: Connection refused - connect(2) for "rubygems-china.oss.aliyuncs.com
  vim /etc/resolv.conf
+
+
+ ==================================Rails Admin
+ # customize
+gem 'rails_admin'
+gem 'devise'
+
+bundle install
+
+rails g rails_admin:install
+rails generate devise:install
+
+# You can copy Devise views (for customization) to your app by running
+rails g devise:views
+
+# PostgreSQL driver
+gem install pg
+
+# rails generate devise MODEL
+rails generate devise User
