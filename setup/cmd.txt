@@ -39,6 +39,10 @@ Address already in use
 
 GoAgent
 确保CA: Always Trust
+
+# 测试nginx出错详细
+sudo nginx -t
+
 ===========================CENTOS 7
 http://www.kevinbertoldi.com/bookmarks/115
 
@@ -117,6 +121,9 @@ not edit mode: Ctrl+w(twice) 切换
 
 查找包含字符串的文件
 grep -r 'pid' ./
+
+查找字符串并替换
+grep -rl 'hl_touch' ./ | xargs sed -i 's/hl_touch/signcl_touch/g'
 
 建立/删除软连接
 ln -s ../sites-available/yourdomainname.com .

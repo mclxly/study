@@ -33,6 +33,8 @@ echo $JAVA_HOME
 service elasticsearch start
 启动服务后调用接口查看状态
 
+curl -X GET 'http://localhost:9200'
+
 /usr/share/elasticsearch
 
 # list plugin
@@ -41,6 +43,13 @@ service elasticsearch start
 
 
 ======================================Install on Ubuntu 14LTS
+https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-on-an-ubuntu-vps
+
+# install java
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+
 wget https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.0.0-rc1/elasticsearch-2.0.0-rc1.deb
 
 sudo dpkg -i elasticsearch-2.0.0-rc1.deb
