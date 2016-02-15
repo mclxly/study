@@ -14,6 +14,8 @@ https://ruby.taobao.org/
 rails new appname -d postgresql
 
 ==================================Ruby on Rails
+rails server -b 0.0.0.0 -e production
+
 #upgrade Rails
 gem install rails
 
@@ -55,6 +57,7 @@ rails s -e production
 
 Precompiling Assets
 RAILS_ENV=production bin/rake assets:precompile
+rake assets:precompile
 
 改变项目的secret token
 rake secret
@@ -133,6 +136,9 @@ gem install nokogiri -v 1.6.6.2 -- --use-system-libraries
 # Errno::ECONNREFUSED: Connection refused - connect(2) for "rubygems-china.oss.aliyuncs.com
  vim /etc/resolv.conf
 
+# Missing `secret_key_base` for 'production' environment
+export SECRET_KEY_BASE=rake secret
+ruby -e 'p ENV["SECRET_KEY_BASE"]'
 
  ==================================Rails Admin
  # customize
