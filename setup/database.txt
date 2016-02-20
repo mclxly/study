@@ -11,6 +11,12 @@ mysql -u username -p database_name < file.sql
 _now=$(date +"%m_%d_%Y")
 mysqldump -u web -p --databases ugcar_dev > ugcar_$_now.sql
 
+3. AUTO_INCREMENT 
+ALTER TABLE dvr_common_template AUTO_INCREMENT = 10;
+
+4. Rename
+rename table dvr_common_block to dvr_common_block_bak;
+
 ===========================Mysql
 grant all on blog.* to cmsuser@localhost identified by 'password';
 grant all on rails_testapp.* to 'rails'@'%' identified by 'password';

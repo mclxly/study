@@ -158,3 +158,17 @@ gem install pg
 
 # rails generate devise MODEL
 rails generate devise User
+
+==================================Rails Program
+# log
+Rails.logger.debug("aaa")
+
+# params has key
+params[:event_id].present?
+
+==================================Rails Program Problem
+# submit twice
+link_to ...data: { no_turbolink: true }
+
+# click link not reload
+no content return

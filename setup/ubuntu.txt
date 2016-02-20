@@ -52,6 +52,11 @@ ls | grep 'public_08' | xargs rm -rf
 
 grep -R --include="*.php" "console.log" ./app
 
+# 开启自动启动服务
+/etc/init.d
+
+# compare two folders
+diff
 
 ===================================================
                   DigitalOcean

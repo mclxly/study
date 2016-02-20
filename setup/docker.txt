@@ -30,3 +30,7 @@ docker inspect
 # show you which images are currently on your host
 docker images
 
+# Gracefully Stopping Docker Containers 
+sudo docker stop $(sudo docker ps -a -q)
+
+# disable startup
