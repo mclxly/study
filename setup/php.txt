@@ -113,3 +113,9 @@ php artisan down/up
 chmod -R 775 app/storage
 
  git clone --depth=1 https://github.com/twostairs/paperwork
+
+
+
+========================================Lumen 5.2
+# 生成APP KEY
+php -r "echo md5(uniqid()).\"\n\";"

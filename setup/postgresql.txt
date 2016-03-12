@@ -16,6 +16,9 @@ sudo -u postgres psql postgres
 # dir
 cd /var/lib/pgsql/
 
+# backup
+ pg_dump -U postgres -h 192.168.1.30 ruby-china-dev > ~/3kmq.com/db_bak_0223.sql
+
 ==============================================CentOS 6.5 + Postgresql 9.5
 # CentOS/RHEL 6
 rpm -Uvh http://yum.postgresql.org/9.5/redhat/rhel-6-x86_64/pgdg-redhat95-9.5-2.noarch.rpm

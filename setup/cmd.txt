@@ -84,6 +84,9 @@ vim /etc/ssh/sshd_config
 Match Address 192.168.2.*,127.0.0.1 PermitRootLogin yes
 
 ===========================CENTOS 6
+# copy files(include hidden files)
+cp -r /etc/skel/. /home/<new_user>
+
 # 生产MD5码
 echo -n 'hello world' | md5sum -
 

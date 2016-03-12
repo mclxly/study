@@ -50,3 +50,7 @@ https://packagecontrol.io/packages/ReactJS
 
 # Syntax definitions for ES6 JavaScript with React JSX extensions.
 https://github.com/babel/babel-sublime
+
+Babel
+Sublime-linter
+SublimeLinter-contrib-eslint
