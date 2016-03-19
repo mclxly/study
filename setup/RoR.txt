@@ -50,6 +50,7 @@ db:reset does db:drop, db:setup
 db:seed
 
 编译.scss
+bin/rake assets:precompile
 
 生产环境运行
 RAILS_ENV=production rake db:migrate
@@ -62,6 +63,9 @@ rake assets:precompile
 改变项目的secret token
 rake secret
 Edit the config/secrets.yml file to change the secret token.
+
+# GEM path
+gem environment 
 
 ===============Rails command
 rails console

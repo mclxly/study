@@ -83,6 +83,9 @@ netui
 vim /etc/ssh/sshd_config
 Match Address 192.168.2.*,127.0.0.1 PermitRootLogin yes
 
+# 进程树
+pstree -apu
+
 ===========================CENTOS 6
 # copy files(include hidden files)
 cp -r /etc/skel/. /home/<new_user>

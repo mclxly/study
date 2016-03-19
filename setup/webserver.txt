@@ -1,0 +1,5 @@
+==================================Nginx
+# URL rewrite without change url
+location /media {
+  proxy_pass http://dreamvr.com/blog/category/media;
+}
