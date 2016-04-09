@@ -59,6 +59,7 @@ rails s -e production
 Precompiling Assets
 RAILS_ENV=production bin/rake assets:precompile
 rake assets:precompile
+rake assets:clean
 
 改变项目的secret token
 rake secret
@@ -170,9 +171,18 @@ Rails.logger.debug("aaa")
 # params has key
 params[:event_id].present?
 
+==================================Rails generate form by existing table
+rails c
+> StockInfo.columns.each {|c| print "#{c.name}:#{c.type} "}
+rails g scaffold_controller StockInfo stock_code:string stock_simple_name:string stock_full_cn_name:string stock_full_en_name:string stock_address:string stock_a_name:string stock_a_start:date stock_a_capital_amount:integer stock_legal_rep:string stock_a_circulating_captial:integer stock_b_code:string stock_b_name:string stock_b_start:date stock_b_capital_amount:integer stock_b_circulating_captial:integer stock_zone:string stock_province:string stock_city:string stock_industry_1:string stock_industry_2:string stock_industry_3:string stock_website:string stock_belong_to:string stock_a_status:boolean stock_b_status:boolean active:boolean 
+
 ==================================Rails Program Problem
 # submit twice
 link_to ...data: { no_turbolink: true }
 
 # click link not reload
 no content return
+
+# Cannot render console from 192.168.4.192! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+config.web_console.whitelisted_ips = '192.168.1.5'
+config.web_console.whitelisted_ips = '192.168.0.0/16'
