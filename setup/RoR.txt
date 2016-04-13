@@ -176,6 +176,15 @@ rails c
 > StockInfo.columns.each {|c| print "#{c.name}:#{c.type} "}
 rails g scaffold_controller StockInfo stock_code:string stock_simple_name:string stock_full_cn_name:string stock_full_en_name:string stock_address:string stock_a_name:string stock_a_start:date stock_a_capital_amount:integer stock_legal_rep:string stock_a_circulating_captial:integer stock_b_code:string stock_b_name:string stock_b_start:date stock_b_capital_amount:integer stock_b_circulating_captial:integer stock_zone:string stock_province:string stock_city:string stock_industry_1:string stock_industry_2:string stock_industry_3:string stock_website:string stock_belong_to:string stock_a_status:boolean stock_b_status:boolean active:boolean 
 
+==================================R & Rails
+https://quickleft.com/blog/running-r-script-ruby-rails-app/
+
+# generate rake task
+rails g task my_namespace my_task1 my_task2
+
+# list rake task
+rake -T | grep my_namespace
+
 ==================================Rails Program Problem
 # submit twice
 link_to ...data: { no_turbolink: true }
