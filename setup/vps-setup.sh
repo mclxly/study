@@ -2,6 +2,9 @@
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
+==================================================================2016-05-10
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
+
 ==================================================================2015-07-28
 sudo apt-get install nginx
 sudo service nginx start

@@ -1,0 +1,27 @@
+====================Pre
+1. sudo apt-get install python-psycopg2
+2. sudo apt-get install libpq-dev
+
+====================Odoo
+1. sudo pip install -r ./doc/requirements.txt
+2. sudo pip install -r ./requirements.txt
+3. wget -qO- https://deb.nodesource.com/setup | sudo bash -
+4. sudo apt-get install nodejs
+5. sudo apt-get install npm
+6. sudo npm install -g less less-plugin-clean-css
+
+=====================Ref
+https://www.linode.com/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04
+
+==============================================Problems
+# locale.Error: unsupported locale setting
+export LC_ALL=C
+
+# libxml/xmlversion.h: No such file or directory
+sudo apt-get install libxml2-dev libxslt1-dev python-dev python-lxml
+
+# fatal error: lber.h: No such file or directory
+sudo apt-get install libsasl2-dev python-dev libldap2-dev libssl-dev
+
+# usr/bin/env: node: No such file or directory
+sudo ln -s /usr/bin/nodejs /usr/bin/node

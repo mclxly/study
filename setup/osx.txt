@@ -15,3 +15,6 @@ kill -9 pid
 
 5. 休眠状态还会自动连接wifi
 "Energy Saver" --> "Wake for Network Access" 选项关掉
+
+6. login without pwd
+brew install ssh-copy-id

@@ -27,6 +27,9 @@ git fetch --all
 git reset --hard origin/master
 git pull
 
+# login without pwd on Ubuntu
+ssh-copy-id webdev@3kmq.com -p 1
+
 ==================================Metrics Cocktail: StatsD+InfluxDB+Grafana
 http://www.symantec.com/connect/blogs/metrics-cocktail-statsdinfluxdbgrafana
 1. 先启动StatsD
