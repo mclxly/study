@@ -1,3 +1,6 @@
+==================================RoR on Ubuntu 16.04
+https://gorails.com/deploy/ubuntu/16.04
+
 ==================================Ruby
 https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-on-ubuntu-14-04-using-rvm
 
