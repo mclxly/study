@@ -128,3 +128,8 @@ pip install gunicorn
 ===========================Refer Link
 https://docs.djangoproject.com/en/1.7/intro/install/
 http://toomuchdata.com/2014/02/16/how-to-install-python-on-centos/
+
+
+===========================http://tushare.org/===========================
+===========================Problems
+# ImportError: No module named 'tushare'

@@ -42,3 +42,14 @@ SET FOREIGN_KEY_CHECKS = 0;
 truncate table orders;
 SET FOREIGN_KEY_CHECKS = 1; -- enable checking
 
+
+==================================================常用SQL
+# 查找重复记录
+select o.hz, oc.dupeCount, o.id
+from zwzd o
+inner join (
+    SELECT hz, COUNT(*) AS dupeCount
+    FROM zwzd
+    GROUP BY hz
+    HAVING COUNT(*) > 1
+) oc on o.hz = oc.hz

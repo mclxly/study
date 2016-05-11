@@ -171,6 +171,16 @@ Rails.logger.debug("aaa")
 # params has key
 params[:event_id].present?
 
+# display gem version
+gem list |grep turbolinks
+
+# debug
+abort ta.inspect
+<%= debug @brand %>
+logger.debug(@brand.inspect)
+logger.debug "account_detail_params: #{account_detail_params.inspect}"    
+abort @account_detail.inspect
+
 ==================================Rails generate form by existing table
 rails c
 > StockInfo.columns.each {|c| print "#{c.name}:#{c.type} "}

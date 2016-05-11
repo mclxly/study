@@ -1,3 +1,24 @@
+==================================================================
+2016-04-28
+1. ssh 22 -> ssh 1
+vim /etc/ssh/sshd_config
+service ssh retart
+
+2. 更新系统14.04->16.04
+apt-get -y update
+apt-get -y upgrade
+
+lsb_release -a
+# 开始升级系统
+do-release-upgrade -d
+
+3. 
+php7 + nginx 1.10
+
+============================Ref link
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
+
+==================================================================
 #!/bin/sh
 sudo apt-get -y update
 sudo apt-get -y upgrade
