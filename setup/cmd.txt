@@ -324,6 +324,13 @@ git commit --amend
 # 合并到最新的branch
 git merge upstream/master
 
+# dump code
+git archive master | tar -x -C /somewhere/else
+# compress code
+git archive master | bzip2 >source-tree.tar.bz2
+# ZIP archive:
+git archive --format zip --output /full/path/to/zipfile.zip master 
+
 =========================================NPM
 更新npm
 npm update npm -g

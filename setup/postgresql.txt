@@ -27,6 +27,16 @@ cd /etc/alternatives/
 Q:拒绝连接
 修改配置文件
 
+==============================================CentOS 6.5 + PG 9.5.2 + PostGIS
+yum install postgresql95 postgresql95-server postgresql95-libs postgresql95-contrib postgresql95-devel
+
+# run SQL
+CREATE EXTENSION adminpack;
+
+# install PostGIS
+yum install postgis2_95
+
+
 ==============================================CentOS 6.5
 # 进入PostgreSQL
 sudo -u postgres psql postgres

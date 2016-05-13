@@ -18,3 +18,5 @@ kill -9 pid
 
 6. login without pwd
 brew install ssh-copy-id
+ssh-keygen -t rsa
+ssh-copy-id webdev@3kmq.com -p 11011 
