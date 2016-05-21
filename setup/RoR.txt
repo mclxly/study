@@ -208,3 +208,41 @@ no content return
 # Cannot render console from 192.168.4.192! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
 config.web_console.whitelisted_ips = '192.168.1.5'
 config.web_console.whitelisted_ips = '192.168.0.0/16'
+
+==================================Deploy RoR with Capistrano
+1. cp config/database.yml config/database.yml.example
+
+2. Gemfile
+group :development do
+    gem 'capistrano',         require: false
+    gem 'capistrano-rvm',     require: false
+    gem 'capistrano-rails',   require: false
+    gem 'capistrano-bundler', require: false
+    gem 'capistrano3-puma',   require: false
+end
+
+3. bundle
+
+4. .gitignore
+config/database.yml
+
+5. no password login remote
+ssh-copy-id -i ~/.ssh/id_rsa.pub web@remote
+ssh-copy-id -i ~/.ssh/id_rsa.pub "webdev@3kmq.com -p121"
+
+6. deploy
+
+
+=================Ref link
+https://github.com/capistrano/capistrano/blob/master/README.md
+https://www.digitalocean.com/community/tutorials/deploying-a-rails-app-on-ubuntu-14-04-with-capistrano-nginx-and-puma
+
+==================================Rails Background Job with Sidekiq
+# add gem "sidekiq" to your Gemfile and run bundle.
+# 队列
+gem 'sidekiq'
+# Sidekiq Web
+gem 'sinatra', git: 'https://github.com/sinatra/sinatra.git', require: false。
+
+=================Ref link
+http://blog.andolasoft.com/2014/04/asynchronous-processing-with-sidekiq-gem-in-rails.html

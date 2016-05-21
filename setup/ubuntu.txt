@@ -5,6 +5,14 @@ sudo apt-get upgrade
 # 更换package source源 (cn.archive....比较快)
 /etc/apt/sources.list
 
+# How to undo sudo add-apt-repository? 
+apt-key list
+# 36FD5529 is the id
+apt-key del $ID
+OR
+sudo add-apt-repository --remove ppa:whatever/ppa
+
+
 sudo apt-get uninstall nodejs
 
 # configure network
@@ -198,4 +206,8 @@ external_http会直接影响端口
 https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-as-a-send-only-smtp-server-on-ubuntu-14-04
 sudo apt-get install mailutils
 
-
+==================================Redis
+# upgrade
+sudo add-apt-repository ppa:chris-lea/redis-server
+sudo apt-get update
+sudo apt-get upgrade redis-server

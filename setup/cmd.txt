@@ -94,6 +94,9 @@ sudo chgrp -R www-data /var/www
 sudo chmod -R g+w /var/www
 
 ===========================CENTOS 6
+# version
+lsb_release -d
+
 # rm match files
  find ./ -type f -name 'elasticsearch.log.[2]*' -exec rm {} +
  
@@ -330,6 +333,9 @@ git archive master | tar -x -C /somewhere/else
 git archive master | bzip2 >source-tree.tar.bz2
 # ZIP archive:
 git archive --format zip --output /full/path/to/zipfile.zip master 
+
+# sync local repo with remote one - Stack Overflow
+git pull origin master
 
 =========================================NPM
 更新npm
@@ -614,13 +620,20 @@ https://github.com/aFarkas/lazysizes
 print "hire" in chrome
 console.log('%chire', 'font-size: 48px; font-weight: bold; color: #c20')
 
-==================================Redis
+==================================Redis on CentOS
 CENTOS: yum install redis
 http://briansnelson.com/How_to_install_Redis_on_a_Centos_6.4_Server
 
 ruby拒绝链接可能是因为redis.conf的bind错误
 
 客户端：redis-cli
+
+# version
+redis-cli info | grep redis_version
+
+# upgrade
+yum --enablerepo=remi,remi-test install redis
+
 ==================================Ember.js
 开发调试
 Doc -> Development Helpers
