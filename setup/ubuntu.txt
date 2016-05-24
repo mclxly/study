@@ -211,3 +211,13 @@ sudo apt-get install mailutils
 sudo add-apt-repository ppa:chris-lea/redis-server
 sudo apt-get update
 sudo apt-get upgrade redis-server
+
+# version
+redis-cli info | grep redis_version
+
+# install from .deb
+wget https://launchpad.net/ubuntu/+archive/primary/+files/redis-server_3.2.0-3_amd64.deb
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-redis
+
+sudo service redis_6379 start
+sudo service redis_6379 stop
