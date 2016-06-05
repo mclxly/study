@@ -1,6 +1,9 @@
 =======================================================
 react.js notes
 
+npm install bootstrap-sass jquery --save
+npm install bootstrap-loader css-loader node-sass resolve-url-loader sass-loader style-loader url-loader --save-dev
+
 =======================Productionizing: Precompiled JSX
 npm install -g react-tools
 jsx --watch src/ build/
