@@ -1,3 +1,11 @@
+=======================================================react-boilerplate
+favicon
+https://github.com/ampedandwired/html-webpack-plugin#configuration
+
+npm i -D sass-loader
+npm i -D node-sass
+
+
 =======================================================
 react.js notes
 
