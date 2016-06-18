@@ -1,6 +1,29 @@
 =======================================================
 react.js notes
 
+=======================================================Reactive Native
+=======================developement environment
+sudo npm install -g react-native-cli
+brew install flow
+brew install watchman
+
+=======================Android
+# path 
+export ANDROID_HOME=~/Library/Android/sdk
+PATH="~/Library/Android/sdk/tools:~/Library/Android/sdk/platform-tools:${PATH}"
+export PATH
+
+#run
+react-native run-android
+
+# 设置android虚拟测试机
+android avd
+
+=======================IDE
+Activate the Atom > Install Shell Commands menu item
+apm install emmet
+apm install nuclide
+
 =======================Productionizing: Precompiled JSX
 npm install -g react-tools
 jsx --watch src/ build/

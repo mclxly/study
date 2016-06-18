@@ -20,3 +20,6 @@ kill -9 pid
 brew install ssh-copy-id
 ssh-keygen -t rsa
 ssh-copy-id webdev@3kmq.com -p 11011 
+
+7. 制定目录web服务
+python -m SimpleHTTPServer 8000
