@@ -23,3 +23,8 @@ ssh-copy-id webdev@3kmq.com -p 11011
 
 7. 制定目录web服务
 python -m SimpleHTTPServer 8000
+
+===========================Node.js
+brew install node
+sudo npm install npm -g
+
