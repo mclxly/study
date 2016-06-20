@@ -25,6 +25,10 @@ ssh-copy-id webdev@3kmq.com -p 11011
 python -m SimpleHTTPServer 8000
 
 ===========================Node.js
+brew update
+brew upgrade node
+npm install -g npm
+
 brew install node
 sudo npm install npm -g
 
