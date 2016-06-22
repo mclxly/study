@@ -99,7 +99,10 @@ lsb_release -d
 
 # rm match files
  find ./ -type f -name 'elasticsearch.log.[2]*' -exec rm {} +
- 
+
+# tar
+tar xf archive.tar
+
 # copy files(include hidden files)
 cp -r /etc/skel/. /home/<new_user>
 

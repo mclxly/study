@@ -1,4 +1,4 @@
-Last updated: 2015-12-05 10:34
+Last updated: 2016-06-21 10:16
 =============================
 
 =============================
@@ -22,6 +22,9 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 =============================npm
 # To upgrade, run: 
 [sudo] npm install npm@latest -g
+
+# taobao
+npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 =============================Tips
 # Tip to measure performance of a javascript block

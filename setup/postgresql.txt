@@ -1,5 +1,9 @@
 postgresql.txt
 
+# https://github.com/begriffs/postgrest
+# PostgREST serves a fully RESTful API from any existing PostgreSQL database.
+./postgrest postgres://postgres:postgres@127.0.0.1:5432/gistest --port 3003           --schema public           --anonymous postgres
+
 ==============================================CentOS6.5: PostgreSQL 9.4 -> 9.5
 1. stop old pg
 service postgresql-9.4 stop
