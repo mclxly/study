@@ -37,3 +37,7 @@ for (i = 0; i < len; i++) {
     arr[i] = new Object();
 };
 console.timeEnd("Array initialize"); // Outputs: Array initialize: 0.711ms
+
+=============================Problems
+# mac 下出错：Failed to execute 'node-gyp clean'
+sudo xcodebuild -license

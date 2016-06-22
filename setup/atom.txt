@@ -1,5 +1,9 @@
 ==================================React development
 
+# Command to update all installed packages
+apm upgrade --list
+apm upgrade
+
 =========================Ref link
 https://medium.com/@satya164/supercharged-javascript-development-in-atom-ea034e22eabc
 https://github.com/kriasoft/react-starter-kit/blob/master/docs/how-to-configure-text-editors.md
