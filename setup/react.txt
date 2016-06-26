@@ -5,6 +5,8 @@ https://github.com/ampedandwired/html-webpack-plugin#configuration
 npm i -D sass-loader
 npm i -D node-sass
 
+# 可以自动修复语法错误
+npm install jscs -g
 
 =======================================================
 react.js notes
