@@ -4,6 +4,12 @@
 apm upgrade --list
 apm upgrade
 
+# list
+apm list
+
+# packages
+apm install language-babel linter-eslint linter-flow autocomplete-modules
+
 =========================Ref link
 https://medium.com/@satya164/supercharged-javascript-development-in-atom-ea034e22eabc
 https://github.com/kriasoft/react-starter-kit/blob/master/docs/how-to-configure-text-editors.md

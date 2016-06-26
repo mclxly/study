@@ -8,8 +8,18 @@ npm i -D node-sass
 # 可以自动修复语法错误
 npm install jscs -g
 
+=======================Problems
+# sh: babel: command not found
+npm install --save-dev babel-cli
+
+# Error: Cannot find module '../features'
+
+
 =======================================================
 react.js notes
+
+# Inline Styles not working with images (Webpack) self.reactjs
+backgroundImage: 'url(' + require('./images/sword.png') + ')'
 
 =======================================================Reactive Native
 =======================developement environment
