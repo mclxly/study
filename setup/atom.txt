@@ -1,4 +1,5 @@
 ==================================React development
+https://medium.com/@satya164/supercharged-javascript-development-in-atom-ea034e22eabc#.8lhhex65q
 
 # Command to update all installed packages
 apm upgrade --list

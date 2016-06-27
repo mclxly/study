@@ -13,7 +13,15 @@ npm install jscs -g
 npm install --save-dev babel-cli
 
 # Error: Cannot find module '../features'
+restart computer
+vim /Users/colin/data/git/benqu-frontend/node_modules/caniuse-api/dist/index.js
+'../features' -> './features'
+https://github.com/Nyalab/caniuse-api/issues/25
+solution: npm install caniuse-api
 
+# sh: babel: command not found
+npm install --save-dev babel-cli
+http://stackoverflow.com/questions/34421513/babel-command-not-found
 
 =======================================================
 react.js notes

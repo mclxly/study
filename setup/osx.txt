@@ -24,6 +24,14 @@ ssh-copy-id webdev@3kmq.com -p 11011
 7. 指定目录web服务
 python -m SimpleHTTPServer 8000
 
+8. fuse: bad mount point
+pgrep -lf sshfs
+kill -9 <pid>
+sudo umount -f <mounted_dir>
+
+9. Device not configured
+
+
 ===========================Node.js
 brew update
 brew upgrade node

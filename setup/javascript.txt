@@ -19,6 +19,10 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 # centos build error:collect2: fatal error: cannot find 'ld'
 /.configure --without-snapshot
 
+# Clearing Node’s NPM Cache
+rm -rf ~/.npm
+npm cache clear
+
 =============================npm
 # To upgrade, run: 
 [sudo] npm install npm@latest -g
