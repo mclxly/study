@@ -102,6 +102,7 @@ lsb_release -d
 
 # tar
 tar xf archive.tar
+tar xpvf postgrest-0.3.2.0-centos-6.tar.xz
 
 # copy files(include hidden files)
 cp -r /etc/skel/. /home/<new_user>
@@ -339,6 +340,9 @@ git archive --format zip --output /full/path/to/zipfile.zip master
 
 # sync local repo with remote one - Stack Overflow
 git pull origin master
+
+# dicard local change
+git reset --hard
 
 =========================================NPM
 更新npm

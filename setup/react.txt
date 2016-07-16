@@ -82,3 +82,6 @@ React.render(
   </CheckLink>,
   document.getElementById('example')
 );
+
+# comment in jsx
+{/**/}
