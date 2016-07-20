@@ -30,6 +30,10 @@ Command: /bin/zsh --login
 使用原创目录
 sshfs -o defer_permissions discourse@192.168.1.103:/data/samba/discourse /Users/colin/my-mount
 
+# remove mount
+ps aux | grep sshfs
+kill -9 pid
+
 Address already in use
 你可以输入下面的命令来查看IPv4端口：(最好加 sudo)
 # lsof -Pnl +M -i4
