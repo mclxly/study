@@ -1,5 +1,10 @@
-/*
-npm install -g traceur-runner, then do traceur-runner myscript.js.
-*/
-{ let a = 'I am declared inside an anonymous block'; }
-console.log(a); // ReferenceError: a is not defined
+    function* echo(text, delay = 0) {
+        const caller = yield;
+        setTimeout(() => caller.success(text), delay);
+    }
+
+        run(function* echoes() {
+        console.log(yield echo('this'));
+        console.log(yield echo('is'));
+        console.log(yield echo('a test'));
+    });
