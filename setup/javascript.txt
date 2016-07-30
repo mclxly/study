@@ -30,6 +30,9 @@ npm cache clear
 # taobao
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 
+# config list
+npm config ls -l
+
 =============================Tips
 # Tip to measure performance of a javascript block
 console.time("Array initialize");

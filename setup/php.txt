@@ -1,3 +1,10 @@
+========================================Ubuntu14 upgrade php7
+
+========================================Centos6 upgrade php7
+yum remove php*
+rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
+yum install php70w php70w-opcache php70w-mysql
+
 ========================================wordpress
 WordPress 中文摘要问题
 wp-includes/formatting.php

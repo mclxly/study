@@ -111,6 +111,10 @@ tar xpvf postgrest-0.3.2.0-centos-6.tar.xz
 # copy files(include hidden files)
 cp -r /etc/skel/. /home/<new_user>
 
+# How do I exclude php and kernel packages when I use “yum update”?
+vim /etc/yum.conf
+exclude=php* kernel*
+
 # 生产MD5码
 echo -n 'hello world' | md5sum -
 
