@@ -102,7 +102,10 @@ sudo chmod -R g+w /var/www
 lsb_release -d
 
 # rm match files
- find ./ -type f -name 'elasticsearch.log.[2]*' -exec rm {} +
+find ./ -type f -name 'elasticsearch.log.[2]*' -exec rm {} +
+
+# grep skip xx folder
+grep -r --exclude-dir=node_modules 'loadUserPage'
 
 # tar
 tar xf archive.tar

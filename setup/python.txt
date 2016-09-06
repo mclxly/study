@@ -1,4 +1,11 @@
-Last updated: 2015-11-16 14:36
+Last updated: 2016-08-16 13:37
+
+===========================Pip
+pip list  #列出所有安装的库
+pip list --outdated #列出所有过期的库
+pip install --upgrade 库名 
+
+pip install -e git+https://github.com/shadowsocks/shadowsocks.git@2.9.0#egg=shadowsocks
 
 ===========================Python
 wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
