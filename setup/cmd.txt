@@ -1,4 +1,4 @@
-2014-05-20 14:53
+2016-09-06 15:02
 ===========================
 
 http://www.queryadmin.com/854/secure-wordpress-nginx/
@@ -353,6 +353,10 @@ git archive --format zip --output /full/path/to/zipfile.zip master
 git pull origin master
 
 # dicard local change
+git fetch --all
+git reset --hard origin/master
+git pull origin master
+
 git reset --hard
 
 # disable auto convert line end
