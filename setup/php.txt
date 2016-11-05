@@ -1,4 +1,6 @@
 ========================================Ubuntu14 upgrade php7
+http://www.cyberciti.biz/faq/ubuntu-linux-14-04-install-php7-using-apt-get-command/
+
 
 ========================================Centos6 upgrade php7
 yum remove php*

@@ -362,6 +362,9 @@ git reset --hard
 # disable auto convert line end
 git config --global core.autocrlf input
 
+# only clone last version
+git clone --depth=1 <remote_repo_URL>
+
 =========================================NPM
 更新npm
 npm update npm -g
