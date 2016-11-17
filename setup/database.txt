@@ -53,3 +53,10 @@ inner join (
     GROUP BY hz
     HAVING COUNT(*) > 1
 ) oc on o.hz = oc.hz
+
+==================================================Sample Data
+For MySQL only
+[test_db](https://github.com/datacharmer/test_db)
+[Sakila](https://dev.mysql.com/doc/sakila/en/sakila-installation.html)
+
+http://sportsdb.org/sd/samples

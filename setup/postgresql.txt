@@ -95,3 +95,11 @@ SELECT row_to_json(posts)
 # CentOS
 /var/lib/pgsql/9.4/data/pg_hba.conf
 service postgresql-9.4 restart
+
+# drop database sakila
+SELECT pg_terminate_backend(pg_stat_activity.pid)
+FROM pg_stat_activity
+WHERE pg_stat_activity.datname = 'sakila'
+  AND pid <> pg_backend_pid();
+  
+DROP DATABASE sakila;

@@ -8,6 +8,12 @@ sudo apt-get upgrade
 # 查找可安装包
 apt-cache search php7
 
+# How do I keep track of failed SSH log-in attempts?
+1. Filter for brute-force interactive SSH logins
+grep sshd.\*Failed /var/log/auth.log | less
+2. Look for failed connections
+grep sshd.*Did /var/log/auth.log | less
+
 # How to undo sudo add-apt-repository? 
 apt-key list
 # 36FD5529 is the id
