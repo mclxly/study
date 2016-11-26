@@ -148,6 +148,9 @@ gem install nokogiri -v 1.6.6.2 -- --use-system-libraries
 export SECRET_KEY_BASE=rake secret
 ruby -e 'p ENV["SECRET_KEY_BASE"]'
 
+# WebSocket connection to 'ws://test.newbiiz.com:3000/cable' failed: Error during WebSocket handshake: Unexpected response code: 404
+app.config
+
  ==================================Rails Admin
  # customize
 gem 'rails_admin'
@@ -246,3 +249,7 @@ gem 'sinatra', git: 'https://github.com/sinatra/sinatra.git', require: false。
 
 =================Ref link
 http://blog.andolasoft.com/2014/04/asynchronous-processing-with-sidekiq-gem-in-rails.html
+
+==================================Redis in Rails
+gem install redis-stat
+redis-cli monitor

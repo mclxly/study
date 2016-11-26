@@ -36,3 +36,6 @@ https://github.com/major/MySQLTuner-perl
 
 # 文案排版指北
 https://github.com/sparanoid/chinese-copywriting-guidelines
+
+# 支持从clipboard粘贴图片并直接上传
+https://github.com/NextStepWebs/simplemde-markdown-editor/issues/328
