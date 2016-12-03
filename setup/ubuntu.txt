@@ -193,6 +193,8 @@ sudo apt-get remove nginx-common
 3.Error: Cannot find module 'rx'
 echo $NODE_PATH
 
+4. Failed to fetch http://nginx.org/packages/ubuntu/dists/xenial/Release.gpg  The following signatures were invalid: KEYEXPIRED
+wget https://nginx.org/keys/nginx_signing.key -O - | sudo apt-key add -
 
 ==================================Gitlab
 sudo dpkg -i gitlab-ce_7.11.2~omnibus-1_amd64.deb
