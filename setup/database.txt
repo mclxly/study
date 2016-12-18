@@ -43,6 +43,9 @@ truncate table orders;
 SET FOREIGN_KEY_CHECKS = 1; -- enable checking
 
 
+=======================================CentOS upgrade MySQL
+http://dev.mysql.com/doc/refman/5.7/en/upgrading.html
+
 ==================================================常用SQL
 # 查找重复记录
 select o.hz, oc.dupeCount, o.id
