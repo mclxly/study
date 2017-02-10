@@ -1,30 +1,4 @@
-Last updated: 2017-02-09 14:01
-
-===========================Basic Program
-# var_dump
-import pprint
-
-pprint.pprint(globals())
-pprint.pprint(locals())
-
-# How do I copy an object in Python?
-In general, try copy.copy() or copy.deepcopy() for the general case. Not all objects can be copied, but most can.
-
-# How can I find the methods or attributes of an object?
-For an instance x of a user-defined class, dir(x) returns an alphabetized list of the names containing the instance attributes and methods and attributes defined by its class.
-
-# Is there an equivalent of C’s ”?:” ternary operator?
-[on_true] if [expression] else [on_false]
-
-x, y = 50, 25
-small = x if x < y else y
-
-# Is there an equivalent to Perl’s chomp() for removing trailing newlines from strings?
-lines = ("line 1 \r\n"
-...          "\r\n"
-...          "\r\n")
->>> lines.rstrip("\n\r")
-'line 1 '
+Last updated: 2016-08-16 13:37
 
 ===========================Pip
 pip list  #列出所有安装的库

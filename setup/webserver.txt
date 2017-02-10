@@ -4,13 +4,6 @@ location /media {
   proxy_pass http://dreamvr.com/blog/category/media;
 }
 
-# handling noisy favicon.ic messages in Nginx
-location = /favicon.ico {
-  return 204;
-  access_log     off;
-  log_not_found  off;
-}
-
 ==================================nginx CORS
 location ~* ^/api/(.*) {
 
