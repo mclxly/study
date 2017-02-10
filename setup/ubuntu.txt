@@ -132,6 +132,17 @@ sudo ufw disable
 sudo ufw enable
 https://www.digitalocean.com/community/tutorials/additional-recommended-steps-for-new-ubuntu-14-04-servers
 
+# ufw manual
+https://www.cyberciti.biz/faq/how-to-block-an-ip-address-with-ufw-on-ubuntu-linux-server/
+
+# ufw block specific IP address
+sudo ufw deny from {ip-address-here} to any
+sudo ufw deny from 192.168.1.5 to any
+
+# How do I delete blocked IP address or unblock an IP address again?
+sudo ufw status numbered
+sudo ufw delete NUM
+
 ==================================Nginx+hhvm
 sudo apt-get install php5 php5-cli php5-common php5-cgi php5-mysql php5-gd
 

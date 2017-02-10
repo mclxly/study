@@ -98,6 +98,9 @@ sudo chgrp -R www-data /var/www
 sudo chmod -R g+w /var/www
 
 ===========================CENTOS 6
+# get the size of a folder
+du -sh file_path
+
 # For installed sevices
 /sbin/chkconfig --list | awk '{ print $1 }' | sort
 
@@ -215,6 +218,9 @@ ps -eo size,pid,user,command | awk '{ hr=$1/1024 ; printf("%13.6f Mb ",hr) } { f
 # Add User to Sudoers
 visudo
 http://blog.zwiegnet.com/linux-server/add-user-to-sudoers-group-centos/
+
+# add user to group (adm group for view logs)
+sudo usermod -aG adm <USER>
 
 # 显示软连接
 ls -li
@@ -668,6 +674,9 @@ redis-cli info | grep redis_version
 # upgrade
 yum --enablerepo=remi,remi-test install redis
 
+# monitor
+redis-cli monitor
+
 ==================================Ember.js
 开发调试
 Doc -> Development Helpers
@@ -724,6 +733,8 @@ rt_field = partno
 php-fpm, phpMyAdmin: "all to undefined function __()"
 Open that file in your browser (http://localhost/test.php or similar) and look for the line session.save_path. That's your session folder; make sure the permissions are suitable and see if that helps.
 chmod 777 -R /var/lib/php/session
+
+更改group需要重开一个session才会生效
 
 ==================================Problems List
 yum update error package skip-broken php55w

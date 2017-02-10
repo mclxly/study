@@ -63,3 +63,10 @@ For MySQL only
 [Sakila](https://dev.mysql.com/doc/sakila/en/sakila-installation.html)
 
 http://sportsdb.org/sd/samples
+
+==================================================开启mysql日志，查询执行的sql
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+general_log_file        = /var/log/mysql/mysql.log
+general_log             = 1
+
+show variables like 'general_log%';

@@ -25,6 +25,15 @@ https://github.com/Pyppe/phantomjs2.0-ubuntu14.04x64
 E:\Program Files\wkhtmltopdf\bin>wkhtmltoimage --javascript-delay 100000 --window-status myrandomstring http://item.jd.com/1065971.html jd1.png
 Unknown switch -t
 
+# 动态加载jquery
+var script = document.createElement("script");
+  script.setAttribute("src", "//code.jquery.com/jquery-latest.min.js");
+  script.addEventListener('load', function() {
+    var script = document.createElement("script");
+    document.body.appendChild(script);
+  }, false);
+  document.body.appendChild(script);
+  
 =========================================FAQ
 # phantomjs截图中文网站网页页面乱码，安装字体解决
 在centos中执行：yum install bitmap-fonts bitmap-fonts-cjk
