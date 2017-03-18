@@ -23,6 +23,28 @@ https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubunt
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
+==================================================================2017-03-17
+Lets Encrypt
+https://github.com/certbot/certbot
+
+==================================================================2017-03-03
+Personal notes on building/configuring a server
+https://github.com/jrothrock/server_notes
+
+1. 安装必要依赖
+./letsencrypt-auto
+2. 只取得证书
+./letsencrypt-auto certonly
+3. 更新
+./certbot-auto renew
+
+/etc/letsencrypt/live/githere.com/
+cert.pem  chain.pem  fullchain.pem  privkey.pem  README
+
+Ref: 
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04
+
+
 ==================================================================2016-05-10
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
 
