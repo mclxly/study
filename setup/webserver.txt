@@ -1,3 +1,6 @@
+==================================2017.04.06: brotli better than gzip
+https://certsimple.com/blog/nginx-brotli
+
 ==================================Nginx
 # URL rewrite without change url
 location /media {

@@ -10,10 +10,35 @@ Genuine knowledge comes from practice.
 * [GoDoc](https://godoc.org)
 * [Go Lib List](http://go-lang.cat-v.org/pure-go-libs)
 
+==========================================Install
+1. wget https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz
+2. tar zxvf go1.8.1.linux-amd64.tar.gz -C $GO_INSTALL_DIR
+
+
+==========================================Problems
+? cannot find GOROOT directory
+vim ~/.bash_profile
+export GOROOT=/usr/lib/golang
+
+? go get timeout
+http://stackoverflow.com/questions/10383299/how-do-i-configure-go-to-use-a-proxy
+http_proxy=127.0.0.1:8080 go get code.google.com/p/go.crypto/bcrypt
+
 ==========================================Env
 export GOPATH=~/golang/
-vim ~/.bashrc
 export GOPATH="$HOME/golang/"
+vim ~/.bashrc
+export GOROOT=~/golang/
+export GOROOT=/data/golang
+PATH=/data/golang/bin:$PATH
+
+======================================================================
+      Web Framework
+======================================================================
+==========================================Gin
+1. go get gopkg.in/gin-gonic/gin.v1
+
+
 
 ==========================================MysQL
 go get github.com/go-sql-driver/mysql

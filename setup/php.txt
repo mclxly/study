@@ -1,3 +1,6 @@
+========================================Ubuntu16.04 upgrade php7.0 -> php7.1
+
+
 ========================================Ubuntu14 upgrade php7
 http://www.cyberciti.biz/faq/ubuntu-linux-14-04-install-php7-using-apt-get-command/
 
@@ -128,3 +131,6 @@ chmod -R 775 app/storage
 ========================================Lumen 5.2
 # 生成APP KEY
 php -r "echo md5(uniqid()).\"\n\";"
+
+========================================Laravel 5.4 tricks
+# Gates 并不会自动传递$user, Policy 会自动传递，注意需要 Auth->user() 有效；

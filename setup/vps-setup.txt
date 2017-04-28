@@ -26,6 +26,8 @@ sudo apt-get -y upgrade
 ==================================================================2017-03-17
 Lets Encrypt
 https://github.com/certbot/certbot
+./certbot-auto certonly --nginx
+
 
 ==================================================================2017-03-03
 Personal notes on building/configuring a server

@@ -5,7 +5,9 @@
 du -sh my-app
 
 # 统计文件夹代码
+npm install -g cloc
 cloc my-app
+cloc mpcggj --exclude-dir=vendor,storage,node_modules
 
 /******************************************************
             Frontend  

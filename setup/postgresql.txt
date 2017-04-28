@@ -4,6 +4,20 @@ postgresql.txt
 # PostgREST serves a fully RESTful API from any existing PostgreSQL database.
 ./postgrest postgres://postgres:postgres@127.0.0.1:5432/gistest --port 3003           --schema public           --anonymous postgres
 
+==============================================Ubuntu 16.04: PostgreSQL 9.5 -> 9.6
+1. sudo apt-get update
+2. sudo apt-get upgrade
+3. sudo apt-get install postgresql-9.6
+4. sudo pg_lsclusters
+5. sudo pg_dropcluster 9.5 main (慎用：会把所有9.5的版本的配置及数据都删除掉)
+6. sudo /etc/init.d/postgresql stop
+7. sudo vim /etc/postgresql/9.6/main/postgresql.conf
+8. sudo vim /etc/postgresql/9.6/main/pg_hba.conf
+9. create user
+
+==============================================PostGIS 2.3.2
+http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS23UbuntuPGSQL96Apt
+
 ==============================================CentOS6.5: PostgreSQL 9.4 -> 9.5
 1. stop old pg
 service postgresql-9.4 stop
@@ -103,3 +117,6 @@ WHERE pg_stat_activity.datname = 'sakila'
   AND pid <> pg_backend_pid();
   
 DROP DATABASE sakila;
+
+# reset sequence
+truncate locations restart identity;
