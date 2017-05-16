@@ -23,6 +23,7 @@ export GOROOT=/usr/lib/golang
 ? go get timeout
 http://stackoverflow.com/questions/10383299/how-do-i-configure-go-to-use-a-proxy
 http_proxy=127.0.0.1:8080 go get code.google.com/p/go.crypto/bcrypt
+http_proxy=192.168.4.192:1080 go get -u -v code.google.com/p/go.crypto/bcrypt
 
 ==========================================Env
 export GOPATH=~/golang/

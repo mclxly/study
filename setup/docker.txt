@@ -1,3 +1,16 @@
+2017-05-13 15:29
+
+===========================Docker on Ubuntu
+https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description
+
+wget https://download.docker.com/linux/ubuntu/dists/trusty/pool/stable/amd64/docker-ce_17.03.1~ce-0~ubuntu-trusty_amd64.deb
+sudo dpkg -i .deb
+apt-get install libsystemd-journal0
+sudo usermod -aG docker $(whoami)
+
+===========================Docker Problem
+1. dial unix /var/run/docker.sock: connect: permission denied.
+
 ===========================Docker
 # show version
 docker version

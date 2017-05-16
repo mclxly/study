@@ -25,6 +25,8 @@ https://github.com/Pyppe/phantomjs2.0-ubuntu14.04x64
 E:\Program Files\wkhtmltopdf\bin>wkhtmltoimage --javascript-delay 100000 --window-status myrandomstring http://item.jd.com/1065971.html jd1.png
 Unknown switch -t
 
+wkhtmltoimage --crop-h 698 --crop-w 1210 --crop-x 26 --crop-y 334 http://item.jd.com/2383421.htm jd5.png
+
 =========================================FAQ
 # phantomjs截图中文网站网页页面乱码，安装字体解决
 在centos中执行：yum install bitmap-fonts bitmap-fonts-cjk
@@ -33,3 +35,9 @@ Unknown switch -t
 sudo apt-get install language-pack-zh-hans
 sudo apt-get install ttf-dejavu ttf-wqy-microhei
 sudo fc-cache -f -v
+
+=========================================注入JS
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = 'https://raw.githubusercontent.com/niklasvh/html2canvas/master/dist/html2canvas.min.js';
+document.head.appendChild(script);
