@@ -28,6 +28,7 @@ Lets Encrypt
 https://github.com/certbot/certbot
 ./certbot-auto certonly --nginx
 
+letsencrypt --nginx --expand -d owncloud.domain.de -d webmail.domain.de
 
 ==================================================================2017-03-03
 Personal notes on building/configuring a server
@@ -40,12 +41,14 @@ https://github.com/jrothrock/server_notes
 3. 更新
 ./certbot-auto renew
 
+./letsencrypt-auto certonly --nginx -d githere.com -d cggj.githere.com
+
 /etc/letsencrypt/live/githere.com/
 cert.pem  chain.pem  fullchain.pem  privkey.pem  README
 
 Ref: 
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04
-
+https://blog.benroux.me/running-multiple-https-domains-from-the-same-server/
 
 ==================================================================2016-05-10
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04

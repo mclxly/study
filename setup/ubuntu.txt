@@ -75,6 +75,9 @@ grep -R --include="*.php" "console.log" ./app
 # compare two folders
 diff
 
+# PHP FPM
+systemctl status php7.0-fpm.service
+
 ===================================================
                   DigitalOcean
 ===================================================                  

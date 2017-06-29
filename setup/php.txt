@@ -1,3 +1,5 @@
+php -S 0.0.0.0:8888
+
 ========================================Ubuntu16.04 upgrade php7.0 -> php7.1
 
 
@@ -134,3 +136,9 @@ php -r "echo md5(uniqid()).\"\n\";"
 
 ========================================Laravel 5.4 tricks
 # Gates 并不会自动传递$user, Policy 会自动传递，注意需要 Auth->user() 有效；
+
+# 修改配置，需要执行：
+php artisan clear-compiled
+php artisan cache:clear
+php artisan optimize
+php artisan config:cach

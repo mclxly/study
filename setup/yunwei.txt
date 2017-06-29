@@ -108,6 +108,27 @@ will establish. Next thing would be to create a shortcut in your home directory:
 
 sudo ln -s /var/www /home/LOGIN_ID/
 
+==========================MySQL backup
+#!/bin/bash
+# Database credentials
+user="stt"
+password="123456"
+host="192.168.0.140"
+db_name="stt_website"
+
+# Other options
+backup_path="/data/stt.com.live.db.bak"
+date=$(date +"%d-%b-%Y")
+
+# Set default file permissions
+umask 177
+
+# Dump database into SQL file
+mysqldump --user=$user --password=$password --host=$host $db_name --ignore-table=$db_name.sc --ignore-table=$db_name.sc_bak --ignore-table=$db_name.quiz_answer  > $backup_path/$db_name-$date.sql
+
+# Delete files older than 30 days
+find $backup_path/* -name *.sql -mtime +30 -exec rm {} \;
+
 ==========================压力测试
 ab -k -c 350 -n 20000 example.com/
 

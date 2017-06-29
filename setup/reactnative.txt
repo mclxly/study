@@ -5,3 +5,46 @@ export PATH=$ANDROID_HOME/platform-tools:$PATH
 
 ===========Problems
 http://stackoverflow.com/questions/26254526/manually-install-gradle-and-use-it-in-android-studio
+
+=============================Commands
+>react-native init NewApplication
+Create a new application
+
+> react-native start
+Get the development server up and running on port 8081
+
+> react-native run-ios 
+> react-native run-android
+Build the application and load it up onto the device. Be careful running these commands above since they tend to open new Terminal windows in the background
+
+> react-native link
+React Native can automatically link package dependencies like react-native-maps in iOS and Android. This avoids clicking through menus in Android Studio and Xcode.
+
+> npm install
+Call npm install after cloning a repository to download all the related packages.
+
+> ps aux | grep react-native
+Show any running react-native development servers that are running. I usually run this when I want to see if my port is blocked and I need to kill a dormant process.
+
+=======================================================Reactive Native
+=======================developement environment
+sudo npm install -g react-native-cli
+brew install flow
+brew install watchman
+
+=======================Android
+# path 
+export ANDROID_HOME=~/Library/Android/sdk
+PATH="~/Library/Android/sdk/tools:~/Library/Android/sdk/platform-tools:${PATH}"
+export PATH
+
+#run
+react-native run-android
+
+# 设置android虚拟测试机
+android avd
+
+=======================IDE
+Activate the Atom > Install Shell Commands menu item
+apm install emmet
+apm install nuclide

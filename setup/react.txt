@@ -29,28 +29,6 @@ react.js notes
 # Inline Styles not working with images (Webpack) self.reactjs
 backgroundImage: 'url(' + require('./images/sword.png') + ')'
 
-=======================================================Reactive Native
-=======================developement environment
-sudo npm install -g react-native-cli
-brew install flow
-brew install watchman
-
-=======================Android
-# path 
-export ANDROID_HOME=~/Library/Android/sdk
-PATH="~/Library/Android/sdk/tools:~/Library/Android/sdk/platform-tools:${PATH}"
-export PATH
-
-#run
-react-native run-android
-
-# 设置android虚拟测试机
-android avd
-
-=======================IDE
-Activate the Atom > Install Shell Commands menu item
-apm install emmet
-apm install nuclide
 
 npm install bootstrap-sass jquery --save
 npm install bootstrap-loader css-loader node-sass resolve-url-loader sass-loader style-loader url-loader --save-dev
@@ -85,3 +63,50 @@ React.render(
 
 # comment in jsx
 {/**/}
+
+=======================================================better organize
+/src
+  /components 
+    /Button 
+    /Notifications
+      /components
+        /ButtonDismiss  
+          /images
+          /locales
+          /specs 
+          /index.js
+          /styles.scss
+      /index.js
+      /styles.scss
+  /data
+    /users
+      /actions.js
+      /api.js
+      /reducer.js
+  /scenes
+    /Home 
+      /components 
+        /ButtonLike
+      /services
+        /processData
+      /index.js
+      /styles.scss
+    /Sign 
+      /components 
+        /FormField
+      /scenes
+        /Login
+        /Register 
+          /locales
+          /specs
+          /index.js
+          /styles.scss
+  /services
+    /api
+    /geolocation
+    /session
+      /actions.js
+      /index.js
+      /reducer.js
+  index.js 
+  store.js

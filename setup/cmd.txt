@@ -377,6 +377,12 @@ git config --global core.autocrlf input
 # only clone last version
 git clone --depth=1 <remote_repo_URL>
 
+# reserve folder
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore
+
 =========================================NPM
 更新npm
 npm update npm -g
