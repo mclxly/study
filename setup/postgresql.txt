@@ -124,6 +124,11 @@ truncate locations restart identity;
 # add column
 ALTER TABLE sample.public.employee ADD new_col char(25) DEFAULT '22' NOT NULL
 
+* 备份制定database
+
+==============================================JSON
+ select poi_json->>'ad_info' from "locations" 
+ where poi_json#>'{ad_info,province}' != 'null' and poi_json#>'{ad_info,province}' = poi_json#>'{ad_info,city}'
 
 ==============================================GEO SQL
 # 建立索引，数据量少的情况未发现提速

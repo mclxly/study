@@ -140,3 +140,5 @@ http://toomuchdata.com/2014/02/16/how-to-install-python-on-centos/
 ===========================http://tushare.org/===========================
 ===========================Problems
 # ImportError: No module named 'tushare'
+
+#  HTTPSConnectionPool(host='pypi.python.org', port=443): Read timed out

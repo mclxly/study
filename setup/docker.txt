@@ -47,3 +47,13 @@ docker images
 sudo docker stop $(sudo docker ps -a -q)
 
 # disable startup
+
+# remove image
+docker ps -a
+docker rm xxx
+
+===========================Docker on CentOS
+https://www.tecmint.com/install-docker-and-learn-containers-in-centos-rhel-7-6/
+
+* 安装 docker-compose
+https://github.com/docker/compose/

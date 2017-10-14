@@ -1,0 +1,25 @@
+
+==================CentOS 7
+nginx+hhvm
+
+
+
+git clone https://github.com/h5bp/server-configs-nginx.git nginx
+
+==================CentOS 6.8
+Removing:
+ php70w                     x86_64      7.0.20-1.w6        @webtatic      8.9 M
+ php70w-cli                 x86_64      7.0.20-1.w6        @webtatic      7.6 M
+ php70w-common              x86_64      7.0.20-1.w6        @webtatic      8.5 M
+ php70w-gd                  x86_64      7.0.20-1.w6        @webtatic      725 k
+ php70w-mbstring            x86_64      7.0.20-1.w6        @webtatic      2.7 M
+ php70w-mcrypt              x86_64      7.0.20-1.w6        @webtatic       77 k
+ php70w-mysql               x86_64      7.0.13-1.w6        @webtatic      326 k
+ php70w-opcache             x86_64      7.0.20-1.w6        @webtatic      390 k
+ php70w-pdo                 x86_64      7.0.20-1.w6        @webtatic      345 k
+ php70w-pear                noarch      1:1.10.1-1.w6      @webtatic      2.1 M
+ php70w-pecl-igbinary       x86_64      2.0.1-1.w6         @webtatic      119 k
+ php70w-pecl-memcached      x86_64      3.0.1-1.w6         @webtatic      344 k
+ php70w-pgsql               x86_64      7.0.20-1.w6        @webtatic      330 k
+ php70w-process             x86_64      7.0.20-1.w6        @webtatic      131 k
+ php70w-xml                 x86_64      7.0.20-1.w6        @webtatic      595 k

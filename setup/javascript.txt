@@ -1,5 +1,8 @@
-Last updated: 2016-06-21 10:16
+Last updated: 2017-09-14
 =============================
+
+=============================Install Node.js 8 on Ubuntu 16.04 Xenial Xerus LTS
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 =============================
 (a)pply takes (a)rray! (an array with all the arguments)
@@ -7,8 +10,8 @@ Last updated: 2016-06-21 10:16
 (b)ind is for a (b)elated use! (you'll generate a function that you won't call right away, but you need it to use the right context when you do call it later!
 
 =============================node.js
-
-tar -zxvf node-v5.3.0wget https://nodejs.org/dist/v5.3.0/node-v5.3.0.tar.gz.tar.gz
+wget https://nodejs.org/dist/v5.3.0/node-v5.3.0.tar.gz.tar.gz
+tar -zxvf node-v5.3.0
 ./configure
 make
 make install

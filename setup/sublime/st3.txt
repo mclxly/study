@@ -8,6 +8,13 @@
     { "keys": ["shift+home"], "command": "move_to", "args": {"to": "bol", "extend": true } }
 ]
 
+https://engageinteractive.co.uk/blog/getting-setup-on-sublime-text-3-2017-edition
+
+======================================2017
+git clone https://github.com/mrmartineau/HTML5
+git clone https://github.com/SideBarEnhancements-org/SideBarEnhancements
+git clone https://github.com/mrmartineau/HTML5
+
 ======================================usage
 常用热键
 多重文本选择：ctrl + cmd + g

@@ -1,0 +1,10 @@
+==================================中文分词
+【中美将继续加强能效领域合作】据新华社，中美两国政府、企业和环保组织代表13日在美国科罗拉多州首府丹佛举行的第八届中美能效论坛上表示将进一步加强双方在能效领域的合作。福田汽车集团在论坛上与美国最大的独立发动机制造商康明斯签署了合作开发绿色动力与智能卡车的协议。
+
+* https://nlp.stanford.edu/software/segmenter.shtml#Download
+【 中 美 将 继续 加强 能效 领域 合作 】 据 新华社 ， 中 美 两 国 政府 、 企业 和 环保 组织 代表 13日 在 美国 科罗拉多州 首府 丹佛 举行 的 第八 届 中 美 能效 论坛 上 表示 将 进一步 加强 双方 在 能效 领域 的 合作 。 福田 汽车 集团 在 论坛 上 与 美国 最 大 的 独立 发动机 制造商 康明斯 签署 了 合作 开发 绿色 动力 与 智能 卡车 的 协议 。
+
+==================================Ref
+http://www.nltk.org/install.html
+https://nlp.stanford.edu/software/segmenter.shtml#Download
+https://stanfordnlp.github.io/CoreNLP/download.html

@@ -34,6 +34,8 @@ letsencrypt --nginx --expand -d owncloud.domain.de -d webmail.domain.de
 Personal notes on building/configuring a server
 https://github.com/jrothrock/server_notes
 
+https://certbot.eff.org/#ubuntuxenial-nginx
+
 1. 安装必要依赖
 ./letsencrypt-auto
 2. 只取得证书

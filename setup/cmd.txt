@@ -63,7 +63,7 @@ firewall-cmd --zone=dmz --add-service=ssh --permanent
 重启nginx
 systemctl restart nginx.service
 
-同步时间
+同步时间 sync time
 yum install ntp
 /usr/sbin/ntpdate pool.ntp.org
 
@@ -109,6 +109,7 @@ du -sh file_path
 
 # version
 lsb_release -d
+cat /etc/centos-release
 
 # rm match files
 find ./ -type f -name 'elasticsearch.log.[2]*' -exec rm {} +

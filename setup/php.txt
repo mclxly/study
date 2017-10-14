@@ -142,3 +142,22 @@ php artisan clear-compiled
 php artisan cache:clear
 php artisan optimize
 php artisan config:cach
+
+========================================CentOS 6.9 nginx + php
+yum install nginx
+rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
+yum clean all
+yum list installed php*
+yum install php56w php56w-common php56w-bcmath php56w-cli php56w-devel php56w-gd php56w-mbstring php56w-mcrypt php56w-mysql php56w-pdo php56w-pear php56w-tidy php56w-xml php56w-fpm php56w-mysqlnd php56w-pecl-apc pcre-devel
+
+chkconfig iptables off
+
+short_open_tag=On in php.ini
+
+php-fpm.ini
+https://gist.github.com/santoshachari/23ef757d593e5ccd3d31
+
+setsebool httpd_can_network_connect=1
+
+php.ini
+date.timezone = America/Los_Angeles

@@ -2,7 +2,7 @@
 sudo apt-get update
 sudo apt-get upgrade
 
-# 更换package source源 (cn.archive....比较快)
+# 更换package source源 (cn.archive....比较快) repos
 /etc/apt/sources.list
 
 # 查找可安装包
@@ -235,3 +235,5 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-redis
 
 sudo service redis_6379 start
 sudo service redis_6379 stop
+
+==================================PHP 7.1
