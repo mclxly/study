@@ -4,6 +4,58 @@ postgresql.txt
 # PostgREST serves a fully RESTful API from any existing PostgreSQL database.
 ./postgrest postgres://postgres:postgres@127.0.0.1:5432/gistest --port 3003           --schema public           --anonymous postgres
 
+==============================================PostgreSQL 10 upgrade
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install postgresql-10
+sudo apt-get install postgis
+sudo apt-get install postgresql-10-postgis-2.4
+
+sudo vim /etc/postgresql/10/main/postgresql.conf
+listen_addresses = '*'
+shared_buffers = 512MB
+sudo vim /etc/postgresql/10/main/pg_hba.conf
+sudo /etc/init.d/postgresql reload
+
+sudo pg_lsclusters
+
+* psql
+psql --cluster 10/main --version
+
+* 切换到默认postgres用户
+sudo su - postgres
+
+* 连接到新安装的10
+psql --cluster 10/main
+\conninfo
+SELECT version();
+ALTER EXTENSION postgis UPDATE;
+ALTER EXTENSION postgis_topology UPDATE;
+
+* 导入数据至新安装的库
+pg_dumpall -p 5432 | psql -d postgres -p 5433
+
+* 禁止旧数据库启动
+sudo vim /etc/postgresql/9.6/main/start.conf
+#auto
+
+* To start a cluster manually you can use 
+pg_ctlcluster <version> <name>
+
+* stop old
+sudo pg_ctlcluster 9.6 main stop
+
+==============================================PostGIS upgrade
+SELECT PostGIS_full_version();
+
+==============================================Index
+B-Tree - For most datatypes and queries
+GIN - For JSONB/hstore/arrays
+GiST - For full text search and geospatial datatypes
+SP-GiST - For larger datasets with natural but uneven clustering
+BRIN - For really large datasets that line up sequentially
+Hash - For equality operations, and generally B-Tree still what you want here
+
 ==============================================Ubuntu 16.04: PostgreSQL 9.5 -> 9.6
 1. sudo apt-get update
 2. sudo apt-get upgrade
@@ -14,7 +66,9 @@ postgresql.txt
 7. sudo vim /etc/postgresql/9.6/main/postgresql.conf
 8. sudo vim /etc/postgresql/9.6/main/pg_hba.conf
 9. create user
-
+10. 改变了pg_hba.conf得刷新配置SELECT pg_reload_conf();
+sudo /etc/init.d/postgresql reload
+0
 ==============================================PostGIS 2.3.2
 http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS23UbuntuPGSQL96Apt
 
@@ -76,6 +130,8 @@ cd /var/lib/pgsql/
 
 # backup
  pg_dump -U postgres -h 192.168.1.30 ruby-china-dev > ~/3kmq.com/db_bak_0223.sql
+https://wiki.postgresql.org/wiki/Automated_Backup_on_Linux
+pg_dump --username webdev -Fc --file=dat.pgdump 3kmq_test
 
 ==============================================CentOS 6.5 + Postgresql 9.5
 # CentOS/RHEL 6

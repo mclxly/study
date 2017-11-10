@@ -135,6 +135,9 @@ sudo ufw disable
 sudo ufw enable
 https://www.digitalocean.com/community/tutorials/additional-recommended-steps-for-new-ubuntu-14-04-servers
 
+sudo ufw delete allow 5432
+sudo ufw allow 5433
+
 ==================================Nginx+hhvm
 sudo apt-get install php5 php5-cli php5-common php5-cgi php5-mysql php5-gd
 

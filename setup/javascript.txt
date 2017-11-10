@@ -1,6 +1,10 @@
 Last updated: 2017-09-14
 =============================
 
+ncu
+ncu -u
+npm outdated
+
 =============================Install Node.js 8 on Ubuntu 16.04 Xenial Xerus LTS
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 

@@ -69,6 +69,7 @@ sudo service php5-fpm restart
 sudo ufw allow ssh
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
+sudo ufw allow 9998
 sudo ufw show added
 sudo ufw enable
 
@@ -185,3 +186,19 @@ https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubunt
 # disable remote login with root
 Edit the file /etc/ssh/sshd_config
 PermitRootLogin no
+
+service ssh restart
+
+==================================================================
+https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart
+
+==================================================================fail2ban
+sudo apt-get install fail2ban
+https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04
+sudo vim /etc/fail2ban/jail.local
+[sshd]
+enabled  = true
+port     = <ENTER YOUR SSH PORT NUMBER HERE>
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 3

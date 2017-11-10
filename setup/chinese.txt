@@ -4,7 +4,11 @@
 * https://nlp.stanford.edu/software/segmenter.shtml#Download
 【 中 美 将 继续 加强 能效 领域 合作 】 据 新华社 ， 中 美 两 国 政府 、 企业 和 环保 组织 代表 13日 在 美国 科罗拉多州 首府 丹佛 举行 的 第八 届 中 美 能效 论坛 上 表示 将 进一步 加强 双方 在 能效 领域 的 合作 。 福田 汽车 集团 在 论坛 上 与 美国 最 大 的 独立 发动机 制造商 康明斯 签署 了 合作 开发 绿色 动力 与 智能 卡车 的 协议 。
 
+==================================Command
+/data/work/chinese/stanford-corenlp-full-2017-06-09$ ./corenlp3g.sh -file input.txt
+
 ==================================Ref
 http://www.nltk.org/install.html
 https://nlp.stanford.edu/software/segmenter.shtml#Download
 https://stanfordnlp.github.io/CoreNLP/download.html
+https://stanfordnlp.github.io/CoreNLP/human-languages.html
