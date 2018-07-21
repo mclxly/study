@@ -1,3 +1,11 @@
+==================================================================VPS Init
+2018-07-21
+* better-colors-so-comments-arent-dark-blue-in-vim
+~/.vimrc
+syntax on
+:highlight Comment ctermfg=green
+https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1604-lts-server-part-1-basics
+
 ==================================================================
 2016-04-28
 1. ssh 22 -> ssh 1
@@ -66,6 +74,7 @@ sudo vim /etc/php5/fpm/php.ini
 cgi.fix_pathinfo=0
 sudo service php5-fpm restart
 
+sudo ufw status numbered
 sudo ufw allow ssh
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
@@ -202,3 +211,11 @@ port     = <ENTER YOUR SSH PORT NUMBER HERE>
 filter   = sshd
 logpath  = /var/log/auth.log
 maxretry = 3
+
+[DEFAULT]
+ignoreip = 127.0.0.1/8 104.236.144.s 
+
+sudo service fail2ban stop
+
+==================================================================security 2018-07-21
+https://www.techrepublic.com/article/how-to-harden-ubuntu-server-16-04-security-in-five-steps/

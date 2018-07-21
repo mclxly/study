@@ -1,3 +1,9 @@
+=======================================Index rule
+Index every primary key.
+Index every foreign key.
+Index every column used in a JOIN clause.
+Index every column used in a WHERE clause.
+
 =======================================MySQL
 1. 修复数据表
 myisamchk -r all_arinv01

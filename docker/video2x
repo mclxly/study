@@ -1,0 +1,30 @@
+FROM ubuntu:16.04
+
+COPY ./fonts/* /usr/share/fonts/truetype/windows-font/
+
+RUN buildDeps='software-properties-common git dh-autoreconf curl' \
+    && apt-get update \
+    && apt-get install -y language-pack-zh* \
+    && apt-get install -y $buildDeps \
+        && add-apt-repository ppa:jonathonf/ffmpeg-3 \
+        && apt-get update \
+    && apt-get install -y ffmpeg libav-tools x264 x265 imagemagick \
+    && cd /usr/share/fonts/truetype/windows-font \
+    && fc-cache -fv
+    #&& apt-get install -y python-software-properties \
+    #&& curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    #&& apt-get install -y nodejs \
+    #&& git clone --depth=1 https://github.com/kornelski/giflossy.git \
+    #&& cd giflossy \
+    #&& autoreconf -i \
+    #&& ./configure --disable-gifview \
+    #&& make install \
+    #&& npm i gifify -g
+    #&& apt-get purge -y --auto-remove $buildDeps
+# install fork of gifsicle with better lossless gif support
+
+# run gifify in /data (requires user to mount their source folder in /data)
+WORKDIR /data
+
+#ENTRYPOINT ["gifify"]
+~

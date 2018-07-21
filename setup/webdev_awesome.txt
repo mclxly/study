@@ -24,3 +24,7 @@ https://github.com/sciactive/pnotify
 /******************************************************
             Backend
 ******************************************************/
+//--------------------------------------------pngquant
+CENTOS
+https://centos.pkgs.org/6/epel-x86_64/pngquant-2.5.2-5.el6.x86_64.rpm.html
+yum install pngquant-2.5.2-5.el6.x86_64.rpm

@@ -1,6 +1,9 @@
 ==================================Network Monitor
 sudo apt-get install bmon
 
+可以察看客户端的IP及端口
+sudo tcptrack -i eth0
+
 ==================================GoAccess 分析web日志
 /etc/goaccess.conf
 date-format

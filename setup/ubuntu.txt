@@ -5,6 +5,12 @@ sudo apt-get upgrade
 # 更换package source源 (cn.archive....比较快) repos
 /etc/apt/sources.list
 
+# apt找不到或者解析错误的主机地址
+直接修改/etc/hosts映射
+
+# flush dns cache
+sudo /etc/init.d/dns-clean restart
+
 # 查找可安装包
 apt-cache search php7
 
@@ -77,6 +83,15 @@ diff
 
 # PHP FPM
 systemctl status php7.0-fpm.service
+
+=============================================安装字体
+copy ttf,ttc文件至
+/usr/share/fonts/truetype/windows-font
+fc-cache -fv
+
+# How can I list all the Chinese fonts I have installed?
+fc-list :lang=zh
+
 
 ===================================================
                   DigitalOcean

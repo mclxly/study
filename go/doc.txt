@@ -10,10 +10,60 @@ Genuine knowledge comes from practice.
 * [GoDoc](https://godoc.org)
 * [Go Lib List](http://go-lang.cat-v.org/pure-go-libs)
 
+==========================================Web Project
+# 数据存取
+* https://github.com/jmoiron/sqlx
+* https://github.com/jinzhu/gorm
+*
+
+# 数据存取教程：
+http://go-database-sql.org/index.html
+https://hackernoon.com/how-to-work-with-databases-in-golang-33b002aa8c47
+
+# Background Job
+
+## A realtime distributed messaging platform
+http://nsq.io/
+
+## Machinery is an asynchronous task queue/job queue based on distributed message passing.
+https://github.com/RichardKnop/machinery
+
+## At a high level, Faktory is a work server. It is the repository for background jobs within your application. Jobs have a type and a set of arguments and are placed into queues for workers to fetch and execute.
+https://github.com/contribsys/faktory
+
+## A Commander for modern Go CLI interactions
+https://github.com/spf13/cobra
+
+## Fireworq is a lightweight, high-performance, language-independent job queue system.
+https://github.com/fireworq/fireworq
+
+==========================================Daily Command
+* 在项目目录: go install
+* go install PROJECT_PATH
+* go get REPO_URL
+* go get -u REPO_URL
+* 格式化: gofmt -w main.go
+
+==========================================IDE
+* VIM
+https://github.com/fatih/vim-go-tutorial
+https://github.com/fatih/vim-go
+* Sublime Text
+https://medium.com/@arshamshirvani/super-charge-your-sublime-text-for-golang-development-3239d9c376bb
+* Visual Studio
+
+
 ==========================================Install
 1. wget https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz
 2. tar zxvf go1.8.1.linux-amd64.tar.gz -C $GO_INSTALL_DIR
 
+==========================================upgrade on Ubuntu
+1. tar -C /usr/local -xzf go1.9.2.linux-amd64.tar.gz
+
+==========================================upgrade on Centos
+1. log in root
+2. uninstalling old go
+mv /usr/lib/golang ~/tmp
 
 ==========================================Problems
 ? cannot find GOROOT directory

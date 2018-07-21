@@ -186,6 +186,9 @@ ALTER TABLE sample.public.employee ADD new_col char(25) DEFAULT '22' NOT NULL
  select poi_json->>'ad_info' from "locations" 
  where poi_json#>'{ad_info,province}' != 'null' and poi_json#>'{ad_info,province}' = poi_json#>'{ad_info,city}'
 
+SELECT * FROM public.notifications
+where created_at >= '2017-11-16' and cast(data::json->>'senderID' as integer) = 1
+
 ==============================================GEO SQL
 # 建立索引，数据量少的情况未发现提速
 CREATE INDEX idx_locations_geom ON locations USING gist(point);

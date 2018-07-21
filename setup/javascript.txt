@@ -1,6 +1,10 @@
-Last updated: 2017-09-14
+Last updated: 2018-01-27
 =============================
 
+=============================Install Node.js 8 on Ubuntu 16.04 Xenial Xerus LTS
+https://github.com/nodejs/help/wiki/Installation
+
+=============================
 ncu
 ncu -u
 npm outdated
@@ -14,6 +18,8 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 (b)ind is for a (b)elated use! (you'll generate a function that you won't call right away, but you need it to use the right context when you do call it later!
 
 =============================node.js
+
+====================
 wget https://nodejs.org/dist/v5.3.0/node-v5.3.0.tar.gz.tar.gz
 tar -zxvf node-v5.3.0
 ./configure
@@ -31,6 +37,9 @@ rm -rf ~/.npm
 npm cache clear
 
 =============================npm
+# list global installed package
+npm list -g --depth 0
+
 # To upgrade, run: 
 [sudo] npm install npm@latest -g
 

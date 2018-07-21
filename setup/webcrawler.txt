@@ -52,3 +52,19 @@ var script = document.createElement("script");
   document.body.appendChild(script);
 
 setInterval(function(){ $('button[kjid=acd4f10369]').trigger('click');}, 2000);
+
+
+=========================================抓取百度文档的文字
+var script = document.createElement("script");
+  script.setAttribute("src", "//code.jquery.com/jquery-latest.min.js");
+  script.addEventListener('load', function() {
+    var script = document.createElement("script");
+    document.body.appendChild(script);
+  }, false);
+  document.body.appendChild(script);
+
+  $('.reader-word-layer').each(function(i, obj) {
+    console.log(obj.text)
+});
+
+$('.reader-txt-layer').text()
