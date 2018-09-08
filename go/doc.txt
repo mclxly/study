@@ -10,6 +10,25 @@ Genuine knowledge comes from practice.
 * [GoDoc](https://godoc.org)
 * [Go Lib List](http://go-lang.cat-v.org/pure-go-libs)
 
+==========================================Go v1.11
+mkdir test
+cd test
+go mod init test
+go run .
+
+git config --global http.sslVerify true
+
+==================.bash_profile
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+PATH=$PATH:$GOPATH/bin
+PATH=/usr/bin:/usr/local/go/bin:/home/colin.lin/.composer/vendor/bin:$PATH
+
+export PATH
+
+export http_proxy=192.168.4.192:1080
+export https_proxy=192.168.4.192:1080
+
 ==========================================Web Project
 # 数据存取
 * https://github.com/jmoiron/sqlx
@@ -64,6 +83,10 @@ https://medium.com/@arshamshirvani/super-charge-your-sublime-text-for-golang-dev
 1. log in root
 2. uninstalling old go
 mv /usr/lib/golang ~/tmp
+
+==========================================upgrade on Centos 20180825
+https://golang.org/doc/install
+tar -C /usr/local -xzf go1.11.linux-amd64.tar.gz
 
 ==========================================Problems
 ? cannot find GOROOT directory

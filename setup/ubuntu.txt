@@ -1,6 +1,7 @@
 ==================================Ubuntu
 sudo apt-get update
 sudo apt-get upgrade
+sudo do-release-upgrade
 
 # 更换package source源 (cn.archive....比较快) repos
 /etc/apt/sources.list
