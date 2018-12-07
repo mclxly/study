@@ -15,8 +15,14 @@ mkdir test
 cd test
 go mod init test
 go run .
+go build
 
 git config --global http.sslVerify true
+
+rsync -avzhe 'ssh -p 22' --progress webdev@165.227.11.2:/home/webdev/go ./
+
+* install
+解压加路径即可
 
 ==================.bash_profile
 export GOROOT=/usr/local/go
@@ -28,6 +34,15 @@ export PATH
 
 export http_proxy=192.168.4.192:1080
 export https_proxy=192.168.4.192:1080
+
+==================代理
+go get设置代理，需要添加http_proxy等环境变量
+
+修改~/.bashrc添加以下配置后，在source ~/.bashrc就可以了：
+
+export http_proxy=http://localhost:8787 
+export https_proxy=httpproxyexportftpproxy=http_proxy 
+export rsync_proxy=$http_proxy 
 
 ==========================================Web Project
 # 数据存取
@@ -62,6 +77,7 @@ https://github.com/fireworq/fireworq
 * go get REPO_URL
 * go get -u REPO_URL
 * 格式化: gofmt -w main.go
+* curl localhost:9999
 
 ==========================================IDE
 * VIM

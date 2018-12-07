@@ -39,6 +39,12 @@ http://guylabs.ch/2013/07/25/configure-a-static-ip-in-ubuntu-13-04/
 
 sudo shutdown -h now
 
+* generate pwd
+openssl rand 60 | openssl base64 -A
+
+* listening port
+netstat --tcp --listen --numeric-ports
+
 显示版本号
 lsb_release -a
 
