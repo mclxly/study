@@ -1,4 +1,8 @@
 ==================================Gitlab
+# restart
+sudo gitlab-ctl restart
+https://docs.gitlab.com/ee/administration/restart_gitlab.html
+
 https://help.github.com/articles/generating-ssh-keys/
 生产key，然后将id_rsa.pub的内容加入到Gitlab中
 

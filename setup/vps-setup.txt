@@ -217,5 +217,7 @@ ignoreip = 127.0.0.1/8 104.236.144.s
 
 sudo service fail2ban stop
 
+sudo fail2ban-client status sshd
+
 ==================================================================security 2018-07-21
 https://www.techrepublic.com/article/how-to-harden-ubuntu-server-16-04-security-in-five-steps/

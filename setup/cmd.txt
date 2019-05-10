@@ -385,6 +385,11 @@ git clone --depth=1 <remote_repo_URL>
 # Except this file
 !.gitignore
 
+# change remote url
+git remote -v
+git remote set-url origin https://github.com/user/repo2.git
+git remote set-url origin http://home.linxiang.info:9001/dev-team-a/3kmq.frontend.git
+
 =========================================NPM
 更新npm
 npm update npm -g
