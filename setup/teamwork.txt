@@ -8,3 +8,4 @@ https://help.github.com/articles/generating-ssh-keys/
 
 # 可以将本机的公共密钥添加到远程机器
 ssh-copy-id tim@just.some.other.server
+ssh-copy-id -p 22 tim@just.some.other.server

@@ -3,6 +3,12 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo do-release-upgrade
 
+# zsh
+https://dev.to/mskian/install-z-shell-oh-my-zsh-on-ubuntu-1804-lts-4cm4
+
+# list fonts
+fc-list
+
 # 更换package source源 (cn.archive....比较快) repos
 /etc/apt/sources.list
 

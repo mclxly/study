@@ -1,6 +1,13 @@
 ===========================
 osx.txt
-===========================
+
+===========================Brew
+brew update
+brew upgrade
+brew services list
+brew services start php
+
+===========================Command
 1. 查找占用端口
 sudo lsof -i -n -P|grep 8080
 
@@ -31,6 +38,11 @@ sudo umount -f <mounted_dir>
 
 9. Device not configured
 
+10. ssh
+ssh-copy-id -p 99 ss@123
+
+11. brew list
+
 
 ===========================Node.js
 brew update
@@ -40,3 +52,7 @@ npm install -g npm
 brew install node
 sudo npm install npm -g
 
+===========================PHP7.3
+sudo mkdir /usr/local/sbin
+sudo chown -R $(whoami) /usr/local/sbin
+brew link php@7.3

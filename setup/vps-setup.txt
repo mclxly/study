@@ -203,7 +203,7 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ub
 
 ==================================================================fail2ban
 sudo apt-get install fail2ban
-https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04
+https://www.techrepublic.com/article/how-to-install-fail2ban-on-ubuntu-server-18-04/
 sudo vim /etc/fail2ban/jail.local
 [sshd]
 enabled  = true
@@ -221,3 +221,12 @@ sudo fail2ban-client status sshd
 
 ==================================================================security 2018-07-21
 https://www.techrepublic.com/article/how-to-harden-ubuntu-server-16-04-security-in-five-steps/
+
+==================================================================V2ray
+# Server
+https://toutyrater.github.io/app/docker-deploy-v2ray.html
+https://dongrenwen.github.io/2018/11/29/Docker-V2ray/
+
+# Client
+https://help.v2rayx.org/mac.html
+https://github.com/Cenmrev/V2RayX
