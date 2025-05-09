@@ -20,6 +20,9 @@ wp-includes/formatting.php
 wp_trim_words
 
 ========================================composer
+# 镜像服务可能存在最新版本不同步的问题
+composer config --global repo.packagist composer https://packagist.org
+
 # 解决安装包速度问题
 composer config -l -g
 # config.json

@@ -5,6 +5,17 @@ docker save -o ./mygif.v1 mygif:v1
 
 
 ===========================Docker on Ubuntu
+-----------------------2023
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+-----------------------
 https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description
 
 wget https://download.docker.com/linux/ubuntu/dists/trusty/pool/stable/amd64/docker-ce_17.03.1~ce-0~ubuntu-trusty_amd64.deb
@@ -18,6 +29,10 @@ sudo service docker restart
 relogin
 
 ===========================Docker
+# clean system 
+docker system prune
+docker volume prune
+
 # show version
 docker version
 
@@ -62,8 +77,22 @@ docker rm xxx
 # run docker
 docker run -it --rm -v $(pwd):/data video2x:dev
 
+
+* deploy
+docker save hoe_client-hoe_frontend | gzip > ./hoe_client.tar.gz
+
+docker load < hoe_client.tar.gz
+
+# copy file from docker image to host
+docker cp 96e27b103e21:/usr/local/bin/server ./
+
 ===========================Docker on CentOS
 https://www.tecmint.com/install-docker-and-learn-containers-in-centos-rhel-7-6/
 
+===========================Docker Compose
+
 * 安装 docker-compose
 https://github.com/docker/compose/
+
+* rebuild 
+DOCKER_BUILDKIT=0 docker compose build

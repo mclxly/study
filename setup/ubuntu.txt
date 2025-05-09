@@ -3,6 +3,9 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo do-release-upgrade
 
+# remove danger history command
+LC_ALL=C sed -i '/linyu/d' $HISTFILE
+
 # zsh
 https://dev.to/mskian/install-z-shell-oh-my-zsh-on-ubuntu-1804-lts-4cm4
 

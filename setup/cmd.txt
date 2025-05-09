@@ -133,6 +133,7 @@ echo -n 'hello world' | md5sum -
 
 # 所有的服务在/etc/init.d
 
+sudo apt install net-tools
 # address already in used
 netstat -anp tcp | grep 8081
 netstat -tulpn | grep --color :80

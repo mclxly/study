@@ -1,6 +1,12 @@
 ===========================
 osx.txt
 
+===========================download video
+控制台代理
+export https_proxy="socks5://127.0.0.1:2080"
+export http_proxy="http://localhost:8001"
+ffmpeg -i https://v.redd.it/r4v1hdi3x3w91/HLSPlaylist.m3u8 -c copy -bsf:a aac_adtstoasc output.mp4
+
 ===========================Brew
 brew update
 brew upgrade
@@ -43,6 +49,15 @@ ssh-copy-id -p 99 ss@123
 
 11. brew list
 
+12. 查找占用端口并终止
+lsof -i tcp:8082
+kill -9 81167
+
+13. 查找进程id
+ps -A | grep 'ffmpeg'
+
+14. compare folders
+diff -rq folder1 folder2
 
 ===========================Node.js
 brew update
